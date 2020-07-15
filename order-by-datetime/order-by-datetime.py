@@ -1,8 +1,8 @@
 from datetime import datetime
 
-summaryfile          = open('filtered_symptom.txt', 'r', encoding='utf8')
-dates_timesfile      = open('filtered_symptom_dates.txt', 'r', encoding='utf8')
-organizedsummaryfile = open('organized_symptom.txt', 'w', encoding='utf8')
+summaryfile          = open('../compress/out/summaries/filtered_symptom.txt', 'r', encoding='utf8')
+dates_timesfile      = open('../compress/out/datetimes/filtered_symptom_datetimes.txt', 'r', encoding='utf8')
+organizedsummaryfile = open('out/ordered_symptom.txt', 'w', encoding='utf8')
 
 dates_times = dates_timesfile.read().splitlines()
 dates_times = [date_time[1:-1] for date_time in dates_times]
