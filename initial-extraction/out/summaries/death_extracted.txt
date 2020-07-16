@@ -1,5 +1,5 @@
 The country now has 5,603 cases, including 95 deaths.
-"The latest:   Worldwide COVID-19 death toll tops 100,000.
+The latest:   Worldwide COVID-19 death toll tops 100,000.
 Worldwide COVID-19 death toll tops 100,000.
 Canada's death toll now 274.
 nursing home reports another virus-related death.
@@ -25,7 +25,7 @@ North zone: 77 cases, 4 deaths.
 Calgary zone: 734 cases, 13 deaths.
 Edmonton zone: 290 cases, 4 deaths.
 North zone: 68 cases, 3 deaths.
-"New cases, cumulative cases, death counts, testing rates.
+New cases, cumulative cases, death counts, testing rates.
 The death toll rose by 30.
 Calgary zone: 774 cases, 14 deaths.
 Edmonton zone: 309 cases, 4 deaths.
@@ -34,6 +34,7 @@ North zone: 77 cases, 4 deaths.
 Calgary zone: 671 cases, 11 deaths.
 Edmonton zone: 263 cases, 4 deaths.
 North zone: 57 cases, 3 deaths.
+Calgary zone: 671 cases, 11 deaths.
 Eatonville Care Centre, 37 deaths, 143 cases.
 Hawthorne Place, nine deaths, 47 cases.
 Ontario: 588 cases, including eight deaths and eight resolved.

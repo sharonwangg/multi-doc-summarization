@@ -9,10 +9,13 @@ dates_times = [date_time[1:-1] for date_time in dates_times]
 
 sentences = summaryfile.read().splitlines()
 
-dates_times_to_sentence = {dates_times[i]: sentences[i] for i in range(len(dates_times))}
+{dates_times[i]: sentences[i] for i in range(len(dates_times))}
 
-dates_times.sort(key=lambda date: datetime.strptime(date, '%Y-%m-%d %H:%M'))
+timestamped_sentences = []
+for i in range(len(dates_times)):
+    timestamped_sentences.append((dates_times[i], sentences[i]))
 
-for date_time in dates_times:
-    sentence = dates_times_to_sentence[date_time]
-    organizedsummaryfile.write(sentence + '\n')
+timestamped_sentences.sort(key=lambda i: datetime.strptime(i[0], '%Y-%m-%d %H:%M'))
+
+for date_time, sentence in timestamped_sentences:
+    organizedsummaryfile.write(f"{date_time}\t{sentence}\n")

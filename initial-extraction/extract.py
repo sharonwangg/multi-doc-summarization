@@ -12,8 +12,8 @@ import re
 from allennlp.predictors import Predictor
 from allennlp.models.archival import load_archive
 
-textfile      = open('in/text.txt', 'r', encoding='utf8')
-datesfile     = open('in/dates.txt', 'r', encoding='utf8')
+textfile      = open('../covid19dataset/articles.txt', 'r', encoding='utf8')
+datesfile     = open('../covid19dataset/dates.txt', 'r', encoding='utf8')
 topicsfile    = open('in/res_topics.txt', 'r', encoding='utf8')
 stopwordsfile = open('in/stopwords.txt', 'r', encoding='utf8')
 vectorsfile   = open('in/jose.txt', 'r', encoding='utf8')
@@ -21,8 +21,21 @@ vectorsfile   = open('in/jose.txt', 'r', encoding='utf8')
 threshold = 0.3
 stopwords = frozenset(
     [word.strip() for word in stopwordsfile.read().splitlines()])
-predictor = Predictor.from_path("https://storage.googleapis.com/allennlp-public-models/bert-base-srl-2020.03.24.tar.gz")
-stemmer = SnowballStemmer("english")
+predictor = Predictor.from_path('https://storage.googleapis.com/allennlp-public-models/bert-base-srl-2020.03.24.tar.gz')
+stemmer = SnowballStemmer('english')
+
+general_words = ['i', 'you', 'them', 'they', 'he', 'him', 'she', 'her', 'his',
+                 'we', 'it', 'this', 'these', 'that', 'those', 'who', 'which',
+                 'as', 'each', 'all', 'everyone', 'either', 'one', 'both',
+                 'any', 'such', 'somebody', 'what', 'myself', 'herself', 'himself',
+                 'themselves', 'itself', 'us', 'mine', 'ours', 'yours', 'hers',
+                 'his', 'theirs', 'their', 'our', 'your', 'my', 'another',
+                 'any', 'anybody', 'anyone', 'anything', 'both', 'each', 'either',
+                 'everybody', 'everything', 'few', 'many', 'most', 'neither',
+                 'nobody', 'none', 'no one', 'nothing', 'other', 'others',
+                 'several', 'some', 'somebody', 'someone', 'something', 'such',
+                 'whatever', 'whichever', 'whoever', 'whom', 'whomever',
+                 'whose']
 
 # initialize the sentencizer
 nlp = English()
@@ -120,6 +133,24 @@ def getWords(sentence):
     for j in range(len(words)):
         words[j] = stemmer.stem(words[j]).strip().lower()
     return words
+def sentenceTooGeneral(sentence):
+    sentence_components = predictor.predict(sentence=sentence)['verbs']
+    if len(sentence_components) > 0:
+        description = sentence_components[0]['description'].split()
+        for i in range(len(description)):
+            subject = ''
+            object = ''
+            if description[i] == '[ARG0:':
+                subject = description[1].lower()
+                if subject[-1] == ']':
+                    subject = subject[:-1]
+            elif description[i] == '[ARG1:':
+                object = description[1].lower()
+                if object[-1] == ']':
+                    object = object[:-1]
+            if subject in general_words or object in general_words:
+                return True
+    return False
 def shouldAddSentence(words, topic, phrase, sentence, summary):
     return (((topic in words and hasXNGrams(phrase, words, topic, 1))
         or hasXNGrams(phrase, words, topic, 2))
@@ -136,7 +167,7 @@ phrases = getProcessedPhrases()         # delete symbols, stopwords, and repeats
 
 word_to_vector = getVectors()           # dict for spherical text embedding
 
-articles = textfile.read().splitlines() # list of articles from dataset
+raw_articles = textfile.read().splitlines() # list of articles from dataset
 dates = datesfile.read().splitlines()   # list of dates from dataset
 
 print("extracting sentences...")
@@ -146,22 +177,30 @@ for l in range(len(topics)):
     summaries.append([])
     summary_dates.append([])
 
-def main():
-    #print(predictor.predict(sentence="Did Uriah honestly think he could beat the game in under three hours?")
-    i = 0
-    for article in articles:
-        if True:
-        #if i < 100:
-            print("reading article " + str(i + 1))
-            i += 1
+# create 2d list of sent objects
+articles = []
+for i in range(len(raw_articles)):
+    article = nlp(raw_articles[i])
+    article = list(article.sents)
+    article[0] = article[0][1:]
+    article[-1] = article[-1][:-1]
+    articles.append(article)
 
-            article = nlp(article)
-            for sentence in list(article.sents):
-                sentence = str(sentence)
-                words = getWords(sentence)
+for i in range(len(articles)):
+    if True:
+    #if i < 100:
+        print("reading article " + str(i + 1))
 
-                for k in range(len(phrases)):
-                    if shouldAddSentence(words, topics[k], phrases[k], sentence, summaries[k]):
+        article = articles[i]
+        for sentence in article:
+            str_sentence = str(sentence)
+            words = getWords(str_sentence)
+            #alreadyRemoved = False
+
+            for k in range(len(phrases)):
+                if shouldAddSentence(words, topics[k], phrases[k], str_sentence, summaries[k]):
+                    #if not sentenceTooGeneral(str_sentence):
+                    if True:
                         topic_vector = word_to_vector[topics[k]]
                         relevancy_score = 0
                         for word in words:
@@ -173,19 +212,23 @@ def main():
                                 relevancy_score += current_cos
 
                         if relevancy_score / len(words) > threshold:
-                            summaries[k].append(sentence.strip())
+                            summaries[k].append(str_sentence.strip())
                             summary_dates[k].append(dates[i])
-        else:
-            break
 
-    for i in range(len(summaries)):
-        extractedfile = open('out/summaries/' + topics[i] + '_extracted.txt', 'w', encoding='utf8')
-        extracted_datesfile = open('out/datetimes/' + topics[i] + '_extracted_datetimes.txt', 'w', encoding='utf8')
-        summary = summaries[i]
-        for j in range(len(summary)):
-            sentence = summary[j]
-            extractedfile.write(sentence.strip() + '\n')
-            extracted_datesfile.write(summary_dates[i][j] + '\n')
+                #if not alreadyRemoved:
+                #if True:
+                    #if sentenceTooGeneral(str_sentence):
+                        #articles[i].remove(sentence)
+                        #alreadyRemoved = True
 
-if __name__ == '__main__':
-    main()
+    else:
+        break
+
+for i in range(len(summaries)):
+    extractedfile = open('out/summaries/' + topics[i] + '_extracted.txt', 'w', encoding='utf8')
+    extracted_datesfile = open('out/datetimes/' + topics[i] + '_extracted_datetimes.txt', 'w', encoding='utf8')
+    summary = summaries[i]
+    for j in range(len(summary)):
+        sentence = summary[j]
+        extractedfile.write(sentence.strip() + '\n')
+        extracted_datesfile.write(summary_dates[i][j] + '\n')
