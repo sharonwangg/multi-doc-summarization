@@ -4,10 +4,10 @@ from gensim.models import Word2Vec
 from gensim.models import KeyedVectors
 import gensim.downloader as api
 
-summary_file    = open('../initial-extraction/out/summaries/symptom_extracted.txt', 'r', encoding='utf8')
-dates_file      = open('../initial-extraction/out/datetimes/symptom_extracted_datetimes.txt', 'r', encoding='utf8')
-newsummary_file = open('out/summaries/filtered_symptom.txt', 'w', encoding='utf8')
-newdates_file   = open('out/datetimes/filtered_symptom_datetimes.txt', 'w', encoding='utf8')
+summary_file    = open('../initial-extraction/out/summaries/mask_extracted.txt', 'r', encoding='utf8')
+dates_file      = open('../initial-extraction/out/datetimes/mask_extracted_datetimes.txt', 'r', encoding='utf8')
+newsummary_file = open('out/summaries/filtered_mask.txt', 'w', encoding='utf8')
+newdates_file   = open('out/datetimes/filtered_mask_datetimes.txt', 'w', encoding='utf8')
 
 stop_words = stopwords.words('english')
 threshold = 1.51
