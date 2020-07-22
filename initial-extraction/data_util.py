@@ -59,8 +59,8 @@ def get_topics_lines():
         (list of str): Returns a list of strings, with each string a line of
                        topics_file.
     """
-    topics_file = open(TOPICS_PATH, 'r')
-    return topics_file.read().splitlines()
+    with open(TOPICS_PATH, 'r') as f:
+        return f.read().splitlines()
 
 def get_vectors_lines():
     """
@@ -68,8 +68,8 @@ def get_vectors_lines():
         (list of str): A list of strings, with each string a line of
                        vectors_file.
     """
-    vectors_file = open(VECTORS_PATH, 'r')
-    return vectors_file.read().splitlines()
+    with open(VECTORS_PATH, 'r') as f:
+        return f.read().splitlines()
 
 def get_predictor():
     """
@@ -82,17 +82,18 @@ def get_predictor():
 def get_articles():
     """
     Returns:
-        (list of str): Returns a list of articles.
+        (List of list of sentences): A list of articles, with each article
+            being a list of sentences.
     """
-    articles_file = open(TEXT_PATH, 'r')
-    raw_articles = articles_file.read().splitlines()
+    with open(TEXT_PATH, 'r') as f:
+        raw_articles = f.read().splitlines()
+
     articles = []
     for i in range(len(raw_articles)):
-        article = NLP(raw_articles[i])
-        article = list(article.sents)
-        article[0] = article[0][1:]
-        article[-1] = article[-1][:-1]
-        articles.append(article)
+        sentences = list(NLP(raw_articles[i]).sents)
+        sentences[0] = sentences[0][1:]
+        sentences[-1] = sentences[-1][:-1]
+        articles.append(sentences)
     return articles
 
 def get_datetimes():
@@ -101,5 +102,5 @@ def get_datetimes():
         (list of str): Returns a list of strings, each representing a date and
                        time.
     """
-    datetimes_file = open(DATETIMES_PATH, 'r')
-    return datetimes_file.read().splitlines()
+    with open(DATETIMES_PATH, 'r') as f:
+        return f.read().splitlines()

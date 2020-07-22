@@ -14,6 +14,7 @@ import numpy as np
 import numpy.linalg as la
 from nltk.stem.snowball import SnowballStemmer
 from data_util import get_stopwords, get_general_words, get_topics_lines, get_vectors_lines, get_predictor, get_articles, get_datetimes
+from sentence_details import SentenceDetails
 
 THRESHOLD = 0.3
 GENERAL_WORDS = get_general_words()
@@ -177,18 +178,20 @@ def is_quality_sentence(topic, phrase, words, str_sentence, summary):
         topic (str): Category name.
         phrase (list of str): List of ngrams relating to `topic`.
         str_sentence (str): Some string representing a sentence.
-        summary (list of str): List of sentences.
+        summary (list of str): List of str_sentences.
+
     Returns:
         (bool): Returns true if `sentence` should be added to the summary.
     """
+
     return (((topic in words and has_x_ngrams(topic, phrase, words, 1))
         or has_x_ngrams(topic, phrase, words, 2))
         and not has_day(str_sentence.strip())
         and words[0] != "but"
         and words[0] != "and"
         and str_sentence[-1] != "?"
-        and len(words) >= 5)
-        and str_sentence not in summary)
+        and len(words) >= 5
+        and str_sentence.strip() not in summary)
 
 def calculate_relevancy_score(topic, words):
     """
@@ -198,7 +201,7 @@ def calculate_relevancy_score(topic, words):
     Returns:
         (float): Relevancy score.
     """
-    topic_vector = word_to_vector[topics[k]]
+    topic_vector = word_to_vector[topic]
     relevancy_score = 0
     for word in words:
         if word not in word_to_vector:
@@ -210,21 +213,42 @@ def calculate_relevancy_score(topic, words):
     relevancy_score = relevancy_score / len(words)
     return relevancy_score
 
-def initialize_structures():
+def get_all_sentence_details(topics, articles, datetimes):
     """
+    Args:
+        topics (list of str): List of topics to summarize.
+        articles (list of list of sentences): List of articles which are lists
+            of sentences.
+        datetime (list of list of str): List of list of datestimes.
+
     Returns:
-        summaries (2D list): list of list of sentences
-        summary_dates (2D list): list of list of dates
-        relevancy_scores (2D list): list of list of relevancy scores
+        (list of SentenceDetails): A list of sentences with corresponding dates &
+            scores.
     """
+    all_sentence_details = []
     summaries = []
-    summary_dates = []
-    relevancy_scores = []
     for i, topic in enumerate(topics):
-        summaries.append([])
-        summary_dates.append([])
-        relevancy_scores.append([])
-    return summaries, summary_dates, relevancy_scores
+        all_sentence_details.append([])
+        summaries.append(set())
+
+
+    for i, article in enumerate(articles):
+        if i < 1000:
+            print("summarizing article " + str(i + 1))
+            for j, sentence in enumerate(article):
+                words = get_words(sentence.text)
+                for k, phrase in enumerate(phrases):
+                    if is_quality_sentence(topics[k], phrase, words, sentence.text, summaries[k]):
+                        sentence_to_add = SentenceDetails(
+                            sentence.text,
+                            extract_date(datetimes[k]),
+                            calculate_relevancy_score(topics[k], words))
+                        summaries[k].add(sentence.text.strip())
+                        all_sentence_details[k].append(sentence_to_add)
+        else:
+            break
+
+    return all_sentence_details
 
 def extract_date(datetime):
     """
@@ -242,27 +266,15 @@ word_to_vector = get_vectors()
 articles = get_articles()
 datetimes = get_datetimes()
 
-summaries, summary_dates, relevancy_scores = initialize_structures()
+all_sentence_details = get_all_sentence_details(topics, articles, datetimes)
+for sentence_details in all_sentence_details:
+    sentence_details.sort(key=lambda x: x.relevancy_score, reverse=True)
 
+for i, sentence_details in enumerate(all_sentence_details):
+    with open('out/summaries/' + topics[i] + '_extracted.txt', 'w') as summary_f:
+        for sentence_detail in sentence_details:
+            summary_f.write(sentence_detail.text + '\n')
 
-for i, article in enumerate(articles):
-    print("summarizing article " + str(i + 1))
-    for j, sentence in enumerate(article):
-        str_sentence = str(sentences)
-        words = get_words(str_sentence)
-        for k, phrase in enumerate(phrases):
-            if is_quality_sentence(topics[k], phrase, words, str_sentence, summaries[k]):
-                summaries[k].append(str_sentence.strip())
-
-                date = extract_date(datetimes[k])
-                summary_dates[k].append(date)
-
-                relevancy_score = calculate_relevancy_score(topics[k], words)
-                relevancy_scores[k].append(relevancy_score)
-
-for i, summary in enumerate(summaries):
-    summary_file = open('out/summaries/' + topics[i] + '_extracted.txt', 'w')
-    summary_dates_file = open('out/dates/' + topics[i] + '_extracted_dates.txt', 'w')
-    for j, sentence in enumerate(summary):
-        summary_file.write(sentence.strip() + '\n')
-        summary_dates_file.write(summary_dates[i][j] + '\n')
+    with open('out/dates/' + topics[i] + '_extracted_dates.txt', 'w') as summary_dates_f:
+        for sentence_detail in sentence_details:
+            summary_dates_f.write(sentence_detail.date + '\n')
