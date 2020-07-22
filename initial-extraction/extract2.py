@@ -3,6 +3,7 @@ Extracts relevant sentences from corpus related to category names.
 
 Attributes:
     THRESHOLD (float): The threshold for cosine similarity.
+    SUMMARY_LENGTH (int): How many sentences desired in the summary.
     GENERAL_WORDS (frozenset of str): Words that shouldn't be a sub/obj.
     STOPWORDS (list of str): Stopwords.
     STEMMER (SnowballStemmer): Stems words.
@@ -172,6 +173,12 @@ def sentence_too_general(sentence):
                 return True
     return False
 
+def has_improper_pronoun(sentence):
+    for token in sentence:
+        if "PRON" in token.pos_:
+            return True
+    return False
+
 def is_quality_sentence(topic, phrase, words, str_sentence, summary):
     """
     Args:
@@ -231,22 +238,18 @@ def get_all_sentence_details(topics, articles, datetimes):
         all_sentence_details.append([])
         summaries.append(set())
 
-
     for i, article in enumerate(articles):
-        if i < 1000:
-            print("summarizing article " + str(i + 1))
-            for j, sentence in enumerate(article):
-                words = get_words(sentence.text)
-                for k, phrase in enumerate(phrases):
-                    if is_quality_sentence(topics[k], phrase, words, sentence.text, summaries[k]):
-                        sentence_to_add = SentenceDetails(
-                            sentence.text,
-                            extract_date(datetimes[k]),
-                            calculate_relevancy_score(topics[k], words))
-                        summaries[k].add(sentence.text.strip())
-                        all_sentence_details[k].append(sentence_to_add)
-        else:
-            break
+        print("summarizing article " + str(i + 1))
+        for j, sentence in enumerate(article):
+            words = get_words(sentence.text)
+            for k, phrase in enumerate(phrases):
+                if is_quality_sentence(topics[k], phrase, words, sentence.text, summaries[k]) and not has_improper_pronoun(sentence):
+                    sentence_to_add = SentenceDetails(
+                        sentence.text,
+                        extract_date(datetimes[i][1:]),
+                        calculate_relevancy_score(topics[k], words))
+                    summaries[k].add(sentence.text.strip())
+                    all_sentence_details[k].append(sentence_to_add)
 
     return all_sentence_details
 
@@ -259,6 +262,21 @@ def extract_date(datetime):
     """
     return datetime.split()[0]
 
+def summarize(all_sentence_details):
+    for sentence_details in all_sentence_details:
+        sentence_details.sort(key=lambda x: x.relevancy_score, reverse=True)
+
+    for i, sentence_details in enumerate(all_sentence_details):
+        with open('out/summaries/' + topics[i] + '_extracted.txt', 'w') as summary_f:
+            with open('out/dates/' + topics[i] + '_extracted_dates.txt', 'w') as summary_dates_f:
+                summary_length = 200
+                if len(sentence_details) < summary_length:
+                    summary_length = len(sentence_details)
+                for j in range(summary_length):
+                    sentence_detail = sentence_details[j]
+                    summary_f.write(sentence_detail.text + '\n')
+                    summary_dates_f.write(sentence_detail.date + '\n')
+
 topics, phrases = get_topics_and_phrases()
 phrases = get_processed_phrases()
 word_to_vector = get_vectors()
@@ -267,14 +285,4 @@ articles = get_articles()
 datetimes = get_datetimes()
 
 all_sentence_details = get_all_sentence_details(topics, articles, datetimes)
-for sentence_details in all_sentence_details:
-    sentence_details.sort(key=lambda x: x.relevancy_score, reverse=True)
-
-for i, sentence_details in enumerate(all_sentence_details):
-    with open('out/summaries/' + topics[i] + '_extracted.txt', 'w') as summary_f:
-        for sentence_detail in sentence_details:
-            summary_f.write(sentence_detail.text + '\n')
-
-    with open('out/dates/' + topics[i] + '_extracted_dates.txt', 'w') as summary_dates_f:
-        for sentence_detail in sentence_details:
-            summary_dates_f.write(sentence_detail.date + '\n')
+summarize(all_sentence_details)

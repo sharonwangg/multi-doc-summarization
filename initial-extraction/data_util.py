@@ -11,20 +11,25 @@ Attributes:
     SENTENCIZER (spacy.pipeline.pipes.Sentencizer): Sentencizer object.
 """
 
+import spacy
 from nltk.corpus import stopwords
 from allennlp.predictors import Predictor
 from spacy.pipeline import SentenceSegmenter
 from spacy.lang.en import English
 
-TEXT_PATH = '../covid19dataset/articles.txt'
-DATETIMES_PATH = '../covid19dataset/dates.txt'
+TEXT_PATH = '../preprocess-corpus/out/articles.txt'
+DATETIMES_PATH = '../preprocess-corpus/out/dates.txt'
 TOPICS_PATH = 'in/res_topics.txt'
 VECTORS_PATH = 'in/jose.txt'
 PREDICTOR_PATH = 'https://storage.googleapis.com/allennlp-public-models/bert-base-srl-2020.03.24.tar.gz'
 
+NLP = spacy.load('en_core_web_sm')
+
+'''
 NLP = English()
 SENTENCIZER = NLP.create_pipe("sentencizer")
 NLP.add_pipe(SENTENCIZER)
+'''
 
 def get_stopwords():
     """
