@@ -8,14 +8,17 @@ Attributes:
     COMPRESSED_SUMMARY_PATH (str): Path for compressed summary.
     COMPRESSED_DATES_PATH (str): Path for dates of sentences in compressed
         summary.
+
     STOPWORDS (list of str): Stopwords.
     THRESHOLD (float): Threshold for Word Mover's Distance.
-    MODEL (gensim model): Model for Word2Vec.
-    VECTORIZER (vectorizer): Vectorizer for tfidf.
+    MODEL (model): Word2Vec model.
 """
 
 import gensim.downloader as api
-import pandas as pd
+import spacy
+import re
+import math
+import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.corpus import stopwords
 from nltk import download
@@ -31,7 +34,6 @@ COMPRESSED_DATES_PATH = 'out/dates/filtered_' + TOPIC + '_dates.txt'
 STOPWORDS = stopwords.words('english')
 THRESHOLD = 1.51
 MODEL = api.load('word2vec-google-news-300')
-VECTORIZER = TfidfVectorizer()
 
 def get_sentences():
     """
@@ -47,22 +49,57 @@ def get_split_sentences(sentences):
         (list of list of str): List of list of words where each inner list is
             a sentence.
     """
-    return [sentence.lower().split() for sentence in sentences]
 
-def get_tfidf_df(sentences):
+    return [strip_symbols(sentence.lower().split()) for sentence in sentences]
+
+def get_tfidf(word, split_sentence, idfs):
     """
     Args:
-        sentences (list of str): Summary sentences.
+        word (str): Some string representing a word.
+        sentence (str): Some string representing a sentence.
+        idfs (dict from str to float): Dict mapping `word` to its idf value.
 
     Returns:
-        (pandas DataFrame): DataFrame containing tfidf info on `sentences`.
+        (float): tfidf value of `word` in `sentence`.
     """
-    vectors = VECTORIZER.fit_transform(sentences)
-    feature_names = VECTORIZER.get_feature_names()
-    dense = vectors.todense()
-    dense_list = dense.tolist()
-    df = pd.DataFrame(dense_list, columns=feature_names)
-    return df
+    tf = split_sentence.count(word.lower())
+    return tf * idfs[word]
+
+def get_tfidf_vector(split_sentence, idfs):
+    """
+    Args:
+        sentence (str): Some string representing a sentence.
+        idfs (dict from str to float): Dict mapping words to their idf values.
+
+    Returns:
+        (dict from str to float): Dict mapping words to their tfidf values.
+    """
+    vector = {}
+
+    for i in range(len(split_sentence)):
+        word = split_sentence[i]
+        vector[word] = get_tfidf(word, split_sentence[i], idfs)
+    return vector
+
+def get_idfs(split_sentences):
+    """
+    Args:
+        split_sentences (list of list of str): List of list of words where each
+            inner list is a sentence.
+
+    Returns:
+        (dict from str to float): Dict mapping words to their idf values.
+    """
+    document_counts = {}
+    for sentence in split_sentences:
+        for word in sentence:
+            document_counts[word] = document_counts.get(word, 0) + 1
+
+    idfs = {}
+    for word, count in document_counts.items():
+        idfs[word] = math.log(len(split_sentences) / count)
+
+    return idfs
 
 def get_dates():
     """
@@ -72,19 +109,18 @@ def get_dates():
     with open(DATES_PATH, 'r') as f:
         return f.read().splitlines()
 
-def get_score(s, df):
+def get_score(split_sentence, idfs):
     """
     Args:
-        s (str): Some string.
-        df (pandas DataFrame): DataFrame containing tfidf info.
+        sentence (str): Some string representing a sentence.
+        idfs (dict from str to float): Dict mapping words to their idf values.
 
     Returns:
-        (float): Summation of tfidf scores of `s`.
+        (float): Summation of tfidf scores of `sentence`.
     """
     score = 0
-    for word in s:
-        word = strip_symbols(word)
-        score += df[word]
+    for tfidf in get_tfidf_vector(split_sentence, idfs).values():
+        score += tfidf
     return score
 
 def strip_symbols(s):
@@ -101,42 +137,77 @@ def strip_symbols(s):
         s = s[:-1]
     return s
 
-def get_compressed_summary(sentences, split_sentences, df, dates):
+def get_compressed_results(sentences, split_sentences, idfs, dates):
     """
     Args:
         sentences (list of str): Summary sentences.
         split_sentences (list of list of str): List of list of words where each
             inner list is a sentence.
-        df (pandas DataFrame): DataFrame containing tfidf info.
+        idfs (dict from str to float): Dict mapping words to their idf values.
         dates (list of str): Dates.
 
     Returns:
         (list of str): Compressed summary sentences.
+        (list of str): Compressed summary's dates.
     """
     compressed_summary = []
     compressed_dates = []
 
-    for i, split_sentence in enumerate(split_sentences):
-        split_sentences[i] = [word for word in split_sentence if word not in STOPWORDS]
+    for i in range(len(split_sentences)):
+        split_sentences[i] = [word for word in split_sentences[i] if word not in STOPWORDS]
         redundant = False
         for j in reversed(range(i)):
-            distance = MODEL.wmdistance(split_sentence, split_sentences[j])
+            distance = MODEL.wmdistance(split_sentences[i], split_sentences[j])
             if distance < THRESHOLD:
                 redundant = True
                 break
+        sentence1 = sentences[i]
+        date1 = dates[i]
         if redundant:
-            sentence1 = ' '.join(split_sentence)
-            sentence2 = ' '.join(split_sentences[j])
+            sentence2 = sentences[j]
+            date2 = dates[j]
 
-            sentence1_score = get_score(split_sentence, df)
-            sentence2_score = get_score(split_sentences[j], df)
-            print(sentence1_score)
-            print(sentence2_score)
+            sentence1_score = get_score(split_sentences[i], idfs)
+            sentence2_score = get_score(split_sentences[j], idfs)
 
-    return compressed_summary
+            print(0, sentence1 + " " + str(sentence1_score))
+            print(1, sentence2 + " " + str(sentence2_score))
+
+            if sentence1_score > sentence2_score:
+                compressed_summary.append(sentence1)
+                compressed_dates.append(date1)
+                compressed_summary[j] = ""
+                compressed_dates[j] = ""
+                print(2, sentence1)
+            else:
+                compressed_summary.append("")
+                compressed_dates.append("")
+                print(2, sentence2)
+        else:
+            compressed_summary.append(sentence1)
+            compressed_dates.append(date1)
+
+    return compressed_summary, compressed_dates
+
+def output(compressed_summary, compressed_dates):
+    """
+    Args:
+        compressed_summary (list of str): List of sentences in compressed
+            summary.
+        compressed_dates (list of str): List of dates corresponding to
+            compressed summary.
+    """
+    with open(COMPRESSED_SUMMARY_PATH, 'w') as compressed_summary_f:
+        with open(COMPRESSED_DATES_PATH, 'w') as compressed_dates_f:
+            for i in range(len(compressed_summary)):
+                if compressed_summary[i] == "" and compressed_dates[i] == "":
+                    continue
+                compressed_summary_f.write(compressed_summary[i] + '\n')
+                compressed_dates_f.write(compressed_dates[i] + '\n')
 
 sentences = get_sentences()
-df = get_tfidf_df(sentences)
 split_sentences = get_split_sentences(sentences)
+idfs = get_idfs(split_sentences)
 dates = get_dates()
-compressed_summary = get_compressed_summary(sentences, split_sentences, df, dates)
+compressed_summary, compressed_dates = get_compressed_results(sentences, split_sentences, idfs, dates)
+output(compressed_summary, compressed_dates)
