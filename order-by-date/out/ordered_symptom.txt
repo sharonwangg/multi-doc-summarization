@@ -22,12 +22,12 @@
 2020-01-30 00:00:00	Reports said nine of those aboard the flight showed signs of cough and fever.
 2020-01-30 00:00:00	The virus can cause fever, coughing, wheezing and pneumonia.
 2020-01-31 00:00:00	Symptoms can include runny nose, headache, cough, sore throat and fever.
-2020-02-01 00:00:00	The couple from Gatineau, Que., tested positive in mid-February and was transported to a Japanese military hospital with symptoms including coughing and fever.
 2020-02-03 00:00:00	Yaffe said the majority of cases under investigation meet the case definition, which says that the person would have been in Hubei province within the past 14 days and have a fever or cough.
 2020-02-04 00:00:00	Symptoms from the virus can include: fever, cough and shortness of breath, according to the U.S. Centers for Disease Control and Prevention.
 2020-02-07 00:00:00	\"That includes mild symptoms like a cough, fatigue, fever,\" said Shahab.  
 2020-02-08 00:00:00	Adding to the difficulties in diagnosing the new virus are numerous diseases in Africa with symptoms that include fever or coughing or both. '
 2020-02-12 00:00:00	The virus causes respiratory symptoms, such as cough and fever.
+2020-02-15 00:00:00	The couple from Gatineau, Que., tested positive in mid-February and was transported to a Japanese military hospital with symptoms including coughing and fever.
 2020-02-19 00:00:00	Another 14 per cent were classified as severe, causing symptoms such as pneumonia and shortness of breath.
 2020-02-26 00:00:00	The woman had a cough, sore throat, body aches and an occasional fever.
 2020-02-26 00:00:00	The health ministry had determined that people with fever and flu symptoms returning from Italy and six other countries should be considered suspected cases.
@@ -35,7 +35,6 @@
 2020-02-26 00:00:00	According to Brazil's health ministry, the man began to show symptoms compatible with the illness, such as a dry cough, throat pain and flu symptoms.
 2020-02-26 00:00:00	More than 81,000 cases of COVID-19, an illness characterized by fever and coughing and sometimes shortness of breath or pneumonia, have occurred since the new virus emerged in China.
 2020-02-27 00:00:00	Health officials say his only symptoms are a mild cough and fever.
-2020-03-01 00:00:00	0:51 \"We didn't want to stay in New York [and] be unable to come back and maybe get sick.\" Still, just days after returning from the U.S. on March 13, Levesque began to feel unwell, having developed a mild fever, as well as nausea, a cough and muscle pain.
 2020-03-02 00:00:00	According to PHAC, the patient passed initial screening in California but reported a mild fever and cough upon arriving in Trenton, Ont.
 2020-03-02 00:00:00	\"In the context of coronavirus, people may talk about their signs and symptoms such as fevers, aching all over their body, or having shortness of breath,\
 2020-03-06 00:00:00	Common symptoms include dry cough, fever or fatigue/extreme tiredness.
@@ -149,6 +148,8 @@
 2020-05-01 00:00:00	The following is a list of symptoms for COVID-19:  Fever.
 2020-05-01 00:00:00	The most common symptoms associated with COVID-19 are:  Cough (reported by 62 per cent of all cases)
 2020-05-01 00:00:00	Signs of a heart attack include chest pressure, squeezing, fullness or pain; sweating; discomfort in the neck, jaw, shoulder, arms, or upper back; nausea; shortness of breath; and light-headedness.
+2020-05-01 00:00:00	0:51 \"We didn't want to stay in New York [and] be unable to come back and maybe get sick.\" Still, just days after returning from the U.S. on March 13, Levesque began to feel unwell, having developed a mild fever, as well as nausea, a cough and muscle pain.
 2020-05-02 00:00:00	Common symptoms include:   Fever.   Cough.   
 2020-05-02 00:00:00	COVID-19 can range from a cold-like illness to a severe lung infection, with common symptoms including fever, fatigue and a dry cough.
 2020-05-02 00:00:00	Some researchers aim to learn more about transmission by trying to make invisible sneezes, coughs and breaths more visible.
+2020-07-27 00:00:00	Last Friday, I went to the store.
