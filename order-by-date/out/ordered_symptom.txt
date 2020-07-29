@@ -1,5 +1,5 @@
-2013-05-24 00:00:00	The virus, which can cause coughing, fever and pneumonia, emerged in Saudi Arabia last year and has been found in 33 people there, killing 17.
-2020-05-17 00:00:00	The virus, which can cause coughing, fever and pneumonia, has spread from the Gulf to France, Britain and Germany.
+2012-05-24 00:00:00	The virus, which can cause coughing, fever and pneumonia, emerged in Saudi Arabia last year and has been found in 33 people there, killing 17.
+2013-05-31 00:00:00	The virus, which can cause coughing, fever and pneumonia, has spread from the Gulf to France, Britain and Germany.
 2013-05-31 00:00:00	The 45-year-old man was in good condition and was being monitored in isolation after being admitted to hospital in Tuscany with a high fever, cough and breathing difficulties, Italy's health ministry said in a statement.
 2013-06-22 00:00:00	The disease can cause coughing, fever and pneumonia and has spread from the Gulf to France, Germany, Italy and Britain.
 2020-01-11 00:00:00	Common symptoms include a runny nose, headache, cough and fever.
@@ -35,6 +35,7 @@
 2020-02-26 00:00:00	According to Brazil's health ministry, the man began to show symptoms compatible with the illness, such as a dry cough, throat pain and flu symptoms.
 2020-02-26 00:00:00	More than 81,000 cases of COVID-19, an illness characterized by fever and coughing and sometimes shortness of breath or pneumonia, have occurred since the new virus emerged in China.
 2020-02-27 00:00:00	Health officials say his only symptoms are a mild cough and fever.
+2020-03-01 00:00:00	0:51 \"We didn't want to stay in New York [and] be unable to come back and maybe get sick.\" Still, just days after returning from the U.S. on March 13, Levesque began to feel unwell, having developed a mild fever, as well as nausea, a cough and muscle pain.
 2020-03-02 00:00:00	According to PHAC, the patient passed initial screening in California but reported a mild fever and cough upon arriving in Trenton, Ont.
 2020-03-02 00:00:00	\"In the context of coronavirus, people may talk about their signs and symptoms such as fevers, aching all over their body, or having shortness of breath,\
 2020-03-06 00:00:00	Common symptoms include dry cough, fever or fatigue/extreme tiredness.
@@ -148,8 +149,7 @@
 2020-05-01 00:00:00	The following is a list of symptoms for COVID-19:  Fever.
 2020-05-01 00:00:00	The most common symptoms associated with COVID-19 are:  Cough (reported by 62 per cent of all cases)
 2020-05-01 00:00:00	Signs of a heart attack include chest pressure, squeezing, fullness or pain; sweating; discomfort in the neck, jaw, shoulder, arms, or upper back; nausea; shortness of breath; and light-headedness.
-2020-05-01 00:00:00	0:51 \"We didn't want to stay in New York [and] be unable to come back and maybe get sick.\" Still, just days after returning from the U.S. on March 13, Levesque began to feel unwell, having developed a mild fever, as well as nausea, a cough and muscle pain.
 2020-05-02 00:00:00	Common symptoms include:   Fever.   Cough.   
 2020-05-02 00:00:00	COVID-19 can range from a cold-like illness to a severe lung infection, with common symptoms including fever, fatigue and a dry cough.
 2020-05-02 00:00:00	Some researchers aim to learn more about transmission by trying to make invisible sneezes, coughs and breaths more visible.
-2020-07-27 00:00:00	Last Friday, I went to the store.
+2020-08-01 00:00:00	I am going to the store in a day.
