@@ -12,13 +12,16 @@ Attributes:
         Months and their corresponding numbers.
     WEEKDAYS (list of list of int and str):
         Weekdays and their corresponding numbers.
+    ORDINAL_INDICATORS (list of str): -st, -nd, -rd, and -th
 """
 
 import datetime
 import spacy
 from word2number import w2n
+from calendar import monthrange, IllegalMonthError
+from dateutil.parser import parse
 
-TOPIC = 'symptom'
+TOPIC = 'mask'
 SUMMARY_PATH = '../compress/out/summaries/filtered_' + TOPIC + '.txt'
 DATES_PATH = '../compress/out/dates/filtered_' + TOPIC + '_dates.txt'
 ORDERED_SUMMARY_PATH = 'out/ordered_' + TOPIC + '.txt'
@@ -47,6 +50,18 @@ MONTHS = [[1, 'january'],
           [11, 'nov'],
           [12, 'december'],
           [12, 'dec']]
+MONTH_STR = ['january', 'jan',
+             'february', 'feb',
+             'march', 'mar',
+             'april', 'apr',
+             'may',
+             'june', 'jun',
+             'july', 'jul',
+             'august', 'aug',
+             'september', 'sept', 'sep',
+             'october', 'oct',
+             'november', 'nov',
+             'december', 'dec']
 WEEKDAYS = [[1, 'monday'],
             [1, 'mon'],
             [2, 'tuesday'],
@@ -61,6 +76,7 @@ WEEKDAYS = [[1, 'monday'],
             [6, 'sat'],
             [7, 'sunday'],
             [7, 'sun']]
+ORDINAL_INDICATORS = ['st', 'nd', 'rd', 'th']
 
 def get_dates():
     """
@@ -107,19 +123,6 @@ def has_month(s):
             return month
     return ""
 
-def just_month(s):
-    """
-    Args:
-        s (str): Some string representing a date phrase.
-
-    Returns:
-        (bool): True if `s` is just a month.
-    """
-    s_split = [strip_symbols(word).lower() for word in s.split()]
-    if len(s_split) == 1:
-        return True
-    return False
-
 def previous_month(s, new_month_num, date):
     """
     Args:
@@ -135,10 +138,12 @@ def previous_month(s, new_month_num, date):
         return True
     return False
 
-def future_month(s):
+def future_month(s, new_month_num, date):
     """
     Args:
-        s (str): Some string representing a date phrase.
+        s (str): Some string representing a month phrase.
+        new_month_num (int): Number corresponding to new month.
+        date (datetime obj): Publish date.
 
     Returns:
         (bool): True if `s` is referring to a future month.
@@ -476,7 +481,7 @@ def last_year(split_phrase):
     Returns:
         (bool): True if `split_phrase` represents last year.
     """
-    return len(split_phrase) == 2 and split_phrase[0] == "last" and split_phrase[1] == "year"
+    return len(split_phrase) >= 2 and split_phrase[-2] == "last" and split_phrase[-1] == "year"
 
 def next_year(split_phrase):
     """
@@ -487,7 +492,7 @@ def next_year(split_phrase):
     Returns:
         (bool): True if `split_phrase` represents last year.
     """
-    return len(split_phrase) == 2 and split_phrase[0] == "next" and split_phrase[1] == "year"
+    return len(split_phrase) >= 2 and split_phrase[-2] == "next" and split_phrase[-1] == "year"
 
 def x_years_ago(split_phrase):
     """
@@ -607,6 +612,35 @@ def handle_relative_time_phrases(ent, date):
     date = handle_year(ent, date)
     return date
 
+def is_date(s, fuzzy=False):
+    """
+    Args:
+        s (str): String to check for date.
+        fuzzy (bool): Ignore unknown tokens in string if True
+
+    Returns:
+        (bool): True if the string can be interpreted as a date.
+    """
+    try:
+        print(s)
+        parse(s, fuzzy=fuzzy)
+        return True
+    except (IllegalMonthError, ValueError, TypeError):
+        return False
+
+def handle_specific_time_phrases(ent, publish_date):
+    """
+    Args:
+        ent (spacy date): A spacy entity representing a possible date.
+        publish_date (datetime object): Publish date.
+
+    Returns:
+        (datetime object): `publish_date` fixed by `ent`.
+    """
+    if len(str(ent)) > 3 and is_date(str(ent)):
+        return parse(str(ent))
+    return publish_date
+
 def fix(timestamped_sentences):
     """
     Args:
@@ -626,6 +660,7 @@ def fix(timestamped_sentences):
         for ent in doc.ents:
             if ent.label_ == "DATE":
                 timestamped_sentence[0] = handle_relative_time_phrases(ent, date)
+                timestamped_sentence[0] = handle_specific_time_phrases(ent, timestamped_sentence[0])
 
                 print(0, sentence)
                 print(1, date)
@@ -655,7 +690,8 @@ def get_timestamped_sentences(dates, sentences):
 
 def output(timestamped_sentences):
     with open(ORDERED_SUMMARY_PATH, 'w') as f:
-        for date, sentence in timestamped_sentences:
+        for datetime, sentence in timestamped_sentences:
+            date = str(datetime).split()[0]
             f.write(f"{date}\t{sentence}\n")
 
 dates = get_dates()

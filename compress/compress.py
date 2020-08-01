@@ -25,7 +25,7 @@ from nltk import download
 from gensim.models import Word2Vec
 from gensim.models import KeyedVectors
 
-TOPIC = 'symptom'
+TOPIC = 'mask'
 SUMMARY_PATH = '../initial-extraction/out/summaries/' + TOPIC + '_extracted.txt'
 DATES_PATH = '../initial-extraction/out/dates/' + TOPIC + '_extracted_dates.txt'
 COMPRESSED_SUMMARY_PATH = 'out/summaries/filtered_' + TOPIC + '.txt'

@@ -19,7 +19,7 @@ from spacy.lang.en import English
 
 TEXT_PATH = '../preprocess-corpus/out/articles.txt'
 DATETIMES_PATH = '../preprocess-corpus/out/dates.txt'
-TOPICS_PATH = 'in/res_topics.txt'
+TOPICS_PATH = 'in/res_items.txt'
 VECTORS_PATH = 'in/jose.txt'
 PREDICTOR_PATH = 'https://storage.googleapis.com/allennlp-public-models/bert-base-srl-2020.03.24.tar.gz'
 
