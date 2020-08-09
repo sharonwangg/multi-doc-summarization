@@ -1,12 +1,12 @@
-2009-07-30	A worker inspects a finished N95 face mask while wearing a medical mask in a 2009 photo.
-2009-07-30	A 2009 study by researchers in the U.S. and Singapore uses schlieren imaging to show airflow from a person's mouth a) without a mask b) with a medical mask and c) with an N95 mask.
-2014-07-30	The masks, along with more than 400,000 pairs of medical gloves, had expired in 2014.
+2009-08-09	A worker inspects a finished N95 face mask while wearing a medical mask in a 2009 photo.
+2009-08-09	A 2009 study by researchers in the U.S. and Singapore uses schlieren imaging to show airflow from a person's mouth a) without a mask b) with a medical mask and c) with an N95 mask.
+2014-08-09	The masks, along with more than 400,000 pairs of medical gloves, had expired in 2014.
+2020-01-09	" In January, the province worked to secure extra supplies including surgical masks and specialized N95 respirator masks that are required for procedures where there is a risk that tiny droplets containing the virus could become airborne.
 2020-01-25	Demand for gloves, masks People in China wore medical masks to public places like grocery stores, where workers dispensed hand sanitizer to customers.
 2020-01-27	One hundred boxes of isolated face masks or surgical procedure masks and 40 boxes of N95.
 2020-01-27	" Wearing a mask likely won't prevent a healthy person from getting sick anyway, Etches said.
 2020-01-28	Li Mei, 57, of Delta, B.C., wears a mask in Wuhan.
 2020-01-30	In that situation, employees would also wear masks, gowns and gloves, which is standard when dealing with patients with the flu.
-2020-01-30	" In January, the province worked to secure extra supplies including surgical masks and specialized N95 respirator masks that are required for procedures where there is a risk that tiny droplets containing the virus could become airborne.
 2020-01-31	There are also face shields to protect paramedics from airborne droplets, and a variety of masks.
 2020-01-31	Sometimes this full face protection is required if first responders can't wear other types of masks due to their facial shape or even facial hair.
 2020-02-04	Everyone is wearing masks and protective gear.  
@@ -132,6 +132,7 @@
 2020-04-08	Yiu said the Public Health Agency of Canada has recommendations for sterilization and reuse of N95 masks.  
 2020-04-09	Everyone working in the hospital wears surgical masks.
 2020-04-09	Manitoba hospitals to begin saving used N95 masks for possible sterilization and reuse
+2020-04-09	A pedestrian wearing a masks walks Ottawa's downtown Rideau Street in April 2020.
 2020-04-09	The goal of the process is to create an emergency backup supply of N95 masks, in partnership with the province, for hospitals to use during the COVID-19 pandemic and in the event of a mask shortage.
 2020-04-10	The pandemic has made N95 masks rare and coveted objects.
 2020-04-11	Petropolis said the mask is reusable and as effective as commercially produced N95 masks.
@@ -186,5 +187,4 @@
 2020-04-29	The province's reopening plan recommends businesses take precautions such as hand washing and donning protective equipment like gloves and masks.
 2020-04-29	A man wearing a protective mask walks on the Downtown Eastside.  
 2020-04-30	Chazan noted that over 13 million surgical and procedural masks, 200,000 N95 respirator masks, and 38 ventilators have been delivered to Ontario's pandemic stockpile warehouses.  
-2020-04-30	A pedestrian wearing a masks walks Ottawa's downtown Rideau Street in April 2020.
 2020-05-01	" — wearing N95 masks and face shields, and only seeing a limited number of patients with urgent needs.  

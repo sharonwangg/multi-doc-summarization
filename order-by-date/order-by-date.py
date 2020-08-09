@@ -7,7 +7,7 @@ Attributes:
     DATES_PATH (str): Path for dates of sentences in summary.
     ORDERED_SUMMARY_PATH (str): Path for time-sorted summary.
 
-    NLP (NLP object): NLP object
+    NLP (NLP object): NLP object.
     MONTHS (list of list of int and str):
         Months and their corresponding numbers.
     WEEKDAYS (list of list of int and str):
@@ -658,7 +658,7 @@ def fix(timestamped_sentences):
         doc = NLP(sentence)
 
         for ent in doc.ents:
-            if ent.label_ == "DATE":
+            if ent.label_ == 'DATE':
                 timestamped_sentence[0] = handle_relative_time_phrases(ent, date)
                 timestamped_sentence[0] = handle_specific_time_phrases(ent, timestamped_sentence[0])
 
@@ -685,7 +685,6 @@ def get_timestamped_sentences(dates, sentences):
     for i, date in enumerate(dates):
         timestamped_sentences.append([date, sentences[i]])
 
-    timestamped_sentences = fix(timestamped_sentences)
     return timestamped_sentences
 
 def output(timestamped_sentences):
@@ -700,6 +699,8 @@ sentences = get_sentences()
 {dates[i]: sentences[i] for i in range(len(dates))}
 
 timestamped_sentences = get_timestamped_sentences(dates, sentences)
+timestamped_sentences = fix(timestamped_sentences)
 timestamped_sentences.sort(key=lambda i: i[0])
 
+print(timestamped_sentences)
 output(timestamped_sentences)
