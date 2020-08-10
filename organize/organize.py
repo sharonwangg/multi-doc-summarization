@@ -17,6 +17,7 @@ Attributes:
 
 import datetime
 import spacy
+import pycountry
 from word2number import w2n
 from calendar import monthrange, IllegalMonthError
 from dateutil.parser import parse
@@ -24,7 +25,7 @@ from dateutil.parser import parse
 TOPIC = 'mask'
 SUMMARY_PATH = '../compress/out/summaries/filtered_' + TOPIC + '.txt'
 DATES_PATH = '../compress/out/dates/filtered_' + TOPIC + '_dates.txt'
-ORDERED_SUMMARY_PATH = 'out/ordered_' + TOPIC + '.txt'
+ORGANIZED_SUMMARY_PATH = 'out/organized_' + TOPIC + '.txt'
 
 NLP = spacy.load('en_core_web_sm')
 MONTHS = [[1, 'january'],
@@ -50,18 +51,6 @@ MONTHS = [[1, 'january'],
           [11, 'nov'],
           [12, 'december'],
           [12, 'dec']]
-MONTH_STR = ['january', 'jan',
-             'february', 'feb',
-             'march', 'mar',
-             'april', 'apr',
-             'may',
-             'june', 'jun',
-             'july', 'jul',
-             'august', 'aug',
-             'september', 'sept', 'sep',
-             'october', 'oct',
-             'november', 'nov',
-             'december', 'dec']
 WEEKDAYS = [[1, 'monday'],
             [1, 'mon'],
             [2, 'tuesday'],
@@ -641,36 +630,6 @@ def handle_specific_time_phrases(ent, publish_date):
         return parse(str(ent))
     return publish_date
 
-def fix(timestamped_sentences):
-    """
-    Args:
-        timestamped_sentences (list of lists containing datetimes and str):
-            List of lists where each inner list contains a sentence and its
-            corresponding date.
-
-    Returns:
-        (list of lists containing datetimes and str): List of lists where
-        each inner list contains a sentence and its correct corresponding date.
-    """
-    for i, timestamped_sentence in enumerate(timestamped_sentences):
-        date = timestamped_sentence[0]
-        sentence = timestamped_sentence[1].lower()
-        doc = NLP(sentence)
-
-        for ent in doc.ents:
-            if ent.label_ == 'DATE':
-                timestamped_sentence[0] = handle_relative_time_phrases(ent, date)
-                timestamped_sentence[0] = handle_specific_time_phrases(ent, timestamped_sentence[0])
-
-                print(0, sentence)
-                print(1, date)
-                print(2, ent)
-                print(3, timestamped_sentence[0])
-
-                print('\n')
-
-    return timestamped_sentences
-
 def get_timestamped_sentences(dates, sentences):
     """
     Args:
@@ -687,11 +646,92 @@ def get_timestamped_sentences(dates, sentences):
 
     return timestamped_sentences
 
-def output(timestamped_sentences):
-    with open(ORDERED_SUMMARY_PATH, 'w') as f:
-        for datetime, sentence in timestamped_sentences:
-            date = str(datetime).split()[0]
-            f.write(f"{date}\t{sentence}\n")
+def organize(timestamped_sentences):
+    """
+    Args:
+        timestamped_sentences (list of lists containing datetimes and str):
+            List of lists where each inner list contains a sentence and its
+            corresponding date.
+
+    Returns:
+        (dict from str to list): Keys are countries. Values are a list of lists
+            where each inner list contains a sentence and its corresponding date.
+            Organizes timestamped_sentences by country.
+    """
+    loc_stamped_sentences = {}
+    for timestamped_sentence in timestamped_sentences:
+        sentence = timestamped_sentence[1]
+        doc = NLP(sentence)
+
+        for ent in doc.ents:
+            if ent.label_ == 'GPE':
+                try:
+                    possible_country = pycountry.countries.search_fuzzy(str(ent))
+                    print(0, str(ent))
+                    print(1, possible_country)
+                except LookupError:
+                    continue
+
+                if len(possible_country) == 1 or str(ent) == possible_country[0].name:
+                    country = possible_country[0].name
+                else:
+                    continue
+
+                if country in loc_stamped_sentences.keys():
+                    loc_stamped_sentences[country].append(timestamped_sentence)
+                else:
+                    loc_stamped_sentences[country] = [timestamped_sentence]
+
+                break
+
+    return loc_stamped_sentences
+
+def order(final_summary):
+    """
+    Args:
+        loc_organized_summary (dict from str to list): Keys are countries.
+            Values are a list of lists where each inner list contains a
+            sentence and its corresponding date.
+
+    Returns:
+        (dict from str to list): Keys are countries. Values are a list of lists
+            where each inner list contains a sentence and its CORRECT
+            corresponding date.
+    """
+    for country, mini_summary in final_summary.items():
+        for i, timestamped_sentence in enumerate(mini_summary):
+            date = timestamped_sentence[0]
+            sentence = timestamped_sentence[1]
+            doc = NLP(sentence)
+
+            for ent in doc.ents:
+                if ent.label_ == 'DATE':
+                    timestamped_sentence[0] = handle_relative_time_phrases(ent, date)
+                    timestamped_sentence[0] = handle_specific_time_phrases(ent, timestamped_sentence[0])
+
+                    print(0, sentence)
+                    print(1, date)
+                    print(2, ent)
+                    print(3, timestamped_sentence[0])
+                    print('\n')
+
+        final_summary[country].sort(key=lambda i: i[0])
+
+    return final_summary
+
+def output(final_summary):
+    """
+    Args:
+        (dict from str to list): Keys are countries. Values are a list of lists
+            where each inner list contains a sentence and its corresponding date.
+    """
+    with open(ORGANIZED_SUMMARY_PATH, 'w') as f:
+        for country, mini_summary in final_summary.items():
+            f.write(country.upper() + ':' + '\n')
+            for datetime, sentence in mini_summary:
+                date = str(datetime).split()[0]
+                f.write(f"{date}\t{sentence}\n")
+            f.write('\n')
 
 dates = get_dates()
 sentences = get_sentences()
@@ -699,8 +739,6 @@ sentences = get_sentences()
 {dates[i]: sentences[i] for i in range(len(dates))}
 
 timestamped_sentences = get_timestamped_sentences(dates, sentences)
-timestamped_sentences = fix(timestamped_sentences)
-timestamped_sentences.sort(key=lambda i: i[0])
-
-print(timestamped_sentences)
-output(timestamped_sentences)
+loc_organized_summary = organize(timestamped_sentences)
+final_summary = order(loc_organized_summary)
+output(final_summary)
