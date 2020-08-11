@@ -708,7 +708,14 @@ def get_country_from_article(sentence, doc, og_article):
         for i in range(max_radius):
             previous_idx = center_idx - i
             if valid_index(previous_idx, org_article):
-                country = get_country_from_sentence(doc)
+                country = get_country_from_sentence(og_article[previous_idx])
+                if country:
+                    return country
+            future_idx = center_idx + i
+            if valid_index(future_idx, org_article):
+                country = get_country_from_sentence(og_article[future_idx])
+                if country:
+                    return country
     else:
         return ""
 
@@ -750,33 +757,15 @@ def organize(timestamped_sentences, og_articles):
     for i, timestamped_sentence in enumerate(timestamped_sentences):
         sentence = timestamped_sentence[1]
         doc = NLP(sentence)
-        og_article = og_articles[i]
+        #og_article = og_articles[i]
 
-        country = get_country_from_sentene(doc)
-        if country:
-            loc_stamped_sentences = add_sentence(country, loc_stamped_sentences, timestamped_sentence)
-
-        loc_in_sentence = False
-        for ent in doc.ents:
-            if ent.label_ == 'GPE':
-                try:
-                    possible_countries = pycountry.countries.search_fuzzy(str(ent))
-                    print(0, str(ent))
-                    print(1, possible_countries)
-                except LookupError:
-                    continue
-
-                if is_valid_location(str(ent), possible_countries):
-                    country = possible_countries[0].name
-                else:
-                    continue
-
-                loc_in_sentence = True
-                loc_stamped_sentences = add_sentence(country, loc_stamped_sentences, timestamped_sentence)
-                break
-
-        if not loc_in_sentence:
-            country = get_country_from_article(doc, og_article)
+        country_from_sentence = get_country_from_sentence(doc)
+        if country_from_sentence:
+            loc_stamped_sentences = add_sentence(loc_stamped_sentences, country_from_sentence, timestamped_sentence)
+        #else:
+            #country_from_article = get_country_from_article(doc, og_article)
+            #if country_from_article:
+                #loc_stamped_sentences = add_sentence(loc_stamped_sentences, country_from_article, timestamped_sentence)
 
     return loc_stamped_sentences
 
@@ -833,7 +822,8 @@ sentences = get_sentences()
 {dates[i]: sentences[i] for i in range(len(dates))}
 
 timestamped_sentences = get_timestamped_sentences(dates, sentences)
-og_articles = get_og_articles()
+#og_articles = get_og_articles()
+og_articles = ""
 loc_organized_summary = organize(timestamped_sentences, og_articles)
 final_summary = order(loc_organized_summary)
 output(final_summary)
