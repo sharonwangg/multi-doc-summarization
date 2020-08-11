@@ -1,11 +1,11 @@
 """
-Orders summary sentences by real time.
+Orders summary sentences by real time and organizes summary by location.
 
 Attributes:
     TOPIC (str): Topic of the summary.
     SUMMARY_PATH (str): Path for summary.
     DATES_PATH (str): Path for dates of sentences in summary.
-    ORDERED_SUMMARY_PATH (str): Path for time-sorted summary.
+    ORGANIZED_SUMMARY_PATH (str): Path for time-sorted summary.
 
     NLP (NLP object): NLP object.
     MONTHS (list of list of int and str):
@@ -14,7 +14,6 @@ Attributes:
         Weekdays and their corresponding numbers.
     ORDINAL_INDICATORS (list of str): -st, -nd, -rd, and -th
 """
-
 import datetime
 import spacy
 import pycountry
@@ -25,6 +24,7 @@ from dateutil.parser import parse
 TOPIC = 'mask'
 SUMMARY_PATH = '../compress/out/summaries/filtered_' + TOPIC + '.txt'
 DATES_PATH = '../compress/out/dates/filtered_' + TOPIC + '_dates.txt'
+OG_ARTICLES_PATH = '../compress/out/og_articles/filtered_' + TOPIC + '_og_articles.txt'
 ORGANIZED_SUMMARY_PATH = 'out/organized_' + TOPIC + '.txt'
 
 NLP = spacy.load('en_core_web_sm')
@@ -646,7 +646,95 @@ def get_timestamped_sentences(dates, sentences):
 
     return timestamped_sentences
 
-def organize(timestamped_sentences):
+def is_valid_location(location, possible_countries):
+    """
+    Args:
+        location (str): Location found in sentence.
+        possible_countries (list of pycountry Countries): Possible matches for
+            `location`.
+
+    Returns:
+        (bool): True if `location` matches `possible_countries`.
+    """
+    return len(possible_countries) == 1 or location == possible_countries[0].name
+
+def add_sentence(loc_stamped_sentences, country, timestamped_sentence):
+    """
+    Args:
+        loc_stamped_sentences (dict from str to list): Keys are countries.
+            Values are a list of lists where each inner list contains a
+            sentence and its corresponding date.
+        country (str): Country that the sentence is about.
+        timestamped_sentence (list containing datetimes and str): List with
+            the 0th element being the date and the 1st element being the
+            sentence.
+
+    Returns:
+        (dict from str to list): `loc_stamped_sentences` with
+            `timestamped_sentence` being added as a value for key `country`.
+    """
+    if country in loc_stamped_sentences.keys():
+        loc_stamped_sentences[country].append(timestamped_sentence)
+    else:
+        loc_stamped_sentences[country] = [timestamped_sentence]
+
+    return loc_stamped_sentences
+
+def valid_index(index, list):
+    """
+    Args:
+        index (int): Index.
+        list (list of anything): List.
+
+    Returns:
+        (bool): True if `index` is valid for `list`.
+    """
+    return index >= 0 and index < len(list)
+
+def get_country_from_article(sentence, doc, og_article):
+    """
+    Args:
+        sentence (str): Sentence in summary.
+        doc (NLP object): NLP version of `sentence`.
+        og_article (list of sentences): Article that `sentence` is in.
+
+    Returns:
+        (str): Country that `sentence` is associated with (found in `og_article`).
+            Empty string if a country couldn't be found.
+    """
+    if doc in org_article:
+        center_idx = org_article.index(doc)
+        max_radius = max(center_idx, len(org_article) - center_idx)
+        for i in range(max_radius):
+            previous_idx = center_idx - i
+            if valid_index(previous_idx, org_article):
+                country = get_country_from_sentence(doc)
+    else:
+        return ""
+
+def get_country_from_sentence(doc):
+    """
+    Args:
+        doc (NLP object): NLP version of a sentence.
+
+    Returns:
+        (str): A country if there is one in `doc`. Else, return empty string.
+    """
+    for ent in doc.ents:
+        if ent.label_ == 'GPE':
+            try:
+                possible_countries = pycountry.countries.search_fuzzy(str(ent))
+            except LookupError:
+                continue
+
+            if is_valid_location(str(ent), possible_countries):
+                return possible_countries[0].name
+            else:
+                continue
+
+    return ""
+
+def organize(timestamped_sentences, og_articles):
     """
     Args:
         timestamped_sentences (list of lists containing datetimes and str):
@@ -656,33 +744,39 @@ def organize(timestamped_sentences):
     Returns:
         (dict from str to list): Keys are countries. Values are a list of lists
             where each inner list contains a sentence and its corresponding date.
-            Organizes timestamped_sentences by country.
+            Organizes `timestamped_sentences` by country.
     """
     loc_stamped_sentences = {}
-    for timestamped_sentence in timestamped_sentences:
+    for i, timestamped_sentence in enumerate(timestamped_sentences):
         sentence = timestamped_sentence[1]
         doc = NLP(sentence)
+        og_article = og_articles[i]
 
+        country = get_country_from_sentene(doc)
+        if country:
+            loc_stamped_sentences = add_sentence(country, loc_stamped_sentences, timestamped_sentence)
+
+        loc_in_sentence = False
         for ent in doc.ents:
             if ent.label_ == 'GPE':
                 try:
-                    possible_country = pycountry.countries.search_fuzzy(str(ent))
+                    possible_countries = pycountry.countries.search_fuzzy(str(ent))
                     print(0, str(ent))
-                    print(1, possible_country)
+                    print(1, possible_countries)
                 except LookupError:
                     continue
 
-                if len(possible_country) == 1 or str(ent) == possible_country[0].name:
-                    country = possible_country[0].name
+                if is_valid_location(str(ent), possible_countries):
+                    country = possible_countries[0].name
                 else:
                     continue
 
-                if country in loc_stamped_sentences.keys():
-                    loc_stamped_sentences[country].append(timestamped_sentence)
-                else:
-                    loc_stamped_sentences[country] = [timestamped_sentence]
-
+                loc_in_sentence = True
+                loc_stamped_sentences = add_sentence(country, loc_stamped_sentences, timestamped_sentence)
                 break
+
+        if not loc_in_sentence:
+            country = get_country_from_article(doc, og_article)
 
     return loc_stamped_sentences
 
@@ -739,6 +833,7 @@ sentences = get_sentences()
 {dates[i]: sentences[i] for i in range(len(dates))}
 
 timestamped_sentences = get_timestamped_sentences(dates, sentences)
-loc_organized_summary = organize(timestamped_sentences)
+og_articles = get_og_articles()
+loc_organized_summary = organize(timestamped_sentences, og_articles)
 final_summary = order(loc_organized_summary)
 output(final_summary)

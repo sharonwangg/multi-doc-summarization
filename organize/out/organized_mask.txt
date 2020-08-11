@@ -16,7 +16,6 @@ CANADA:
 
 CHINA:
 2020-01-25	Demand for gloves, masks People in China wore medical masks to public places like grocery stores, where workers dispensed hand sanitizer to customers.
-2020-02-10	Lu also spoke of face masks which are commonly worn in China and by Chinese nationals abroad.  
 2020-02-15	People wear face masks and goggles in Beijing on Feb. 15.
 2020-02-19	Manitoban Colby Charles wears a mask while in public in China to help stop the spread of coronavirus.
 2020-03-23	A spokesperson for FCA has told CBC News the face masks will be produced in China.  
@@ -32,7 +31,7 @@ FRANCE:
 2020-04-28	A woman wearing a face mask walks in a street during nationwide confinement measures in Paris.
 
 VIRGIN ISLANDS, U.S.:
-2009-08-10	A 2009 study by researchers in the U.S. and Singapore uses schlieren imaging to show airflow from a person's mouth a) without a mask b) with a medical mask and c) with an N95 mask.
+2009-08-11	A 2009 study by researchers in the U.S. and Singapore uses schlieren imaging to show airflow from a person's mouth a) without a mask b) with a medical mask and c) with an N95 mask.
 2020-03-24	For example, the U.S. national Centers for Disease Control and Prevention recommends the use of N95 masks, but the Public Health Agency of Canada recommends a medical mask, and Ontario previously recommended N95 and is now recommending medical masks.
 
 LIECHTENSTEIN:

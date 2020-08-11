@@ -28,7 +28,6 @@ The Saskatchewan Health Authority has offered an early glimpse at some of the f
 By the end of April, Shandro said, AHS would have 2,250 acute care beds, almost 1,100 ICU beds, and 760 ventilators
 Dr. Kathryn Suh explains how a tube on a ventilator would be used to treat a patient suffering from respiratory complications from coronavirus.
 Ventilators shouldn't be confused with respirators, which are simply masks to breathe through that filter out dust, viruses, or other things that could be harmful.
-Ventilators are commonly used during sedation, in intensive care situations, or generally when there's something wrong with the way a patient's lungs are working.
 The ventilator measures everything,\" said Hsu, adding that the exhalation is passive as the lungs sort of spring back, pushing the air out.
 How Ontario hospitals are preparing for a surge in COVID-19 casesOntario could run out of ICU beds, ventilators in 37 days even if COVID-19 rates cut in half: study \"If
 More ICU beds ready by late April Alberta plans to have an additional 1,081 ICU beds ready by the end of April, and another 447 ventilators, bringing the total number of ventilators set aside for COVID-19 patients from 314 to 761.
@@ -47,7 +46,6 @@ At the time, there were about 3,200 ICU beds and almost 5,000 mechanical ventila
 McMaster University racing to create home-based COVID-19 testHow the Spanish flu compares to COVID-19: Lessons learned, answers still being pursued The team will also track intensive care unit admissions, need for mechanical ventilation, length of stay in hospital or ICU, and side effects from the plasma treatment.  
 The Nightingale Hospital, which will initially provide up to 500 beds equipped with ventilators and oxygen, will eventually be able to treat about 4,000 patients.
 While the standard for a conventional ventilator uses a mask or nose tubes and follows current guidelines, the pandemic ventilator is at a standard from the 1970s and requires a patient be intubated, the medical word used to describe putting a tube through someone's mouth and into their airway.  
-Manitoba appears to be in the middle of the pack among Canadian provinces for ventilators, as health-care systems across the country scramble to get more of the machines used to treat the sickest patients from the novel coronavirus pandemic.
 British hospital turns patient over in bid to help lungs:
 A ventilator will have regulators to set the right mix of air and oxygen and a fan or turbine that manages the flow to the patient.
 \"The government has never invested to keep up with the growth of the population.\" Critical Care Services Ontario, a government body that was formed out of the SARS outbreak, said in a recent report the province set up its ventilator reserve in 2010 with 216 machines
@@ -61,7 +59,6 @@ ECMO machines act as an artificial lung, pumping oxygen in to a patient's blood
 Cuomo has warned that New York could run out of breathing machines in less than a week.
 That's the scenario Canada is bracing for — and scrambling to prevent — by finding more machines.
 The number of patients in ICU has risen slightly to 250 from 247, while one more person is now on a ventilator, with 194 of those cases total.
-As Montreal emergency physician Dr. Abdo Shabah explains, complications can arise beyond the typical flu and respiratory symptoms due to high levels of inflammation in the lungs, which can affect the level of oxygen in the blood and its delivery.
 In total, Ontario has 2,000 ICU beds and 1,300 ventilators, but most are in use.
 The crisis generates high levels of insecurity, which in turn drives people to seek out ways of resolving that uncertainty and reducing their anxiety by getting information about the threat.
 The team of veterinary and computer science researchers used artificial intelligence and machine learning to analyze over 200,000 tweets for mentions of avian flu, and then sorted that data to help reveal clues about where the disease is spreading.
@@ -76,7 +73,6 @@ While medical masks protect against droplets from someone coughing or sneezing, 
 There are other problems that will have to be solved before the technology can be effective, according to Sageev Oore, a computer science professor and machine learning researcher, also at Dalhousie.  
 With just four of those ventilators and two oxygen rooms in Labrador West, Wabush Mayor Ron Barron worries about a surge of cases.
 The goal, the source said, is \"to fight COVID and help come up with a cure.\" Ventilators in particular, could spell the difference between life and death for many patients with COVID-19, the respiratory disease caused by the novel coronavirus which can damage the lungs.
-Tardif, a cardiologist and professor of medicine at Université de Montréal, says the drug could mitigate the lung inflammation which leaves many COVID-19 patients struggling to breathe.
 In the case of COVID-19 patients, filters are added to the tubes exiting the lungs to keep the virus from entering the environment.  
 Ready to go right now' Kumar said the pleated fabric masks can be cycled through an autoclaving machine 10 times and come out as good as before.
 : Find out the latest closures, cancellations in N.S.Ventilator manufacturer says Canada should have stockpiled machines after SARSHow Nova Scotians are helping each other through COVID-19
@@ -101,10 +97,8 @@ A \"vintage\" machine is defined as 1981 or older.
 The province has deployed additional resources to the community of La Loche and the far north region, which include the introduction of province-supported self-isolation units, drive-through testing, mobile testing and a GenXpert machine, which will increase the speed and volume of testing in the region.
 This virus is remitted through large droplets that are breathed deep into a person’s lungs.
 Respiratory therapists are needed to run the machines.
-Those preliminary studies point to the possibility hydroxychloroquine may lessen the effects of the illness, such as cough, fever, difficulty breathing and pneumonia in the lungs, and slow its spread.
 Cuomo says the state of Oregon volunteered to send 140 more breathing machines Governors across the U.S. have been desperately pleading for more supplies —
 Ontario's Doug Ford, leader of a province where fed-bashing is like political oxygen, has been getting moral support from the unlikeliest of sources:
-The team decided to modify a bilevel positive airway pressure machine, commonly called a BiPap machine.
 In such cases, a tracheostomy, or hole in the neck, is used, whereas COVID-19 cases would have a breathing tube.
 A Manitoba flour producer is \"running around the clock\" to meet a rise in demand as many people in isolation due to COVID-19 dust off their home-cooking skills and bread-making machines.
 A technician uses the GeneXpert testing machine at Qikiqtani General Hospital in Iqaluit.
@@ -115,20 +109,16 @@ Your questions cover a range of topics including a number about CPAP machines an
 Changes at most grocery stores for cashiers include frequent handwashing, sanitizing cash registers and debit machines, standing back from customers as much as possible and bagging groceries in paper bags instead of reusable ones.
 Bluesfest was going to bring Alanis Morissette, Rage Against the Machine, Marshmello and more to LeBreton Flats July 9 to 19.
 Follow along as four Canadians with broken appliances try to get their machines up and running.
-About 39 per cent (831) were moderately sick, with pneumonia or lung lesions, but no obvious shortness of breath, according to the report, Epidemiology of COVID-19 among Children in China.
 This helps people in the early stages of the disease to inhale enough oxygen without damaging their lungs.
 The Foundation is also buying two higher level life support machines known as ECMO.
-The Queen Elizabeth Hospital Foundation has purchased two mobile dialysis machines for the Charlottetown hospital, and will figure out where the money will come from later.
 A deadly flu was raging through the battlefields, causing fever and fatigue, pounding headaches and sore throats, before filling the lungs with fluid and choking the breath from its victims.
 Smith said the new policies will help \"stabilize outbreaks in many of these settings.\" ICU cases, patients on ventilators dip slightly The total number of people battling COVID-19 in Ontario hospitals increased slightly, up to 887 from 878.
 In those cases, doctors must cut into the area below the Adam's apple to insert a breathing tube.
-" Police have installed a surveillance machine with multiple cameras on a pole to monitor for hate crimes in Vancouver's Chinatown.
 \"Those ventilators are connected to medical air and medical oxygen.\" Respiratory therapists are at centre of COVID-19's 'emotional toll' The medical air tank is a mix of 21 per cent oxygen and 79 per cent nitrogen.
 : 4 more people have diedOntario's COVID-19 death toll climbs to 698, with 250 people in ICU \"However, getting home was not quite
 "  Jayda had been put into an induced coma, the doctor said, with a breathing tube down her throat, and had been admitted into the intensive care unit at Regina General Hospital.
 \"The Commander,\" is hard to miss outside the town of Jal, New Mexico, with little vegetation in the desert to hide the towering red, white and gold machine.
 A northbound detour at the Manvel exit begins at US 81 and turns north toward Grafton, then east at ND 17, where drivers can eventually get back on the I-29, the department said.  
-The initial symptoms of 2019-nCoV are mainly fever, with a few reports of people having difficulty breathing, and chest X-rays showing signs of pneumonia in both lungs.  
 \"We got together to start using our 3D printers and our sewing machines to make these items for these people.
 According to Hsu, most of the sensors the machine uses to analyze the patient's breath will be on the tube going in.
 The total cost of the two ECMO machines is $137,500, the Saint John Regional Hospital Foundation said.
@@ -140,10 +130,6 @@ Mail-in voting requires an expensive upfront investment in machines to process m
 Ticket purchases and recharging will be done through vending machines only.
 The two portable extracorporeal membrane oxygenation (ECMO) life support systems machines oxygenate the blood, allowing the lungs to rest.
 This week, the Association of American Medical Colleges sent a letter to the White House Coronavirus Task Force saying that testing materials and machines remain in short supply.
-The initial symptoms of the illness, called COVID-19, are mainly fever and cough, with a few reports of people having difficulty breathing, and chest X-rays showing signs of pneumonia in both lungs.
-Symptoms of 2019-nCoV are mainly fever, with a few reports of people having difficulty breathing, and chest x-rays showing signs of pneumonia in both lungs.  
-Swabs will be tested in Iqaluit by the GeneXpert, a machine commonly used for tuberculosis testing, and a second set of swabs will be sent to Ontario to confirm the results.
-Though many people infected with COVID-19 may have few or no symptoms, the government of Canada's website says those symptoms include:   Fever Cough Difficulty breathing Pneumonia in both lungs  7.
 Directives published March 25 by Laval's health board stated staff in CHSLDs don't have to wear N95s, even when treating COVID-positive patients, unless the patients are on oxygen machines.
 Five workers would usually sit side by side as the machine moves through the fields, but the physical-distancing requirements to stop the spread of COVID-19 mean only three will be able to ride each machine.  
 Peter Leblanc of Osgoode, Ont., constructed this squat rack/cable machine using old brake rotors for weights and a length of telephone pole as a bar.  
@@ -152,9 +138,6 @@ Speeding drivers whipping past photo radar machines outside Toronto schools or n
 Currently, most provincial labs are running at full capacity, with each PCR machine able to do about 96 tests every three to four hours.
 \"It's a small machine that blows out a mist maybe two or three feet.
 Fiorenza said other provinces have similar caches of old machines.
-The initial symptoms are mainly fever, with a few reports of people having difficulty breathing, and chest X-rays showing signs of pneumonia in both lungs.  
-The initial symptoms of coronavirus are mainly fever, with a few reports of people having difficulty breathing, and chest X-rays showing signs of pneumonia in both lungs.  
-The early symptoms of COVID-19 are similar to a common cold or seasonal flu, and can include fever, cough, difficulty breathing and pneumonia in both lungs.
 Cordero was in a medically induced coma on various machines to support his heart, lungs and kidneys.
 Air will pass through a humidifier and into the patient's lung, before being released through a separate tube.
 The medical machines are used to help those hit hard by COVID-19 to keep breathing.
@@ -166,5 +149,4 @@ CPAP machines are used to provide minor breathing support to sleep apnea patient
 Those machines could be used to treat COVID-19 patients in \"certain
 Possible penalties for ignoring the restrictions on travel to the community include banishment from Deline, confiscation of \"any snow machine or vehicle used\" and \"any other measure which the DGG (Délı̨nę Got'ı̨nę Government) deems appropriate.\"
 Those fare gates and ticket machines are also wiped down daily.  
-Cough, fever, difficulty breathing and pneumonia in both lungs are among the symptoms of the novel coronavirus, Health Canada says.
 >, on oxygen.<br><br>“I don’t want to die on a machine.

@@ -92,7 +92,6 @@ There are no proven treatments or vaccines for the virus, though teams of resear
 In China, scientists are researching and developing a potential vaccine, as well as looking at a specific immunoglobulin or blood product to use in critically ill patients and screening antiviral drugs.
 Pandemic vaccine research speeds up Hill and his co-researchers acknowledged that many other research teams worldwide were also working on potential vaccines, with only a proportion likely to be fully successful.
 The package includes $275 million for additional research, such as vaccine development, and $200 million for federal medical supplies, supports for Indigenous communities and education efforts.  
-l Atypical neurological symptoms being studied: Some of the less common symptoms of COVID-19, including loss of smell or taste and severe headache, are associated with neurological problems and researchers are trying to determine how widespread those symptoms are.
 researchers aiming to develop a vaccine for coronavirus outbreak in China Volker Gerdts, director of VIDO-InterVac, said a race is underway to find the best animal for replicating the disease.  
 In Canada and beyond, survivors are donating their blood for new, fast-tracked clinical trials. 
 The Canadian government announces $275 million in funding for a number of Canadian research initiatives into vaccine development and testing. 
@@ -103,7 +102,6 @@ Though concerned about the availability of ventilators in Canada, Dr. Samir Gup
 In his research, Khan tracks global travel patterns as a tool to predict and interpret spread of diseases.  
 In 2003, scientists came close to developing a SARS vaccine to test on humans.  
 The former Manitoban (a graduate from both the University of Winnipeg and University of Manitoba) is now with the Vaccine and Infectious Disease Organization-International Vaccine Centre, or VIDO-InterVac, at the University of Saskatchewan.  
-Most of the new money is set aside to fund vaccine development and clinical trials, but a portion of the money will also be used to determine how widely the virus has spread across the country.
 Dr. Brian Mark of the University of Manitoba's microbiology department is examining the molecular structure of coronavirus to identify weakness that can be targeted with an antiviral drug or vaccine.
 Alberta researchers are hopeful that an antiviral drug engineered to treat the deadly Ebola virus will prove a viable treatment in the ongoing fight against the coronavirus.
 "  However, the ministry acknowledged that more information regarding research studies will be made available as early as this week.
@@ -121,7 +119,6 @@ The new federal funding includes $23 million to support pre-clinical testing an
 A race against the disease': Canadian researchers part of global effort to develop COVID-19 vaccine '
 — a joint trial in conjunction with researchers in Alberta and Minnesota.
 The Seattle research institute is part of a government network of centres that test all kinds of vaccines, and was chosen for the coronavirus vaccine study before COVID-19 began spreading widely in Washington state.
-As coronavirus spread speeds up, Montreal researchers will trial an anti-viral treatment for COVID-19 in China  
 Public health experts and researchers also need to consider factors such as how viruses can mutate to enter the body more easily or not, and how different seasonal conditions could affect transmission.
 Provincial health officer Dr. Bonnie Henry says more therapeutics will be tested in the coming days and weeks as researchers look for ways to treat COVID-19 before a vaccine is produced.
 future 'waves' Tam warned that public health measures will need to remain in place until there is a high level of immunity or a vaccine to avoid \"future epidemic waves.\
@@ -150,7 +147,6 @@ Jason Kindrachuk does basic science research on infectious diseases like flu, Zi
 better.\" VIDO-InterVac, the Saskatoon-based lab where Kelvin is working as a visiting professor, began researching a vaccine in January, and just received $23 million from the federal government to keep doing that work.  
 Additionally, Carleton said if a student's research has been disrupted, requests for leaves of absence will be reasonably accommodated.  
 Thousands of scientists around the world are working on problems raised by the COVID-19 pandemic, including the search for a vaccine against the virus.
-Here is a summary of some recent research from peer-reviewed academic journals and scientific agencies: A study in the journal Nature has looked at when a person with lab-confirmed COVID-19 is most infectious.
 Ongoing clinical trials will be the true test, Götte said.
 Some early reports from scientists and physicians working with COVID-19 patients indicate that this virus may cause a cytokine storm, or a heightened immune response, in some patients, researchers say.  
 (David Stobbe/VIDO-InterVac/University of Saskatchewan/Reuters) CBC News got access to the high-security lab in Saskatchewan where scientists are working to develop a vaccine.  
@@ -167,7 +163,6 @@ Dr. Lisa Barrett, a clinical scientist and infectious disease physician at Dalho
 Editor's note: CBC News commissioned this public opinion research before concerns about the COVID-19 pandemic mounted.
 Editor's note: CBC News commissioned this public opinion research before concerns about the COVID-19 pandemic mounted.
 Researchers hope to develop ways to adapt vaccines effective against one virus to work against a related one.
-" But the Montreal-based Center for Research Action on Race Relations says that is not enough.
 That's why scientists are working so hard right now to develop and test a vaccine specifically for the illness.
 Some researchers aim to learn more about transmission by trying to make invisible sneezes, coughs and breaths more visible.
 The team's research is part of a global effort says VIDO-InterVac executive director Volker Gerdts.  
@@ -198,3 +193,8 @@ The results of the clinical trial will be only the first step in finding an effe
 Dr. Volker Gerdts and his team of researchers are working in shifts around the clock to find a vaccine for the novel coronavirus — and feeling the pressure to move even faster.
 Public health researchers in the U.K. say that the spread of misinformation during a disease outbreak may make the outbreak more severe, and that reducing the amount of harmful advice circulating by even a little bit could mitigate that effect.  
 March 17: China gives the go-ahead for researchers at the country's Academy of Military Medical Sciences to begin human safety tests of an experimental coronavirus vaccine.
+Researcher horrified by discovery of deadly white-nose syndrome in Manitoba bats  
+VIDO-InterVac associate director Paul Hodgson says finding funding for the lab's coronavirus research has been difficult in the past.
+Social distancing is most easily understood as deliberately creating more space between people, said Dr. Jason Kindrachuk, an assistant professor and Canada Research Chair in emerging viruses at the University of Manitoba.
+COVID-19 restrictions cut downtown Toronto pollution levels by almost half, researchers find \"It
+Research about the likelihood of outdoor transmission of the virus is virtually non-existent.

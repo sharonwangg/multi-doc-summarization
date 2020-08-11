@@ -25,12 +25,6 @@ PREDICTOR_PATH = 'https://storage.googleapis.com/allennlp-public-models/bert-bas
 
 NLP = spacy.load('en_core_web_sm')
 
-'''
-NLP = English()
-SENTENCIZER = NLP.create_pipe("sentencizer")
-NLP.add_pipe(SENTENCIZER)
-'''
-
 def get_stopwords():
     """
     Returns:

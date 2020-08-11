@@ -3,7 +3,6 @@ Extracts relevant sentences from corpus related to category names.
 
 Attributes:
     THRESHOLD (float): The threshold for cosine similarity.
-    SUMMARY_LENGTH (int): How many sentences desired in the summary.
     GENERAL_WORDS (frozenset of str): Words that shouldn't be a sub/obj.
     STOPWORDS (list of str): Stopwords.
     STEMMER (SnowballStemmer): Stems words.
@@ -31,15 +30,23 @@ def has_day(s):
     Returns:
         (bool): True if `s` contains a day.
     """
-    days = ["monday",
-            "tuesday",
-            "wednesday",
-            "thursday",
-            "friday",
-            "saturday",
-            "sunday",
-            "weekend",
-            "month"]
+    days = ['monday',
+            'mon',
+            'tuesday',
+            'tues',
+            'wednesday',
+            'wed',
+            'thursday',
+            'thurs',
+            'thur',
+            'friday',
+            'fri',
+            'saturday',
+            'sat',
+            'sunday',
+            'sun',
+            'weekend',
+            'month']
     return any(day in s.lower() for day in days)
 
 def strip_symbols(s):
@@ -220,6 +227,20 @@ def calculate_relevancy_score(topic, words):
     relevancy_score = relevancy_score / len(words)
     return relevancy_score
 
+def get_str_article(article):
+    """
+    Args:
+        article (list of sentences): List of articles which are lists
+            of sentences.
+
+    Returns:
+        (str): `article` in str format.
+    """
+    str_article = ""
+    for sentence in article:
+        str_article += (' ' + str(sentence))
+    return str_article
+
 def get_all_sentence_details(topics, articles, datetimes):
     """
     Args:
@@ -229,8 +250,8 @@ def get_all_sentence_details(topics, articles, datetimes):
         datetime (list of list of str): List of list of datestimes.
 
     Returns:
-        (list of SentenceDetails): A list of sentences with corresponding dates &
-            scores.
+        (list of SentenceDetails): A list of sentences with corresponding dates,
+            scores, and original articles.
     """
     all_sentence_details = []
     summaries = []
@@ -240,6 +261,7 @@ def get_all_sentence_details(topics, articles, datetimes):
 
     for i, article in enumerate(articles):
         print("summarizing article " + str(i + 1))
+        str_article = get_str_article(article)
         for j, sentence in enumerate(article):
             words = get_words(sentence.text)
             for k, phrase in enumerate(phrases):
@@ -247,7 +269,8 @@ def get_all_sentence_details(topics, articles, datetimes):
                     sentence_to_add = SentenceDetails(
                         sentence.text,
                         extract_date(datetimes[i][1:]),
-                        calculate_relevancy_score(topics[k], words))
+                        calculate_relevancy_score(topics[k], words),
+                        article)
                     summaries[k].add(sentence.text.strip())
                     all_sentence_details[k].append(sentence_to_add)
 
@@ -262,27 +285,63 @@ def extract_date(datetime):
     """
     return datetime.split()[0]
 
-def summarize(all_sentence_details):
+def get_summary_path(topic):
+    """
+    Args:
+        topic (str): Topic of summary.
+
+    Returns:
+        (str): Path of extracted summary.
+    """
+    return 'out/summaries/' + topic + '_extracted.txt'
+
+def get_extracted_dates_path(topic):
+    """
+    Args:
+        topic (str): Topic of summary.
+
+    Returns:
+        (str): Path of extracted dates.
+    """
+    return 'out/dates/' + topic + '_extracted_dates.txt'
+
+def get_og_articles_path(topic):
+    """
+    Args:
+        topic (str): Topic of summary.
+
+    Returns:
+        (str): Path of original articles of summary.
+    """
+    return 'out/og_articles/' + topic + '_og_articles.txt'
+
+def output(all_sentence_details):
+    """
+    Args:
+        all_sentence_details (list of SentenceDetails): A list of sentences
+            with corresponding dates, scores, and original articles.
+    """
     for sentence_details in all_sentence_details:
         sentence_details.sort(key=lambda x: x.relevancy_score, reverse=True)
 
     for i, sentence_details in enumerate(all_sentence_details):
-        with open('out/summaries/' + topics[i] + '_extracted.txt', 'w') as summary_f:
-            with open('out/dates/' + topics[i] + '_extracted_dates.txt', 'w') as summary_dates_f:
-                summary_length = 200
-                if len(sentence_details) < summary_length:
-                    summary_length = len(sentence_details)
-                for j in range(summary_length):
-                    sentence_detail = sentence_details[j]
-                    summary_f.write(sentence_detail.text + '\n')
-                    summary_dates_f.write(sentence_detail.date + '\n')
+        with open(get_summary_path(topics[i]), 'w') as summary_f:
+            with open(get_extracted_dates_path(topics[i]), 'w') as summary_dates_f:
+                with open(get_og_articles_path(topics[i]), 'w') as og_articles_f:
+                    summary_length = 200
+                    if len(sentence_details) < summary_length:
+                        summary_length = len(sentence_details)
+                    for j in range(summary_length):
+                        sentence_detail = sentence_details[j]
+                        summary_f.write(sentence_detail.text + '\n')
+                        summary_dates_f.write(sentence_detail.date + '\n')
+                        og_articles_f.write(sentence_detail.og_article + '\n')
 
 topics, phrases = get_topics_and_phrases()
 phrases = get_processed_phrases()
 word_to_vector = get_vectors()
-
 articles = get_articles()
 datetimes = get_datetimes()
 
 all_sentence_details = get_all_sentence_details(topics, articles, datetimes)
-summarize(all_sentence_details)
+output(all_sentence_details)
