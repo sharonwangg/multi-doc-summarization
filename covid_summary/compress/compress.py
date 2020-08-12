@@ -3,30 +3,28 @@ Reduces the redundancy of a summary using Word Mover's Distance.
 
 Attributes:
     TOPIC (str): Topic of the summary.
-    SUMMARY_PATH (str): Path for summary.
-    DATES_PATH (str): Path for dates of sentences in summary.
+    INITIAL_SUMMARY_PATH (str): Path for summary.
+    INITIAL_DATES_PATH (str): Path for dates of sentences in summary.
     COMPRESSED_SUMMARY_PATH (str): Path for compressed summary.
     COMPRESSED_DATES_PATH (str): Path for dates of sentences in compressed
         summary.
-    COMPRESSED_OG_ARTICLES_PATH (str): Path for original articles for sentences
-        in compressed summary.
 
     STOPWORDS (list of str): Stopwords.
     THRESHOLD (float): Threshold for Word Mover's Distance.
     MODEL (model): Word2Vec model.
 """
-
 import gensim.downloader as api
 import math
+import os
+from covid_summary.path_util import DATA_PATH
+from covid_summary.extract.extract import extracted_og_articles
 from nltk.corpus import stopwords
 
 TOPIC = 'mask'
-SUMMARY_PATH = '../extract/out/summaries/' + TOPIC + '_extracted.txt'
-DATES_PATH = '../extract/out/dates/' + TOPIC + '_extracted_dates.txt'
-OG_ARTICLES_PATH = '../extract/out/og_articles/' + TOPIC + '_og_articles.txt'
-COMPRESSED_SUMMARY_PATH = 'out/summaries/filtered_' + TOPIC + '.txt'
-COMPRESSED_DATES_PATH = 'out/dates/filtered_' + TOPIC + '_dates.txt'
-COMPRESSED_OG_ARTICLES_PATH = 'out/og_articles/filtered_' + TOPIC + '_og_articles.txt'
+INITIAL_SUMMARY_PATH = os.path.join(DATA_PATH, TOPIC + '_initial_summary.txt')
+INITIAL_DATES_PATH = os.path.join(DATA_PATH, TOPIC + '_initial_summary_dates.txt')
+COMPRESSED_SUMMARY_PATH = os.path.join(DATA_PATH, TOPIC + '_filtered_summary.txt')
+COMPRESSED_DATES_PATH = os.path.join(DATA_PATH, TOPIC + '_filtered_summary_dates.txt')
 
 STOPWORDS = stopwords.words('english')
 THRESHOLD = 1.51
@@ -37,7 +35,7 @@ def get_sentences():
     Returns:
         (list of str): Summary sentences.
     """
-    with open(SUMMARY_PATH, 'r') as f:
+    with open(INITIAL_SUMMARY_PATH, 'r') as f:
         return f.read().splitlines()
 
 def get_split_sentences(sentences):
@@ -103,15 +101,7 @@ def get_dates():
     Returns:
         (list of str): Dates.
     """
-    with open(DATES_PATH, 'r') as f:
-        return f.read().splitlines()
-
-def get_og_articles():
-    """
-    Returns:
-        (list of str): Articles that correspond with each sentence in summary.
-    """
-    with open(OG_ARTICLES_PATH, 'r') as f:
+    with open(INITIAL_DATES_PATH, 'r') as f:
         return f.read().splitlines()
 
 def get_score(split_sentence, idfs):
@@ -175,8 +165,6 @@ def get_compressed_results(sentences, split_sentences, idfs, dates, og_articles)
         article1 = og_articles[i]
         if redundant:
             sentence2 = sentences[j]
-            date2 = dates[j]
-            article2 = og_articles[j]
 
             sentence1_score = get_score(split_sentences[i], idfs)
             sentence2_score = get_score(split_sentences[j], idfs)
@@ -204,7 +192,7 @@ def get_compressed_results(sentences, split_sentences, idfs, dates, og_articles)
 
     return compressed_summary, compressed_dates, compressed_og_articles
 
-def output(compressed_summary, compressed_dates, compressed_og_articles):
+def output(compressed_summary, compressed_dates):
     """
     Args:
         compressed_summary (list of str): List of sentences in compressed
@@ -214,18 +202,15 @@ def output(compressed_summary, compressed_dates, compressed_og_articles):
     """
     with open(COMPRESSED_SUMMARY_PATH, 'w') as compressed_summary_f:
         with open(COMPRESSED_DATES_PATH, 'w') as compressed_dates_f:
-            with open(COMPRESSED_OG_ARTICLES_PATH, 'w') as compressed_og_articles_f:
-                for i in range(len(compressed_summary)):
-                    if compressed_summary[i] == "" and compressed_dates[i] == "":
-                        continue
-                    compressed_summary_f.write(compressed_summary[i] + '\n')
-                    compressed_dates_f.write(compressed_dates[i] + '\n')
-                    compressed_og_articles_f.write(compressed_og_articles[i] + '\n')
+            for i in range(len(compressed_summary)):
+                if compressed_summary[i] == "" and compressed_dates[i] == "":
+                    continue
+                compressed_summary_f.write(compressed_summary[i] + '\n')
+                compressed_dates_f.write(compressed_dates[i] + '\n')
 
 sentences = get_sentences()
 split_sentences = get_split_sentences(sentences)
 idfs = get_idfs(split_sentences)
 dates = get_dates()
-og_articles = get_og_articles()
-compressed_summary, compressed_dates, compressed_og_articles = get_compressed_results(sentences, split_sentences, idfs, dates, og_articles)
-output(compressed_summary, compressed_dates, compressed_og_articles)
+compressed_summary, compressed_dates, compressed_og_articles = get_compressed_results(sentences, split_sentences, idfs, dates, extracted_og_articles[TOPIC])
+output(compressed_summary, compressed_dates)

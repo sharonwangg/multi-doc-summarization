@@ -1,3 +1,13 @@
+"""
+Utility module for storing txt file paths.
+
+Attributes:
+    DATA_PATH (str): Path where all txt files are stored.
+    RAW_CORPUS_PATH (str): Path for the raw corpus.
+    RAW_DATE_PATH (str): Path for the raw dates corresponding to the raw corpus.
+    PREPROCESSED_CORPUS_PATH (str): Path for the preprocessed corpus.
+    PREPROCESSED_DATES_PATH (str): Path for the dates corresponding to the preprocessed corpus.
+"""
 import os
 
 DATA_PATH = os.path.join('/',
@@ -12,14 +22,16 @@ DATA_PATH = os.path.join('/',
                          'covid_summary',
                          'covid19dataset')
 
-'''
-Input and output files for `preprocess_corpus`. 
-'''
+# Paths needed for `preprocess_corpus`.
 RAW_CORPUS_PATH = os.path.join(DATA_PATH, 'raw_corpus.txt')
 RAW_DATES_PATH = os.path.join(DATA_PATH, 'raw_dates.txt')
 PREPROCESSED_CORPUS_PATH = os.path.join(DATA_PATH, 'preprocessed_corpus.txt')
 PREPROCESSED_DATES_PATH = os.path.join(DATA_PATH, 'preprocessed_dates.txt')
 
+# Path needed for `extract`.
+JOSE_VECTORS_PATH = os.path.join(DATA_PATH, 'jose.txt')
+
+# Paths needed for `compress`.
 TEXT_PATH = '../preprocess_corpus/out/articles.txt'
 DATETIMES_PATH = '../preprocess_corpus/out/dates.txt'
 TOPICS_PATH = 'in/res_items.txt'

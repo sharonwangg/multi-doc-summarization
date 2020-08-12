@@ -9,9 +9,10 @@ Attributes:
     PREDICTOR (SemanticRoleLabelerPredictor): SRL object.
 """
 
-import spacy
 import numpy as np
 import numpy.linalg as la
+import os
+from covid_summary.path_util import DATA_PATH
 from nltk.stem.snowball import SnowballStemmer
 from covid_summary.extract.data_util import get_stopwords, get_general_words, get_topics_lines, get_vectors_lines, get_predictor, get_articles, get_datetimes
 from covid_summary.extract.sentence_details import SentenceDetails
@@ -176,7 +177,7 @@ def sentence_too_general(sentence):
                 object = description[1].lower()
                 if object[-1] == ']':
                     object = object[:-1]
-            if subject in general_words or object in general_words:
+            if subject in GENERAL_WORDS or object in GENERAL_WORDS:
                 return True
     return False
 
@@ -255,15 +256,12 @@ def get_all_sentence_details(topics, articles, datetimes):
     """
     all_sentence_details = []
     summaries = []
-    og_articles = []
-    for i, topic in enumerate(topics):
+    for topic in topics:
         all_sentence_details.append([])
         summaries.append(set())
-        og_articles.append([])
 
     for i, article in enumerate(articles):
         print("summarizing article " + str(i + 1))
-        str_article = get_str_article(article)
         for j, sentence in enumerate(article):
             words = get_words(sentence.text)
             for k, phrase in enumerate(phrases):
@@ -271,12 +269,12 @@ def get_all_sentence_details(topics, articles, datetimes):
                     sentence_to_add = SentenceDetails(
                         sentence.text,
                         extract_date(datetimes[i][1:]),
-                        calculate_relevancy_score(topics[k], words))
+                        calculate_relevancy_score(topics[k], words),
+                        article)
                     summaries[k].add(sentence.text.strip())
                     all_sentence_details[k].append(sentence_to_add)
-                    og_articles[k].append(article)
 
-    return all_sentence_details, articles
+    return all_sentence_details
 
 def extract_date(datetime):
     """
@@ -295,7 +293,7 @@ def get_summary_path(topic):
     Returns:
         (str): Path of extracted summary.
     """
-    return 'out/summaries/' + topic + '_extracted.txt'
+    return os.path.join(DATA_PATH, topic + '_initial_summary.txt')
 
 def get_extracted_dates_path(topic):
     """
@@ -305,19 +303,9 @@ def get_extracted_dates_path(topic):
     Returns:
         (str): Path of extracted dates.
     """
-    return 'out/dates/' + topic + '_extracted_dates.txt'
+    return os.path.join(DATA_PATH, topic + '_initial_summary_dates.txt')
 
-def get_og_articles_path(topic):
-    """
-    Args:
-        topic (str): Topic of summary.
-
-    Returns:
-        (str): Path of original articles of summary.
-    """
-    return 'out/og_articles/' + topic + '_og_articles.txt'
-
-def output(all_sentence_details):
+def output(all_sentence_details, topics):
     """
     Args:
         all_sentence_details (list of SentenceDetails): A list of sentences
@@ -325,6 +313,10 @@ def output(all_sentence_details):
     """
     for sentence_details in all_sentence_details:
         sentence_details.sort(key=lambda x: x.relevancy_score, reverse=True)
+
+    og_articles = {}
+    for topic in topics:
+        og_articles[topic] = []
 
     for i, sentence_details in enumerate(all_sentence_details):
         with open(get_summary_path(topics[i]), 'w') as summary_f:
@@ -336,6 +328,10 @@ def output(all_sentence_details):
                     sentence_detail = sentence_details[j]
                     summary_f.write(sentence_detail.text + '\n')
                     summary_dates_f.write(sentence_detail.date + '\n')
+                    print(sentence_detail.og_article)
+                    og_articles[topics[i]].append(sentence_detail.og_article)
+
+    return og_articles
 
 topics, phrases = get_topics_and_phrases()
 phrases = get_processed_phrases()
@@ -343,5 +339,5 @@ word_to_vector = get_vectors()
 articles = get_articles()
 datetimes = get_datetimes()
 
-all_sentence_details, og_articles = get_all_sentence_details(topics, articles, datetimes)
-output(all_sentence_details)
+all_sentence_details = get_all_sentence_details(topics, articles, datetimes)
+extracted_og_articles = output(all_sentence_details, topics)

@@ -2,10 +2,7 @@
 Orders summary sentences by real time and organizes summary by location.
 
 Attributes:
-    TOPIC (str): Topic of the summary.
-    SUMMARY_PATH (str): Path for summary.
-    DATES_PATH (str): Path for dates of sentences in summary.
-    ORGANIZED_SUMMARY_PATH (str): Path for time-sorted summary.
+    ORGANIZED_SUMMARY_PATH (str): Path for location and time-organized summary.
 
     NLP (NLP object): NLP object.
     MONTHS (list of list of int and str):
@@ -17,15 +14,14 @@ Attributes:
 import datetime
 import spacy
 import pycountry
+import os
 from word2number import w2n
 from calendar import monthrange, IllegalMonthError
 from dateutil.parser import parse
+from covid_summary.path_util import DATA_PATH
+from covid_summary.compress.compress import compressed_og_articles, TOPIC, COMPRESSED_SUMMARY_PATH, COMPRESSED_DATES_PATH
 
-TOPIC = 'mask'
-SUMMARY_PATH = '../compress/out/summaries/filtered_' + TOPIC + '.txt'
-DATES_PATH = '../compress/out/dates/filtered_' + TOPIC + '_dates.txt'
-OG_ARTICLES_PATH = '../compress/out/og_articles/filtered_' + TOPIC + '_og_articles.txt'
-ORGANIZED_SUMMARY_PATH = 'out/organized_' + TOPIC + '.txt'
+ORGANIZED_SUMMARY_PATH = os.path.join(DATA_PATH, TOPIC + '_organized_summary.txt')
 
 NLP = spacy.load('en_core_web_sm')
 MONTHS = [[1, 'january'],
@@ -72,7 +68,7 @@ def get_dates():
     Returns:
         (list of datetimes): List of dates in dates file.
     """
-    with open(DATES_PATH, 'r') as f:
+    with open(COMPRESSED_DATES_PATH, 'r') as f:
         return [datetime.datetime(int(x[0:4]), int(x[5:7]), int(x[8:10]))
             for x in f.read().splitlines()]
 
@@ -81,7 +77,7 @@ def get_sentences():
     Returns:
         (list of str): Returns list of sentences.
     """
-    with open(SUMMARY_PATH, 'r') as f:
+    with open(COMPRESSED_SUMMARY_PATH, 'r') as f:
         return f.read().splitlines()
 
 def strip_symbols(s):
@@ -579,7 +575,7 @@ def handle_day(ent, date):
         return date + datetime.timedelta(days=1)
     elif x_days_ago(ent_split):
         try:
-            num = w2n.word_to_num(s_split[0])
+            num = w2n.word_to_num(ent_split[0])
             return date + datetime.timedelta(days=-num)
         except ValueError:
             return date
@@ -702,17 +698,17 @@ def get_country_from_article(sentence, doc, og_article):
         (str): Country that `sentence` is associated with (found in `og_article`).
             Empty string if a country couldn't be found.
     """
-    if doc in org_article:
-        center_idx = org_article.index(doc)
-        max_radius = max(center_idx, len(org_article) - center_idx)
+    if doc in og_article:
+        center_idx = og_article.index(doc)
+        max_radius = max(center_idx, len(og_article) - center_idx)
         for i in range(max_radius):
             previous_idx = center_idx - i
-            if valid_index(previous_idx, org_article):
+            if valid_index(previous_idx, og_article):
                 country = get_country_from_sentence(og_article[previous_idx])
                 if country:
                     return country
             future_idx = center_idx + i
-            if valid_index(future_idx, org_article):
+            if valid_index(future_idx, og_article):
                 country = get_country_from_sentence(og_article[future_idx])
                 if country:
                     return country

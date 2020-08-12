@@ -2,30 +2,20 @@
 Utility module for loading data.
 
 Attributes:
-    TEXT_PATH (str): Path for corpus of articles.
-    DATETIMES_PATH (str): Path for dates and times of articles.
+    TOPIC (str): Type of topics of summary.
     TOPICS_PATH (str): Path for topics to extract.
-    VECTORS_PATH (str): Path for Jose word embedding vectors.
     PREDICTOR_PATH (str): Path for allennlp predictor.
     NLP (spacy.lang.en.English): Spacy object.
-    SENTENCIZER (spacy.pipeline.pipes.Sentencizer): Sentencizer object.
 """
-
 import spacy
+import os
+from covid_summary.path_util import DATA_PATH, PREPROCESSED_CORPUS_PATH, PREPROCESSED_DATES_PATH, JOSE_VECTORS_PATH
 from nltk.corpus import stopwords
 from allennlp.predictors import Predictor
-from spacy.pipeline import SentenceSegmenter
-from spacy.lang.en import English
 
-'''
-TEXT_PATH = '../preprocess_corpus/out/articles.txt'
-DATETIMES_PATH = '../preprocess_corpus/out/dates.txt'
-TOPICS_PATH = 'in/res_items.txt'
-VECTORS_PATH = 'in/jose.txt'
-'''
-
+TOPIC_TYPE = 'items'
+TOPICS_PATH = os.path.join(DATA_PATH, 'cate_topics', 'res_' + TOPIC_TYPE + '.txt')
 PREDICTOR_PATH = 'https://storage.googleapis.com/allennlp-public-models/bert-base-srl-2020.03.24.tar.gz'
-
 NLP = spacy.load('en_core_web_sm')
 
 def get_stopwords():
@@ -70,7 +60,7 @@ def get_vectors_lines():
         (list of str): A list of strings, with each string a line of
                        vectors_file.
     """
-    with open(VECTORS_PATH, 'r') as f:
+    with open(JOSE_VECTORS_PATH, 'r') as f:
         return f.read().splitlines()
 
 def get_predictor():
@@ -87,7 +77,7 @@ def get_articles():
         (List of list of sentences): A list of articles, with each article
             being a list of sentences.
     """
-    with open(TEXT_PATH, 'r') as f:
+    with open(PREPROCESSED_CORPUS_PATH, 'r') as f:
         raw_articles = f.read().splitlines()
 
     articles = []
@@ -104,5 +94,5 @@ def get_datetimes():
         (list of str): Returns a list of strings, each representing a date and
                        time.
     """
-    with open(DATETIMES_PATH, 'r') as f:
+    with open(PREPROCESSED_DATES_PATH, 'r') as f:
         return f.read().splitlines()
