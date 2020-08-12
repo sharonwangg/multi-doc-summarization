@@ -1,8 +1,0 @@
-```{r}
-library(readr)
-news_csv = read_csv("news.csv")
-articles = news_csv$text
-write.table(articles, file = "articles.txt", row.names = FALSE, col.names = FALSE)
-dates = news_csv$publish_date
-write.table(dates, file = "dates.txt", row.names = FALSE, col.names = FALSE)
-```

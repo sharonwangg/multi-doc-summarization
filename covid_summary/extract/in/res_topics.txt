@@ -1,0 +1,22 @@
+Category (symptom):
+sore throat fever runny cough breath smell shortness fatigue symptoms 
+Category (transmission):
+community human-to-human evidence sustained indication travel-related flattening person-to-person Patterson link 
+Category (death):
+toll deaths reported fatalities cases died count recorded surpassed total 
+Category (elderly):
+pre-existing dying vulnerable conditions seniors older underlying chronic diabetes particularly 
+Category (protest):
+protesters protests crowd supporters State gathered rally arrested Capitol drew 
+Category (racism):
+discrimination misinformation fear racist consequences behaviour Asian incidents behaviours fears 
+Category (travel):
+travelling Travel non-essential trips restrictions travellers trip vacation non-residents returning 
+Category (economy):
+economic economies recession stimulus growth fiscal restart rebound economists outlook 
+Category (incubation):
+period days 14 onset time weeks previous periods lasts months 
+Category (asymptomatic):
+transmitted virus symptomatic transmit disease infection infected contagious antibodies infect 
+Category (unemployment):
+unemployed jobs income benefits job aid employment EI applicants lost 
