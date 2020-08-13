@@ -140,7 +140,7 @@ def get_compressed_results(sentences, split_sentences, idfs, dates, og_articles)
             inner list is a sentence.
         idfs (dict from str to float): Dict mapping words to their idf values.
         dates (list of str): Dates.
-        og_articles (list of str): Articles that correspond with each sentence
+        og_articles (list of list of sentences): Articles that correspond with each sentence
             in summary.
 
     Returns:
@@ -176,14 +176,15 @@ def get_compressed_results(sentences, split_sentences, idfs, dates, og_articles)
                 compressed_summary.append(sentence1)
                 compressed_dates.append(date1)
                 compressed_og_articles.append(article1)
+
                 compressed_summary[j] = ""
                 compressed_dates[j] = ""
-                compressed_og_articles[j] = ""
+                compressed_og_articles[j] = []
                 print(2, sentence1)
             else:
                 compressed_summary.append("")
                 compressed_dates.append("")
-                compressed_og_articles.append("")
+                compressed_og_articles.append([])
                 print(2, sentence2)
         else:
             compressed_summary.append(sentence1)
@@ -212,5 +213,8 @@ sentences = get_sentences()
 split_sentences = get_split_sentences(sentences)
 idfs = get_idfs(split_sentences)
 dates = get_dates()
-compressed_summary, compressed_dates, compressed_og_articles = get_compressed_results(sentences, split_sentences, idfs, dates, extracted_og_articles[TOPIC])
+compressed_summary, compressed_dates, topic_specific_compressed_og_articles = get_compressed_results(sentences, split_sentences, idfs, dates, extracted_og_articles[TOPIC])
 output(compressed_summary, compressed_dates)
+
+# delete empty inner lists
+topic_specific_compressed_og_articles = [article for article in topic_specific_compressed_og_articles if article]
