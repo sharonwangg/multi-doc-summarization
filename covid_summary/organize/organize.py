@@ -702,22 +702,30 @@ def get_country_from_article(str_doc, doc, og_article):
         return ""
 
     str_og_article = ""
-    for sentence in og_article:
-        str_og_article += (' ' + str(sentence) + ' ')
+    for sent in og_article:
+        str_og_article += (' ' + str(sent) + ' ')
 
-    if str_doc in str_og_article:
-        center_idx = str_og_article.index(str_doc)
+    sentence = sentence[0]
+
+    print(sentence)
+    if sentence in og_article:
+        print('HERE')
+        center_idx = og_article.index(sentence)
+        print('center_idx: ' + str(center_idx))
+        print('center_sentence: ' + str(og_article[center_idx]))
         max_radius = max(center_idx, len(og_article) - center_idx)
         for i in range(1, max_radius):
             previous_idx = center_idx - i
             if valid_index(previous_idx, og_article):
-                print(og_article[previous_idx])
+                print('previous_idx: ' + str(previous_idx))
+                print('previous sentence: ' + str(og_article[previous_idx]))
                 country = get_country_from_sentence(og_article[previous_idx])
                 if country:
                     return country
             future_idx = center_idx + i
             if valid_index(future_idx, og_article):
-                print(og_article[previous_idx])
+                print('future_idx: ' + str(future_idx))
+                print('future sentence: ' + str(og_article[previous_idx]))
                 country = get_country_from_sentence(og_article[future_idx])
                 if country:
                     return country
@@ -741,6 +749,8 @@ def get_country_from_sentence(doc):
 
             if is_valid_location(str(ent), possible_countries):
                 print('GPE: ' + ent.text)
+                if possible_countries[0].name == 'VIRGIN ISLANDS, U.S.':
+                    return 'UNITED STATES'
                 return possible_countries[0].name
             else:
                 continue
@@ -762,22 +772,22 @@ def organize(timestamped_sentences, topic_specific_og_articles):
     """
     loc_organized_sentences = {}
     for i, timestamped_sentence in enumerate(timestamped_sentences):
-        sentence = timestamped_sentence[1]
-        doc = NLP(sentence)
+        str_sentence = timestamped_sentence[1]
+        doc = NLP(str_sentence)
         og_article = topic_specific_og_articles[i]
 
         country_from_sentence = get_country_from_sentence(doc)
         if country_from_sentence:
             print('country from sentence')
             loc_organized_sentences = add_sentence(loc_organized_sentences, country_from_sentence, timestamped_sentence)
-            print(0, sentence)
+            print(0, str_sentence)
             print(1, country_from_sentence)
         else:
-            country_from_article = get_country_from_article(sentence, doc, og_article)
+            country_from_article = get_country_from_article(str_sentence, doc, og_article)
             if country_from_article:
                 print('country from article')
                 loc_organized_sentences = add_sentence(loc_organized_sentences, country_from_article, timestamped_sentence)
-                print(0, sentence)
+                print(0, str_sentence)
                 print(1, country_from_article)
 
     return loc_organized_sentences
@@ -822,7 +832,8 @@ def output(final_summary):
             where each inner list contains a sentence and its corresponding date.
     """
     with open(ORGANIZED_SUMMARY_PATH, 'w') as f:
-        for country, mini_summary in final_summary.items():
+        for country in sorted(final_summary, key=lambda country: len(final_summary[country]), reverse=True):
+            mini_summary = final_summary[country]
             f.write(country.upper() + ':' + '\n')
             for datetime, sentence in mini_summary:
                 date = str(datetime).split()[0]
@@ -838,7 +849,3 @@ timestamped_sentences = get_timestamped_sentences(dates, sentences)
 loc_organized_summary = organize(timestamped_sentences, topic_specific_compressed_og_articles)
 final_summary = order(loc_organized_summary)
 output(final_summary)
-
-sentence = 'It\'s among a small number of other manufacturers around the U.S. geared up Monday to resume production amid pressure from Trump to reopen the economy.'
-doc = NLP(sentence)
-print(get_country_from_sentence(doc))

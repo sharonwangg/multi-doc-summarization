@@ -2,22 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3eacccb-b7f4-4182-b055-ff370abded79" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/covid_summary/compress/compress.py" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/compress/compress.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_filtered_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_filtered_summary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_filtered_summary_dates.txt" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_filtered_summary_dates.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_initial_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_initial_summary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_initial_summary_dates.txt" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_initial_summary_dates.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_organized_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_organized_summary.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/vaccin_initial_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/covid19dataset/vaccin_initial_summary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/vaccin_initial_summary_dates.txt" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/covid19dataset/vaccin_initial_summary_dates.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/ventil_initial_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/covid19dataset/ventil_initial_summary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/ventil_initial_summary_dates.txt" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/covid19dataset/ventil_initial_summary_dates.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/covid_summary/extract/data_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/extract/data_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/extract/extract.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/covid_summary/organize/organize.py" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/organize/organize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/organize/out/ordered_china.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/organize/out/ordered_mask.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/organize/out/ordered_symptom.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/organize/out/organized_mask.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/covid_summary/extract/data_util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="91" column="20" lean-forward="true" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="20" />
+            <state relative-caret-position="242">
+              <caret line="15" column="19" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -39,12 +31,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/covid_summary/extract/extract.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+            <state relative-caret-position="-295">
+              <caret line="303" column="26" selection-start-line="303" selection-start-column="21" selection-end-line="303" selection-end-column="26" />
               <folding>
                 <element signature="e#364#382#0" expanded="true" />
                 <element signature="e#8927#9110#0" />
-                <element signature="e#9153#9340#0" />
               </folding>
             </state>
           </provider>
@@ -53,8 +44,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/covid_summary/compress/compress.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="211" column="13" selection-start-line="211" selection-start-column="12" selection-end-line="211" selection-end-column="13" />
+            <state relative-caret-position="249">
+              <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+              <folding>
+                <element signature="e#537#568#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,12 +56,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/covid_summary/organize/organize.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="712" column="53" lean-forward="true" selection-start-line="712" selection-start-column="53" selection-end-line="712" selection-end-column="53" />
+            <state relative-caret-position="274">
+              <caret line="841" lean-forward="true" selection-start-line="841" selection-end-line="841" />
               <folding>
                 <element signature="e#454#469#0" expanded="true" />
-                <element signature="e#24138#25337#0" />
-                <element signature="e#25370#25887#0" />
+                <element signature="e#25066#26265#0" />
               </folding>
             </state>
           </provider>
@@ -115,8 +108,9 @@
       <find>[TOPIC</find>
       <find>doc</find>
       <find>get_art</find>
-      <find>print(</find>
       <find>GPE</find>
+      <find>print(</find>
+      <find>topic</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -138,8 +132,8 @@
         <option value="$PROJECT_DIR$/covid_summary/extract/sentence_details.py" />
         <option value="$PROJECT_DIR$/covid_summary/extract/extract.py" />
         <option value="$PROJECT_DIR$/covid_summary/extract/data_util.py" />
-        <option value="$PROJECT_DIR$/covid_summary/compress/compress.py" />
         <option value="$PROJECT_DIR$/covid_summary/organize/organize.py" />
+        <option value="$PROJECT_DIR$/covid_summary/compress/compress.py" />
       </list>
     </option>
   </component>
@@ -151,8 +145,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
     <option name="y" value="23" />
-    <option name="width" value="798" />
+    <option name="width" value="565" />
     <option name="height" value="977" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -361,10 +356,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="977" extended-state="6" />
+    <frame x="-10" y="23" width="1689" height="977" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.018083183" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.017985612" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -377,7 +372,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.26280892" side_tool="true" weight="0.15819208" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.7371911" visible="true" weight="0.33559322" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.7371911" visible="true" weight="0.33559322" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -428,25 +423,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/covid_summary/extract/extract.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-          <folding>
-            <element signature="e#364#382#0" expanded="true" />
-            <element signature="e#8927#9110#0" />
-            <element signature="e#9153#9340#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/covid_summary/extract/sentence_details.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/covid_summary/covid19dataset/extract_raw_data.rmd">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -461,28 +437,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/covid_summary/extract/sentence_details.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/covid_summary/extract/data_util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="91" column="20" lean-forward="true" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="20" />
+        <state relative-caret-position="242">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/covid_summary/extract/extract.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-295">
+          <caret line="303" column="26" selection-start-line="303" selection-start-column="21" selection-end-line="303" selection-end-column="26" />
+          <folding>
+            <element signature="e#364#382#0" expanded="true" />
+            <element signature="e#8927#9110#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/covid_summary/compress/compress.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="211" column="13" selection-start-line="211" selection-start-column="12" selection-end-line="211" selection-end-column="13" />
+        <state relative-caret-position="249">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+          <folding>
+            <element signature="e#537#568#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/covid_summary/organize/organize.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="712" column="53" lean-forward="true" selection-start-line="712" selection-start-column="53" selection-end-line="712" selection-end-column="53" />
+        <state relative-caret-position="274">
+          <caret line="841" lean-forward="true" selection-start-line="841" selection-end-line="841" />
           <folding>
             <element signature="e#454#469#0" expanded="true" />
-            <element signature="e#24138#25337#0" />
-            <element signature="e#25370#25887#0" />
+            <element signature="e#25066#26265#0" />
           </folding>
         </state>
       </provider>

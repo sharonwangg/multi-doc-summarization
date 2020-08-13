@@ -20,7 +20,7 @@ from covid_summary.path_util import DATA_PATH
 from covid_summary.extract.extract import extracted_og_articles
 from nltk.corpus import stopwords
 
-TOPIC = 'mask'
+TOPIC = 'symptom'
 INITIAL_SUMMARY_PATH = os.path.join(DATA_PATH, TOPIC + '_initial_summary.txt')
 INITIAL_DATES_PATH = os.path.join(DATA_PATH, TOPIC + '_initial_summary_dates.txt')
 COMPRESSED_SUMMARY_PATH = os.path.join(DATA_PATH, TOPIC + '_filtered_summary.txt')

@@ -261,6 +261,9 @@ def get_all_sentence_details(topics, articles, datetimes):
         summaries.append(set())
 
     for i, article in enumerate(articles):
+        print(0, type(article))
+        print(1, type(article[0]))
+        print(2, type(article[0][0]))
         print("summarizing article " + str(i + 1))
         for j, sentence in enumerate(article):
             words = get_words(sentence.text)

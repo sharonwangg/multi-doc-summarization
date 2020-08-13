@@ -84,8 +84,8 @@ def get_articles():
     #for i in range(len(raw_articles)):
     for i in range(1000):
         sentences = list(NLP(raw_articles[i]).sents)
-        sentences[0] = sentences[0][1:]
-        sentences[-1] = sentences[-1][:-1]
+        #sentences[0] = sentences[0][1:]
+        #sentences[-1] = sentences[-1][:-1]
         articles.append(sentences)
     return articles
 
