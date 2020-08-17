@@ -1,0 +1,8 @@
+```{r}
+library(readr)
+news_csv = read_csv("raw_data.csv")
+articles = news_csv$text
+write.table(articles, file = "raw_corpus.txt", row.names = FALSE, col.names = FALSE)
+dates = news_csv$publish_date
+write.table(dates, file = "raw_datetimes.txt", row.names = FALSE, col.names = FALSE)
+```

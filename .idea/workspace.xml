@@ -2,14 +2,102 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3eacccb-b7f4-4182-b055-ff370abded79" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/covid_summary/compress/compress.py" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/compress/compress.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_filtered_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_filtered_summary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_initial_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_initial_summary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_organized_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_organized_summary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/vaccin_initial_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/covid19dataset/vaccin_initial_summary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/extract/data_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/extract/data_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/extract/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/extract/extract.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_summary/organize/organize.py" beforeDir="false" afterPath="$PROJECT_DIR$/covid_summary/organize/organize.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/preprocess_corpus/data_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/compress/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/compress/compress.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/compress/out/dates/filtered_china_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/compress/out/dates/filtered_mask_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/compress/out/dates/filtered_symptom_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/compress/out/summaries/filtered_china.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/compress/out/summaries/filtered_mask.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/compress/out/summaries/filtered_symptom.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/compress/out/untitled folder/filtered_mask_og_articles.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/cate_topics/res_items.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/cate_topics/res_locations.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/cate_topics/res_topics.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/cbc-news-coronavirus-articles-march-26.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/extract_raw_data.rmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/jose.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/links.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_filtered_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_filtered_summary_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_initial_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_initial_summary_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/mask_organized_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/preprocessed_corpus.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/preprocessed_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/raw_corpus.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/raw_data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/raw_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/vaccin_initial_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/vaccin_initial_summary_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/ventil_initial_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/covid19dataset/ventil_initial_summary_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/data_util.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/extract.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/in/jose.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/in/res_items.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/in/res_locations.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/in/res_topics.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/asymptomat_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/china_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/death_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/economi_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/elder_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/incub_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/itali_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/korea_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/mask_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/protest_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/racism_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/symptom_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/transmiss_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/travel_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/unemploy_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/united_st_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/vaccin_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/dates/ventil_extracted_dates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/og_articles/mask_og_articles.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/og_articles/vaccin_og_articles.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/og_articles/ventil_og_articles.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/asymptomat_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/china_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/death_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/economi_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/elder_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/incub_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/itali_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/korea_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/mask_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/protest_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/racism_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/spain_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/symptom_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/transmiss_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/travel_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/unemploy_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/united_st_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/vaccin_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/out/summaries/ventil_extracted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/extract/sentence_details.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/organize/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/organize/organize.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/path_util.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/preprocess_corpus/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/preprocess_corpus/preprocess_corpus.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/slides/Week1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/slides/Week10.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/slides/Week2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/slides/Week3.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/slides/Week4.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/slides/Week5.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/slides/Week6.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/slides/Week7.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_summary/slides/Week8.pdf" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,76 +107,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/covid_summary/extract/data_util.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="15" column="19" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/covid_summary/extract/extract.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-295">
-              <caret line="303" column="26" selection-start-line="303" selection-start-column="21" selection-end-line="303" selection-end-column="26" />
-              <folding>
-                <element signature="e#364#382#0" expanded="true" />
-                <element signature="e#8927#9110#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/covid_summary/compress/compress.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-              <folding>
-                <element signature="e#537#568#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/covid_summary/organize/organize.py">
+        <entry file="file://$PROJECT_DIR$/preprocess_corpus/preprocess_corpus.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="841" lean-forward="true" selection-start-line="841" selection-end-line="841" />
+            <state relative-caret-position="462">
+              <caret line="81" column="25" lean-forward="true" selection-start-line="81" selection-start-column="25" selection-end-line="81" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+                <element signature="e#102#299#0" />
+                <element signature="e#331#807#0" />
+                <element signature="e#747#1289#0" />
+                <element signature="e#1371#2060#0" />
+                <element signature="e#2346#2698#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/path_util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="25" column="17" lean-forward="true" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/organize/organize.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="70" selection-start-line="70" selection-end-line="72" selection-end-column="43" />
               <folding>
                 <element signature="e#454#469#0" expanded="true" />
-                <element signature="e#25066#26265#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/covid_summary/extract/sentence_details.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/covid_summary/path_util.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/covid_summary/covid19dataset/extract_raw_data.rmd">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -111,6 +163,8 @@
       <find>GPE</find>
       <find>print(</find>
       <find>topic</find>
+      <find>parse</find>
+      <find>datetime</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -131,23 +185,20 @@
         <option value="$PROJECT_DIR$/covid_summary/path_util.py" />
         <option value="$PROJECT_DIR$/covid_summary/extract/sentence_details.py" />
         <option value="$PROJECT_DIR$/covid_summary/extract/extract.py" />
-        <option value="$PROJECT_DIR$/covid_summary/extract/data_util.py" />
         <option value="$PROJECT_DIR$/covid_summary/organize/organize.py" />
+        <option value="$PROJECT_DIR$/covid_summary/extract/data_util.py" />
         <option value="$PROJECT_DIR$/covid_summary/compress/compress.py" />
+        <option value="$PROJECT_DIR$/covid19dataset/extract_raw_data.rmd" />
+        <option value="$PROJECT_DIR$/preprocess_corpus/data_util.py" />
+        <option value="$PROJECT_DIR$/path_util.py" />
+        <option value="$PROJECT_DIR$/preprocess_corpus/preprocess_corpus.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="84" />
     <option name="y" value="23" />
-    <option name="width" value="565" />
+    <option name="width" value="1774" />
     <option name="height" value="977" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -156,7 +207,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -167,36 +217,28 @@
             <path>
               <item name="multi_doc_summ_proj" type="b2602c69:ProjectViewProjectNode" />
               <item name="multi_doc_summ_proj" type="462c0819:PsiDirectoryNode" />
-              <item name="covid_summary" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="multi_doc_summ_proj" type="b2602c69:ProjectViewProjectNode" />
-              <item name="multi_doc_summ_proj" type="462c0819:PsiDirectoryNode" />
-              <item name="covid_summary" type="462c0819:PsiDirectoryNode" />
               <item name="covid19dataset" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="multi_doc_summ_proj" type="b2602c69:ProjectViewProjectNode" />
               <item name="multi_doc_summ_proj" type="462c0819:PsiDirectoryNode" />
-              <item name="covid_summary" type="462c0819:PsiDirectoryNode" />
               <item name="extract" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="multi_doc_summ_proj" type="b2602c69:ProjectViewProjectNode" />
               <item name="multi_doc_summ_proj" type="462c0819:PsiDirectoryNode" />
-              <item name="covid_summary" type="462c0819:PsiDirectoryNode" />
               <item name="organize" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="multi_doc_summ_proj" type="b2602c69:ProjectViewProjectNode" />
               <item name="multi_doc_summ_proj" type="462c0819:PsiDirectoryNode" />
-              <item name="covid_summary" type="462c0819:PsiDirectoryNode" />
               <item name="preprocess_corpus" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -229,7 +271,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.organize">
+  <component name="RunManager" selected="Python.preprocess_corpus">
     <configuration name="compress" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="multi-doc-summ-proj" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -315,15 +357,12 @@
       <module name="multi-doc-summ-proj" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/covid_summary/preprocess_corpus" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/preprocess_corpus" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/covid_summary/preprocess_corpus/preprocess_corpus.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/preprocess_corpus/preprocess_corpus.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -334,11 +373,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.preprocess_corpus" />
+        <item itemvalue="Python.organize" />
         <item itemvalue="Python.organize" />
         <item itemvalue="Python.compress" />
         <item itemvalue="Python.extract" />
-        <item itemvalue="Python.path_util" />
-        <item itemvalue="Python.preprocess_corpus" />
       </list>
     </recent_temporary>
   </component>
@@ -355,11 +394,20 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="23" width="1689" height="977" extended-state="6" />
+    <frame x="84" y="23" width="1774" height="977" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.017985612" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19053052" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -368,11 +416,12 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.033898305" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3299435" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.26280892" side_tool="true" weight="0.15819208" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.7371911" visible="true" weight="0.33559322" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.7371911" visible="true" weight="0.22711864" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3299435" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -423,20 +472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/covid_summary/covid19dataset/extract_raw_data.rmd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/covid_summary/path_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/covid_summary/extract/sentence_details.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -444,41 +479,122 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/covid_summary/extract/data_util.py">
+    <entry file="file://$PROJECT_DIR$/covid_summary/covid19dataset/extract_raw_data.rmd">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="19" />
+        <state relative-caret-position="132">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/covid_summary/organize/organize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+          <folding>
+            <element signature="e#454#469#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/covid_summary/path_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/covid_summary/extract/extract.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-295">
-          <caret line="303" column="26" selection-start-line="303" selection-start-column="21" selection-end-line="303" selection-end-column="26" />
+        <state relative-caret-position="86">
+          <caret line="292" column="9" selection-start-line="292" selection-start-column="9" selection-end-line="292" selection-end-column="9" />
           <folding>
             <element signature="e#364#382#0" expanded="true" />
-            <element signature="e#8927#9110#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/covid_summary/compress/compress.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+        <state relative-caret-position="393">
+          <caret line="56" column="12" lean-forward="true" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
           <folding>
             <element signature="e#537#568#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/covid_summary/organize/organize.py">
+    <entry file="file://$PROJECT_DIR$/covid_summary/extract/data_util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="841" lean-forward="true" selection-start-line="841" selection-end-line="841" />
+        <state relative-caret-position="440">
+          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+          <folding>
+            <element signature="e#251#263#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/covid19dataset/extract_raw_data.rmd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extract/data_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_import_hook.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocess_corpus/data_util.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extract/extract.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+          <folding>
+            <element signature="e#364#382#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organize/organize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="70" selection-start-line="70" selection-end-line="72" selection-end-column="43" />
           <folding>
             <element signature="e#454#469#0" expanded="true" />
-            <element signature="e#25066#26265#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/path_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="25" column="17" lean-forward="true" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocess_corpus/preprocess_corpus.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="81" column="25" lean-forward="true" selection-start-line="81" selection-start-column="25" selection-end-line="81" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#102#299#0" />
+            <element signature="e#331#807#0" />
+            <element signature="e#747#1289#0" />
+            <element signature="e#1371#2060#0" />
+            <element signature="e#2346#2698#0" />
           </folding>
         </state>
       </provider>
