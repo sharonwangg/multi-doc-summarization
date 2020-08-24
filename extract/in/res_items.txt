@@ -1,6 +1,0 @@
-Category (mask):
-wearing wear masks wears face gloves homemade worn cloth N95 
-Category (ventilator):
-lungs machine breathe tube gets ventilators ICU turns oxygen machines 
-Category (vaccine):
-vaccines immunity trials antiviral research researchers clinical VIDO-InterVac Vaccine scientists 

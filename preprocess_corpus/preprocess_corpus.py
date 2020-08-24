@@ -1,6 +1,8 @@
+import spacy
 import datetime
 from path_util import RAW_CORPUS_PATH, RAW_DATETIMES_PATH, PREPROCESSED_DATA_PATH
 
+NLP = spacy.load('en_core_web_sm')
 
 def get_raw_corpus():
     """ Reads raw corpus from `RAW_CORPUS_PATH`.
@@ -54,14 +56,29 @@ def preprocess(raw_data):
         (list of lists): `raw_data` with identical articles and articles with invalid dates removed.
     """
     preprocessed_data = []
-    articles = []
+    all_article_sents = []
     for i, timestamped_article in enumerate(raw_data):
+        print('preprocessing article ' + str(i + 1))
         datetime = timestamped_article[0]
-        article = timestamped_article[1]
-        if article not in articles and datetime != 'NA':
-            preprocessed_data.append([datetime, article])
-            articles.append(article)
+        article_str = timestamped_article[1]
+        article_sents = list(NLP(article_str).sents)
+        if article_sents not in all_article_sents and datetime != 'NA':
+            preprocessed_data.append([datetime, article_sents])
+            all_article_sents.append(article_sents)
     return preprocessed_data
+
+
+def get_article_str(article_sents):
+    """ Converts `article_sents` into a single string.
+    Args:
+        article_sents: List of NLP sentences.
+    Returns:
+        (str): `article_sents` in a single string format.
+    """
+    article_str = ""
+    for nlp_sent in article_sents:
+        article_str += (' ' + nlp_sent.text + ' ')
+    return article_str
 
 
 def output(preprocessed_data):
@@ -73,8 +90,9 @@ def output(preprocessed_data):
     with open(PREPROCESSED_DATA_PATH, 'w') as f:
         for timestamped_article in preprocessed_data:
             datetime = timestamped_article[0]
-            article = timestamped_article[1]
-            f.write(f'{str(datetime)}\t{article}\n')
+            article_sents = timestamped_article[1]
+            article_str = get_article_str(article_sents)
+            f.write(f'{str(datetime)}\t{article_str}\n')
 
 
 raw_data = get_raw_data()
