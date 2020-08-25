@@ -13,13 +13,10 @@ def strip_symbols(s):
     Returns:
         (str): `s` without leading or trailing symbols.
     """
-    if len(s) <= 1:
-        return s
-
-    while not s[0].isalnum():
+    while len(s) > 1 and not s[0].isalnum():
         s = s[1:]
 
-    while not s[-1].isalnum():
+    while len(s) > 1 and not s[-1].isalnum():
         s = s[:-1]
 
     return s

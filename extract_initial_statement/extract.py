@@ -9,15 +9,18 @@ Attributes:
     PREDICTOR (SemanticRoleLabelerPredictor): SRL object.
     TOPICS_LINES (list of str): Lines of the topics file.
 """
-
 import numpy as np
 import numpy.linalg as la
 import os
+
 from preprocess_corpus.preprocess_corpus import preprocessed_data
-from path_util import DATA_PATH
-from extract_initial_statement.data_util import get_general_words, get_topics_lines, get_vectors_lines, get_days
-from function_util import strip_symbols, normalize, delete_stopwords
+
 from data_util import get_stopwords, get_predictor
+
+from path_util import DATA_PATH
+from function_util import strip_symbols, normalize, delete_stopwords
+
+from extract_initial_statement.extract_data_util import get_general_words, get_topics_lines, get_vectors_lines, get_days
 from extract_initial_statement.sentence_details import SentenceDetails
 
 THRESHOLD = 0.3
@@ -59,7 +62,7 @@ def get_topic_to_phrase():
     """
     topic_to_phrase = {}
     for i in range(0, len(TOPICS_LINES), 2):
-        topic = TOPICS_LINES[i].split()[1][1:][:-2]
+        topic = normalize(TOPICS_LINES[i].split()[1][1:][:-2])
         phrase = []
         for ngram in TOPICS_LINES[i + 1].split():
             phrase.append(normalize(ngram))
@@ -172,7 +175,7 @@ def is_quality_sentence(topic, phrase, words, sent, summary):
         and not has_improper_pronoun(sent))
 
 
-def calculate_relevancy_score(topic, words):
+def calculate_relevancy_score(topic, words, word_to_vector):
     """
     Args:
         topic (str): Category name.
@@ -222,7 +225,7 @@ def extract(topic_to_phrase, timestamped_articles):
     all_sentence_details = {}
     topic_to_summary = {}
     for topic in topic_to_phrase.keys():
-        all_sentence_details[topic]([])
+        all_sentence_details[topic] = []
         topic_to_summary[topic] = set()
 
     for i, timestamped_article in enumerate(timestamped_articles):
@@ -238,9 +241,9 @@ def extract(topic_to_phrase, timestamped_articles):
                     sentence_to_add = SentenceDetails(
                         sent.text.strip(),
                         datetime,
-                        calculate_relevancy_score(topic, words),
+                        calculate_relevancy_score(topic, words, word_to_vector),
                         article_sents)
-                    all_sentence_details[topic].add(sentence_to_add)
+                    all_sentence_details[topic].append(sentence_to_add)
                     topic_to_summary[topic].add(sent.text.strip())
 
     return all_sentence_details
@@ -276,7 +279,7 @@ def sort_by_relevancy_score(all_sentence_details):
     Returns:
         (list of SentenceDetails): `all_sentence_details` but sorted by relevancy score.
     """
-    for sentence_details in all_sentence_details:
+    for topic, sentence_details in all_sentence_details.items():
         sentence_details.sort(key=lambda sentence_detail: sentence_detail.relevancy_score, reverse=True)
     return all_sentence_details
 
@@ -294,13 +297,12 @@ def output(sorted_all_sentence_details):
                 summary_length = len(sentence_details)
 
             for i in range(summary_length):
-                sentence_detail = sentence_details[j]
+                sentence_detail = sentence_details[i]
                 f.write(f'{str(sentence_detail.date)}\t{sentence_detail.text.strip}\n')
 
 
 topic_to_phrase = get_topic_to_phrase()
 word_to_vector = get_word_to_vector()
-
 all_sentence_details = extract(topic_to_phrase, preprocessed_data)
 sorted_all_sentence_details = sort_by_relevancy_score(all_sentence_details)
 output(sorted_all_sentence_details)
