@@ -1,5 +1,0 @@
-2020-05-01 00:00:00	<built-in method strip of str object at 0x7fdb4c4c1230>
-2020-04-30 00:00:00	<built-in method strip of str object at 0x7fdbb2b89500>
-2020-05-01 00:00:00	<built-in method strip of str object at 0x7fdb99a1ef60>
-2020-04-30 00:00:00	<built-in method strip of str object at 0x7fdb637b84b0>
-2020-05-01 00:00:00	<built-in method strip of str object at 0x7fdba330f030>

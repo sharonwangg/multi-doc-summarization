@@ -3,12 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="d3eacccb-b7f4-4182-b055-ff370abded79" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extract_initial_statement/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extract_initial_statement/data_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/extract_initial_statement/extract_data_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extract_initial_statement/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/extract_initial_statement/extract.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/function_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/function_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/path_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/path_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compress/compress.py" beforeDir="false" afterPath="$PROJECT_DIR$/compress/compress.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid19dataset/asymptomat_initial_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid19dataset/death_initial_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid19dataset/economi_initial_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid19dataset/elder_initial_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid19dataset/incub_initial_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid19dataset/preprocessed_data/preprocessed_data.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid19dataset/preprocessed_data/preprocessed_data_sm.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid19dataset/protest_initial_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid19dataset/racism_initial_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid19dataset/symptom_initial_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid19dataset/transmiss_initial_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid19dataset/travel_initial_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid19dataset/unemploy_initial_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extract_initial_statement/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/initial_extract/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extract_initial_statement/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/initial_extract/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extract_initial_statement/extract_data_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/initial_extract/extract_data_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extract_initial_statement/sentence_details.py" beforeDir="false" afterPath="$PROJECT_DIR$/initial_extract/sentence_details.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,15 +44,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/extract_initial_statement/sentence_details.py">
+        <entry file="file://$PROJECT_DIR$/initial_extract/sentence_details.py">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/extract_initial_statement/extract_data_util.py">
+        <entry file="file://$PROJECT_DIR$/initial_extract/extract_data_util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-841">
-              <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+            <state relative-caret-position="-827">
+              <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
               <folding>
                 <element signature="e#251#260#0" expanded="true" />
               </folding>
@@ -48,12 +61,26 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/extract_initial_statement/extract.py">
+        <entry file="file://$PROJECT_DIR$/initial_extract/extract.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="278" column="12" lean-forward="true" selection-start-line="278" selection-start-column="12" selection-end-line="278" selection-end-column="12" />
+            <state relative-caret-position="-475">
+              <caret line="244" column="38" lean-forward="true" selection-start-line="244" selection-start-column="38" selection-end-line="244" selection-end-column="38" />
               <folding>
                 <element signature="e#415#433#0" expanded="true" />
+                <element signature="e#8429#8616#0" />
+                <element signature="e#8732#9308#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compress/compress.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+              <folding>
+                <element signature="e#537#568#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,7 +101,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/function_util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
+            <state relative-caret-position="-63">
               <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
@@ -91,8 +118,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/path_util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="26" column="91" selection-start-line="26" selection-start-column="91" selection-end-line="26" selection-end-column="91" />
+            <state relative-caret-position="508">
+              <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -140,7 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/compress/compress.py" />
         <option value="$PROJECT_DIR$/compress/__init__.py" />
         <option value="$PROJECT_DIR$/organize/__init__.py" />
         <option value="$PROJECT_DIR$/preprocess-corpus/__init__.py" />
@@ -167,13 +193,15 @@
         <option value="$PROJECT_DIR$/path_util.py" />
         <option value="$PROJECT_DIR$/function_util.py" />
         <option value="$PROJECT_DIR$/extract_initial_statement/extract.py" />
+        <option value="$PROJECT_DIR$/compress/compress.py" />
+        <option value="$PROJECT_DIR$/initial_extract/extract.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="442" />
+    <option name="x" value="862" />
     <option name="y" value="23" />
-    <option name="width" value="1238" />
+    <option name="width" value="818" />
     <option name="height" value="977" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -202,7 +230,13 @@
             <path>
               <item name="multi_doc_summ_proj" type="b2602c69:ProjectViewProjectNode" />
               <item name="multi_doc_summ_proj" type="462c0819:PsiDirectoryNode" />
-              <item name="extract_initial_statement" type="462c0819:PsiDirectoryNode" />
+              <item name="covid19dataset" type="462c0819:PsiDirectoryNode" />
+              <item name="step2_initial_extraction" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="multi_doc_summ_proj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="multi_doc_summ_proj" type="462c0819:PsiDirectoryNode" />
+              <item name="initial_extract" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="multi_doc_summ_proj" type="b2602c69:ProjectViewProjectNode" />
@@ -387,7 +421,7 @@
     <frame x="0" y="23" width="1680" height="977" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16515973" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23628692" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -400,7 +434,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3299435" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.26280892" side_tool="true" weight="0.15819208" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.7371911" visible="true" weight="0.21242937" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.7371911" visible="true" weight="0.21242937" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3299435" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -441,7 +475,7 @@
     <entry file="file://$PROJECT_DIR$/covid_summary/extract/data_util.py" />
     <entry file="file://$PROJECT_DIR$/covid19dataset/extract_raw_data.rmd" />
     <entry file="file://$PROJECT_DIR$/preprocess_corpus/data_util.py" />
-    <entry file="file://$PROJECT_DIR$/extract_initial_statement/__init__.py">
+    <entry file="file://$PROJECT_DIR$/initial_extract/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
@@ -481,9 +515,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
@@ -494,18 +525,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/extract_initial_statement/sentence_details.py">
+    <entry file="file://$PROJECT_DIR$/initial_extract/sentence_details.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/preprocess_corpus/preprocess_corpus.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -519,27 +540,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/path_util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="26" column="91" selection-start-line="26" selection-start-column="91" selection-end-line="26" selection-end-column="91" />
+        <state relative-caret-position="508">
+          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/extract_initial_statement/extract_data_util.py">
+    <entry file="file://$PROJECT_DIR$/initial_extract/extract_data_util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-841">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        <state relative-caret-position="-827">
+          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
           <folding>
             <element signature="e#251#260#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/extract_initial_statement/extract.py">
+    <entry file="file://$PROJECT_DIR$/compress/compress.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="278" column="12" lean-forward="true" selection-start-line="278" selection-start-column="12" selection-end-line="278" selection-end-column="12" />
+        <state relative-caret-position="435">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#537#568#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/function_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-63">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/initial_extract/extract.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-475">
+          <caret line="244" column="38" lean-forward="true" selection-start-line="244" selection-start-column="38" selection-end-line="244" selection-end-column="38" />
           <folding>
             <element signature="e#415#433#0" expanded="true" />
+            <element signature="e#8429#8616#0" />
+            <element signature="e#8732#9308#0" />
           </folding>
         </state>
       </provider>

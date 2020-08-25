@@ -16,8 +16,8 @@ Attributes:
 import gensim.downloader as api
 import math
 import os
-from covid_summary.path_util import DATA_PATH
-from covid_summary.extract.extract import extracted_og_articles
+from path_util import DATA_PATH
+from initial_extract.extract import sorted_all_sentence_details
 from nltk.corpus import stopwords
 
 TOPIC = 'economi'

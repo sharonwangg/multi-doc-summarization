@@ -20,8 +20,8 @@ from data_util import get_stopwords, get_predictor
 from path_util import DATA_PATH
 from function_util import strip_symbols, normalize, delete_stopwords
 
-from extract_initial_statement.extract_data_util import get_general_words, get_topics_lines, get_vectors_lines, get_days
-from extract_initial_statement.sentence_details import SentenceDetails
+from initial_extract.extract_data_util import get_general_words, get_topics_lines, get_vectors_lines, get_days
+from initial_extract.sentence_details import SentenceDetails
 
 THRESHOLD = 0.3
 DEFAULT_SUMMARY_LENGTH = 200
@@ -30,6 +30,7 @@ STOPWORDS = get_stopwords()
 DAYS = get_days()
 PREDICTOR = get_predictor()
 TOPICS_LINES = get_topics_lines()
+VECTORS_LINES = get_vectors_lines()
 
 def has_day(s):
     """
@@ -62,7 +63,7 @@ def get_topic_to_phrase():
     """
     topic_to_phrase = {}
     for i in range(0, len(TOPICS_LINES), 2):
-        topic = normalize(TOPICS_LINES[i].split()[1][1:][:-2])
+        topic = TOPICS_LINES[i].split()[1][1:][:-2].strip().lower()
         phrase = []
         for ngram in TOPICS_LINES[i + 1].split():
             phrase.append(normalize(ngram))
@@ -76,8 +77,7 @@ def get_word_to_vector():
         (dict from str to list of floats): Dictionary for JoSe word embedding.
     """
     word_to_vector = {}
-    vectors_lines = get_vectors_lines()
-    for line in vectors_lines:
+    for line in VECTORS_LINES:
         word = ""
         vector = [float(i) for i in line.split()[-100: ]]
         for i in range(len(line.split()[:-100])):
@@ -237,11 +237,11 @@ def extract(topic_to_phrase, timestamped_articles):
             words = get_words(sent.text)
 
             for topic, phrase in topic_to_phrase.items():
-                if is_quality_sentence(topic, phrase, words, sent, topic_to_summary[topic]):
+                if is_quality_sentence(normalize(topic), phrase, words, sent, topic_to_summary[topic]):
                     sentence_to_add = SentenceDetails(
                         sent.text.strip(),
                         datetime,
-                        calculate_relevancy_score(topic, words, word_to_vector),
+                        calculate_relevancy_score(normalize(topic), words, word_to_vector),
                         article_sents)
                     all_sentence_details[topic].append(sentence_to_add)
                     topic_to_summary[topic].add(sent.text.strip())
@@ -257,7 +257,7 @@ def get_summary_path(topic):
     Returns:
         (str): Path of extracted summary.
     """
-    return os.path.join(DATA_PATH, topic + '_initial_summary.txt')
+    return os.path.join(DATA_PATH, 'initial_extraction', topic + '_initial_summary.txt')
 
 
 def get_extracted_dates_path(topic):
@@ -298,7 +298,7 @@ def output(sorted_all_sentence_details):
 
             for i in range(summary_length):
                 sentence_detail = sentence_details[i]
-                f.write(f'{str(sentence_detail.date)}\t{sentence_detail.text.strip}\n')
+                f.write(f'{str(sentence_detail.date)}\t{str(sentence_detail.text.strip())}\n')
 
 
 topic_to_phrase = get_topic_to_phrase()
