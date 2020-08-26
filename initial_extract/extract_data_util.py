@@ -1,11 +1,13 @@
 """
-Utility module for loading data.
+Utility module for loading data for extract.py.
 
 Attributes:
-    TOPIC (str): Type of topics of summary.
+    TOPIC_TYPE (str): Type of topics of summary.
     TOPICS_PATH (str): Path for topics to extract.
-    PREDICTOR_PATH (str): Path for allennlp predictor.
-    NLP (spacy.lang.en.English): Spacy object.
+    GENERAL_WORDS (frozenset of str): Words that shouldn't be a sub/obj in a quality sentence.
+    DAYS (list of str): List of days that quality sentences shouldn't contain.
+    TOPICS_LINES (list of str): Lines of the topics file.
+    VECTORS_LINES (list of str): Lines of the Jose vectors file.
 """
 import os
 from path_util import DATA_PATH, JOSE_VECTORS_PATH
@@ -79,3 +81,7 @@ def get_vectors_lines():
         return f.read().splitlines()
 
 
+GENERAL_WORDS = get_general_words()
+DAYS = get_days()
+TOPICS_LINES = get_topics_lines()
+VECTORS_LINES = get_vectors_lines()

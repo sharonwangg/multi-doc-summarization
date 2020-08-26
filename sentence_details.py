@@ -1,3 +1,6 @@
+"""
+Represents a sentence and stores its text, publish date, cosine similarity score, and original article.
+"""
 class SentenceDetails:
     def __init__(self, text, date, relevancy_score, og_article):
         """

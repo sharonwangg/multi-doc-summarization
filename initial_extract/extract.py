@@ -2,12 +2,9 @@
 Extracts relevant sentences from corpus related to category names.
 
 Attributes:
-    THRESHOLD (float): The threshold for cosine similarity.
-    GENERAL_WORDS (frozenset of str): Words that shouldn't be a sub/obj.
-    STOPWORDS (list of str): Stopwords.
-    DAYS (list of str): List of days.
-    PREDICTOR (SemanticRoleLabelerPredictor): SRL object.
-    TOPICS_LINES (list of str): Lines of the topics file.
+    THRESHOLD (float): The threshold for cosine similarity. If a sentence's cosine similarity is higher than this,
+        it's determined to be relevant.
+    DEFAULT_SUMMARY_LENGTH (int): The max length of a summary for a topic.
 """
 import numpy as np
 import numpy.linalg as la
@@ -15,22 +12,15 @@ import os
 
 from preprocess_corpus.preprocess_corpus import preprocessed_data
 
-from data_util import get_stopwords, get_predictor
-
+from data_util import PREDICTOR
 from path_util import DATA_PATH
 from function_util import strip_symbols, normalize, delete_stopwords
 
-from initial_extract.extract_data_util import get_general_words, get_topics_lines, get_vectors_lines, get_days
-from initial_extract.sentence_details import SentenceDetails
+from initial_extract.extract_data_util import GENERAL_WORDS, TOPICS_LINES, VECTORS_LINES, DAYS
+from sentence_details import SentenceDetails
 
 THRESHOLD = 0.3
 DEFAULT_SUMMARY_LENGTH = 200
-GENERAL_WORDS = get_general_words()
-STOPWORDS = get_stopwords()
-DAYS = get_days()
-PREDICTOR = get_predictor()
-TOPICS_LINES = get_topics_lines()
-VECTORS_LINES = get_vectors_lines()
 
 def has_day(s):
     """
@@ -220,7 +210,7 @@ def extract(topic_to_phrase, timestamped_articles):
 
     Returns:
         (dict from str to list of SentenceDetails): Maps topics to a list of SentenceDetails that each represent a
-            summary. Each SentenceDetail contains a date, cosine similarity score, and original article.
+            summary. Each SentenceDetail contains its text, date, cosine similarity score, and original article.
     """
     all_sentence_details = {}
     topic_to_summary = {}
@@ -257,7 +247,7 @@ def get_summary_path(topic):
     Returns:
         (str): Path of extracted summary.
     """
-    return os.path.join(DATA_PATH, 'initial_extraction', topic + '_initial_summary.txt')
+    return os.path.join(DATA_PATH, 'step2_initial_extraction', topic + '_initial_summary.txt')
 
 
 def get_extracted_dates_path(topic):
@@ -304,5 +294,5 @@ def output(sorted_all_sentence_details):
 topic_to_phrase = get_topic_to_phrase()
 word_to_vector = get_word_to_vector()
 all_sentence_details = extract(topic_to_phrase, preprocessed_data)
-sorted_all_sentence_details = sort_by_relevancy_score(all_sentence_details)
-output(sorted_all_sentence_details)
+relevancy_sorted_all_sentence_details = sort_by_relevancy_score(all_sentence_details)
+output(relevancy_sorted_all_sentence_details)

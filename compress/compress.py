@@ -2,60 +2,31 @@
 Reduces the redundancy of a summary using Word Mover's Distance.
 
 Attributes:
-    TOPIC (str): Topic of the summary.
-    INITIAL_SUMMARY_PATH (str): Path for summary.
-    INITIAL_DATES_PATH (str): Path for dates of sentences in summary.
-    COMPRESSED_SUMMARY_PATH (str): Path for compressed summary.
-    COMPRESSED_DATES_PATH (str): Path for dates of sentences in compressed
-        summary.
-
-    STOPWORDS (list of str): Stopwords.
-    THRESHOLD (float): Threshold for Word Mover's Distance.
-    MODEL (model): Word2Vec model.
+    WMD_THRESHOLD (float): Threshold for Word Mover's Distance. If 2 sentences have a WMD lower than this, they are too
+        similar and 1 of them must be removed from the summary.
+    TOPICS (list of str): List of topics that are summarized.
 """
-import gensim.downloader as api
 import math
 import os
+from data_util import WORD2VEC_MODEL
+from function_util import delete_stopwords
 from path_util import DATA_PATH
-from initial_extract.extract import sorted_all_sentence_details
-from nltk.corpus import stopwords
+from sentence_details import SentenceDetails
+from initial_extract.extract import relevancy_sorted_all_sentence_details
 
-TOPIC = 'economi'
-INITIAL_SUMMARY_PATH = os.path.join(DATA_PATH, TOPIC + '_initial_summary.txt')
-INITIAL_DATES_PATH = os.path.join(DATA_PATH, TOPIC + '_initial_summary_dates.txt')
-COMPRESSED_SUMMARY_PATH = os.path.join(DATA_PATH, TOPIC + '_filtered_summary.txt')
-COMPRESSED_DATES_PATH = os.path.join(DATA_PATH, TOPIC + '_filtered_summary_dates.txt')
+WMD_THRESHOLD = 1.51
+TOPICS = relevancy_sorted_all_sentence_details.keys()
 
-STOPWORDS = stopwords.words('english')
-THRESHOLD = 1.51
-MODEL = api.load('word2vec-google-news-300')
-
-def get_sentences():
-    """
-    Returns:
-        (list of str): Summary sentences.
-    """
-    with open(INITIAL_SUMMARY_PATH, 'r') as f:
-        return f.read().splitlines()
-
-def get_split_sentences(sentences):
-    """
-    Returns:
-        (list of list of str): List of list of words where each inner list is
-            a sentence.
-    """
-
-    return [strip_symbols(sentence.lower().split()) for sentence in sentences]
 
 def get_tfidf(word, split_sentence, idfs):
     """
     Args:
         word (str): Some string representing a word.
-        sentence (str): Some string representing a sentence.
+        split_sentence (list of str): Sentence. List of words.
         idfs (dict from str to float): Dict mapping `word` to its idf value.
 
     Returns:
-        (float): tfidf value of `word` in `sentence`.
+        (float): tfidf value of `word` in `split_sentence`.
     """
     tf = split_sentence.count(word.lower())
     return tf * idfs[word]
@@ -96,13 +67,6 @@ def get_idfs(split_sentences):
 
     return idfs
 
-def get_dates():
-    """
-    Returns:
-        (list of str): Dates.
-    """
-    with open(INITIAL_DATES_PATH, 'r') as f:
-        return f.read().splitlines()
 
 def get_score(split_sentence, idfs):
     """
@@ -132,74 +96,72 @@ def strip_symbols(s):
         s = s[:-1]
     return s
 
-def get_compressed_results(sentences, split_sentences, idfs, dates, og_articles):
+
+def compress(sentence_details):
     """
     Args:
-        sentences (list of str): Summary sentences.
-        split_sentences (list of list of str): List of list of words where each
-            inner list is a sentence.
-        idfs (dict from str to float): Dict mapping words to their idf values.
-        dates (list of str): Dates.
-        og_articles (list of list of sentences): Articles that correspond with each sentence
-            in summary.
+        sentence_details (list of SentenceDetails): Represents a summary. Each SentenceDetail contains its text, publish
+            date, cosine similarity score, and original article.
 
     Returns:
-        (list of str): Compressed summary sentences.
-        (list of str): Compressed summary's dates.
-        (list of str): Compressed original articles.
+        (list of SentenceDetails): Compressed summary.
     """
-    compressed_summary = []
-    compressed_dates = []
-    compressed_og_articles = []
-
-    for i in range(len(split_sentences)):
-        split_sentences[i] = [word for word in split_sentences[i] if word not in STOPWORDS]
+    compressed_sentence_details = []
+    for i, sentence_detail in enumerate(sentence_details):
+        split_sentence1 = delete_stopwords(sentence_detail.text.split())
         redundant = False
         for j in reversed(range(i)):
-            distance = MODEL.wmdistance(split_sentences[i], split_sentences[j])
-            if distance < THRESHOLD:
+            split_sentence2 = delete_stopwords(sentence_details[j].text.split())
+            distance = WORD2VEC_MODEL.wmdistance(split_sentence1, split_sentence2)
+            if distance < WMD_THRESHOLD:
                 redundant = True
                 break
-        sentence1 = sentences[i]
-        date1 = dates[i]
-        article1 = og_articles[i]
+
+        sentence1 = sentence_detail.text
+        date1 = sentence_detail.date
+        relevancy_score1 = sentence_detail.relevancy_score
+        article1 = sentence_detail.og_article
         if redundant:
-            sentence2 = sentences[j]
+            sentence2 = sentence_details[j].text
 
-            sentence1_score = get_score(split_sentences[i], idfs)
-            sentence2_score = get_score(split_sentences[j], idfs)
-
-            print(0, sentence1 + " " + str(sentence1_score))
-            print(1, sentence2 + " " + str(sentence2_score))
+            sentence1_score = get_score(split_sentence1, get_idfs(split_sentence1))
+            sentence2_score = get_score(split_sentence2, get_idfs(split_sentence2))
+            print(0, sentence1 + ' ' + str(sentence1_score))
+            print(1, sentence2 + ' ' + str(sentence2_score))
 
             if sentence1_score > sentence2_score:
-                compressed_summary.append(sentence1)
-                compressed_dates.append(date1)
-                compressed_og_articles.append(article1)
-
-                compressed_summary[j] = ""
-                compressed_dates[j] = ""
-                compressed_og_articles[j] = []
+                # Add sentence1 and delete sentence2 from `compressed_sentence_details`.
+                compressed_sentence_details.append(SentenceDetails(text=sentence1,
+                                                                   date=date1,
+                                                                   relevancy_score=relevancy_score1,
+                                                                   og_article=article1))
+                compressed_sentence_details[j] = SentenceDetails(text='NA',
+                                                                 date='NA',
+                                                                 relevancy_score=0,
+                                                                 og_article=[])
                 print(2, sentence1)
             else:
-                compressed_summary.append("")
-                compressed_dates.append("")
-                compressed_og_articles.append([])
+                # Add an empty sentence to maintain indexing.
+                compressed_sentence_details.append(SentenceDetails(text='NA',
+                                                                   date='NA',
+                                                                   relevancy_score=0,
+                                                                   og_article=[]))
                 print(2, sentence2)
         else:
-            compressed_summary.append(sentence1)
-            compressed_dates.append(date1)
-            compressed_og_articles.append(article1)
+            # Add new sentence as normal as it is not redundant with any previous sentences.
+            compressed_sentence_details.append(SentenceDetails(text=sentence1,
+                                                               date=date1,
+                                                               relevancy_score=relevancy_score1,
+                                                               og_article=article1))
 
-    return compressed_summary, compressed_dates, compressed_og_articles
+    return compressed_sentence_details
 
-def output(compressed_summary, compressed_dates):
+
+def output(topic, compressed_sentence_details):
     """
     Args:
-        compressed_summary (list of str): List of sentences in compressed
-            summary.
-        compressed_dates (list of str): List of dates corresponding to
-            compressed summary.
+        topic (str): Topic of `compressed_sentence_details`.
+        compressed_sentence_details (list of SentenceDetails): Compressed summary.
     """
     with open(COMPRESSED_SUMMARY_PATH, 'w') as compressed_summary_f:
         with open(COMPRESSED_DATES_PATH, 'w') as compressed_dates_f:
@@ -209,12 +171,11 @@ def output(compressed_summary, compressed_dates):
                 compressed_summary_f.write(compressed_summary[i] + '\n')
                 compressed_dates_f.write(compressed_dates[i] + '\n')
 
-sentences = get_sentences()
-split_sentences = get_split_sentences(sentences)
-idfs = get_idfs(split_sentences)
-dates = get_dates()
-compressed_summary, compressed_dates, topic_specific_compressed_og_articles = get_compressed_results(sentences, split_sentences, idfs, dates, extracted_og_articles[TOPIC])
-output(compressed_summary, compressed_dates)
 
-# delete empty inner lists
-topic_specific_compressed_og_articles = [article for article in topic_specific_compressed_og_articles if article]
+compressed_all_sentence_details = {}
+for topic, sentence_details in relevancy_sorted_all_sentence_details.items():
+    compressed_all_sentence_details[topic] = compress(sentence_details)
+    output(topic, compressed_all_sentence_details[topic])
+
+    # delete empty inner lists
+    topic_specific_compressed_og_articles = [article for article in topic_specific_compressed_og_articles if article]

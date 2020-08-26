@@ -24,7 +24,7 @@ DATA_PATH = os.path.join('/',
 # Paths needed for `preprocess_corpus`.
 RAW_CORPUS_PATH = os.path.join(DATA_PATH, 'raw_data', 'raw_corpus_sm.txt')
 RAW_DATETIMES_PATH = os.path.join(DATA_PATH, 'raw_data', 'raw_datetimes_sm.txt')
-PREPROCESSED_DATA_PATH = os.path.join(DATA_PATH, 'preprocessed_data', 'preprocessed_data_sm.txt')
+PREPROCESSED_DATA_PATH = os.path.join(DATA_PATH, 'step1_preprocessed_data', 'preprocessed_data_sm.txt')
 
 # Path needed for `extract`.
 JOSE_VECTORS_PATH = os.path.join(DATA_PATH, 'jose.txt')
