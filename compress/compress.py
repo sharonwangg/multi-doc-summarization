@@ -16,7 +16,7 @@ from initial_extract.extract import relevancy_sorted_all_sentence_details
 
 WMD_THRESHOLD = 1.51
 TOPICS = relevancy_sorted_all_sentence_details.keys()
-
+TOPIC = 'symptom'
 
 def get_tfidf(word, split_sentence, idfs):
     """
@@ -160,7 +160,6 @@ def output(topic, compressed_sentence_details):
             f.write(f'{str(sentence_detail.date)}\t{str(sentence_detail.text.strip())}\n')
 
 
-compressed_all_sentence_details = {}
-for topic, sentence_details in relevancy_sorted_all_sentence_details.items():
-    compressed_all_sentence_details[topic] = compress(sentence_details)
-    output(topic, compressed_all_sentence_details[topic])
+sorted_sentence_details = relevancy_sorted_all_sentence_details[TOPIC]
+compressed_topic_specific_sentence_details = compress(sorted_sentence_details)
+output(TOPIC, compressed_topic_specific_sentence_details)

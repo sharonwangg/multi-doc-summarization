@@ -19,10 +19,11 @@ from word2number import w2n
 from calendar import monthrange, IllegalMonthError
 from dateutil.parser import parse
 from path_util import DATA_PATH
-from compress.compress import compressed_all_sentence_details
+from compress.compress import compressed_topic_specific_sentence_details
+from sentence_details import SentenceDetails
 
 TOPIC = 'symptom'
-ORGANIZED_SUMMARY_PATH = os.path.join(DATA_PATH, TOPIC + '_organized_summary.txt')
+ORGANIZED_SUMMARY_PATH = os.path.join(DATA_PATH, 'step4_organized_summary', TOPIC + '_organized_summary.txt')
 NLP = spacy.load('en_core_web_sm')
 MONTHS = [[1, 'january'],
           [1, 'jan'],
@@ -807,24 +808,33 @@ def order(final_summary):
     """
     for country, mini_summary in final_summary.items():
         for i, sentence_detail in enumerate(mini_summary):
-            date = sentence_detail.date
             sentence = sentence_detail.text
+            date = sentence_detail.date
+            relevancy_score = sentence_detail.relevancy_score
+            article = sentence_detail.og_article
             doc = NLP(sentence)
 
             for ent in doc.ents:
                 if ent.label_ == 'DATE':
-                    setattr(sentence_detail, date, handle_relative_time_phrases(ent, date))
-                    setattr(sentence_detail, date, handle_specific_time_phrases(ent, sentence_detail.date))
+                    mini_summary[i] = SentenceDetails(text=sentence,
+                                                      date=handle_relative_time_phrases(ent, date),
+                                                      relevancy_score=relevancy_score,
+                                                      og_article=article)
+                    mini_summary[i] = SentenceDetails(text=sentence,
+                                                      date=handle_specific_time_phrases(ent, mini_summary[i].date),
+                                                      relevancy_score=relevancy_score,
+                                                      og_article=article)
 
                     print(0, sentence)
                     print(1, date)
                     print(2, ent)
-                    print(3, sentence_detail.date)
+                    print(3, mini_summary[i].date)
                     print('\n')
 
-        final_summary[country].sort(key=lambda i: i[0])
+        final_summary[country].sort(key=lambda j: j.date)
 
     return final_summary
+
 
 def output(final_summary):
     """
@@ -841,6 +851,6 @@ def output(final_summary):
             f.write('\n')
 
 
-loc_organized_summary = organize(compressed_all_sentence_details[TOPIC])
-final_summary = order(loc_organized_summary)
-output(final_summary)
+loc_organized_summary = organize(compressed_topic_specific_sentence_details)
+organized_summary = order(loc_organized_summary)
+output(organized_summary)
