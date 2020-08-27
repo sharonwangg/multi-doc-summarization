@@ -18,11 +18,11 @@ import os
 from word2number import w2n
 from calendar import monthrange, IllegalMonthError
 from dateutil.parser import parse
-from covid_summary.path_util import DATA_PATH
-from covid_summary.compress.compress import topic_specific_compressed_og_articles, TOPIC, COMPRESSED_SUMMARY_PATH, COMPRESSED_DATES_PATH
+from path_util import DATA_PATH
+from compress.compress import compressed_all_sentence_details
 
+TOPIC = 'symptom'
 ORGANIZED_SUMMARY_PATH = os.path.join(DATA_PATH, TOPIC + '_organized_summary.txt')
-
 NLP = spacy.load('en_core_web_sm')
 MONTHS = [[1, 'january'],
           [1, 'jan'],
@@ -654,7 +654,7 @@ def is_valid_location(location, possible_countries):
     """
     return len(possible_countries) == 1 or location == possible_countries[0].name
 
-def add_sentence(loc_stamped_sentences, country, timestamped_sentence):
+def add_sentence(loc_stamped_sentences, country, sentence_detail):
     """
     Args:
         loc_stamped_sentences (dict from str to list): Keys are countries.
@@ -670,9 +670,9 @@ def add_sentence(loc_stamped_sentences, country, timestamped_sentence):
             `timestamped_sentence` being added as a value for key `country`.
     """
     if country in loc_stamped_sentences.keys():
-        loc_stamped_sentences[country].append(timestamped_sentence)
+        loc_stamped_sentences[country].append(sentence_detail)
     else:
-        loc_stamped_sentences[country] = [timestamped_sentence]
+        loc_stamped_sentences[country] = [sentence_detail]
 
     return loc_stamped_sentences
 
@@ -757,7 +757,7 @@ def get_country_from_sentence(doc):
 
     return ""
 
-def organize(timestamped_sentences, topic_specific_og_articles):
+def organize(sentence_details):
     """
     Args:
         timestamped_sentences (list of lists containing datetimes and str): List of lists where each inner list contains
@@ -771,26 +771,27 @@ def organize(timestamped_sentences, topic_specific_og_articles):
             Organizes `timestamped_sentences` by country.
     """
     loc_organized_sentences = {}
-    for i, timestamped_sentence in enumerate(timestamped_sentences):
-        str_sentence = timestamped_sentence[1]
+    for i, sentence_detail in enumerate(sentence_details):
+        str_sentence = sentence_detail.text
         doc = NLP(str_sentence)
-        og_article = topic_specific_og_articles[i]
+        og_article = sentence_detail.og_article
 
         country_from_sentence = get_country_from_sentence(doc)
         if country_from_sentence:
             print('country from sentence')
-            loc_organized_sentences = add_sentence(loc_organized_sentences, country_from_sentence, timestamped_sentence)
+            loc_organized_sentences = add_sentence(loc_organized_sentences, country_from_sentence, sentence_detail)
             print(0, str_sentence)
             print(1, country_from_sentence)
         else:
             country_from_article = get_country_from_article(str_sentence, doc, og_article)
             if country_from_article:
                 print('country from article')
-                loc_organized_sentences = add_sentence(loc_organized_sentences, country_from_article, timestamped_sentence)
+                loc_organized_sentences = add_sentence(loc_organized_sentences, country_from_article, sentence_detail)
                 print(0, str_sentence)
                 print(1, country_from_article)
 
     return loc_organized_sentences
+
 
 def order(final_summary):
     """
@@ -805,20 +806,20 @@ def order(final_summary):
             corresponding date.
     """
     for country, mini_summary in final_summary.items():
-        for i, timestamped_sentence in enumerate(mini_summary):
-            date = timestamped_sentence[0]
-            sentence = timestamped_sentence[1]
+        for i, sentence_detail in enumerate(mini_summary):
+            date = sentence_detail.date
+            sentence = sentence_detail.text
             doc = NLP(sentence)
 
             for ent in doc.ents:
                 if ent.label_ == 'DATE':
-                    timestamped_sentence[0] = handle_relative_time_phrases(ent, date)
-                    timestamped_sentence[0] = handle_specific_time_phrases(ent, timestamped_sentence[0])
+                    setattr(sentence_detail, date, handle_relative_time_phrases(ent, date))
+                    setattr(sentence_detail, date, handle_specific_time_phrases(ent, sentence_detail.date))
 
                     print(0, sentence)
                     print(1, date)
                     print(2, ent)
-                    print(3, timestamped_sentence[0])
+                    print(3, sentence_detail.date)
                     print('\n')
 
         final_summary[country].sort(key=lambda i: i[0])
@@ -835,17 +836,11 @@ def output(final_summary):
         for country in sorted(final_summary, key=lambda country: len(final_summary[country]), reverse=True):
             mini_summary = final_summary[country]
             f.write(country.upper() + ':' + '\n')
-            for datetime, sentence in mini_summary:
-                date = str(datetime).split()[0]
-                f.write(f"{date}\t{sentence}\n")
+            for sentence_detail in mini_summary:
+                f.write(f'{sentence_detail.date}\t{sentence_detail.text}\n')
             f.write('\n')
 
-dates = get_dates()
-sentences = get_sentences()
 
-{dates[i]: sentences[i] for i in range(len(dates))}
-
-timestamped_sentences = get_timestamped_sentences(dates, sentences)
-loc_organized_summary = organize(timestamped_sentences, topic_specific_compressed_og_articles)
+loc_organized_summary = organize(compressed_all_sentence_details[TOPIC])
 final_summary = order(loc_organized_summary)
 output(final_summary)

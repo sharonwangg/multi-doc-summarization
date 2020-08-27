@@ -9,7 +9,7 @@ Attributes:
 import math
 import os
 from data_util import WORD2VEC_MODEL
-from function_util import delete_stopwords
+from function_util import delete_stopwords, strip_symbols
 from path_util import DATA_PATH
 from sentence_details import SentenceDetails
 from initial_extract.extract import relevancy_sorted_all_sentence_details
@@ -29,7 +29,9 @@ def get_tfidf(word, split_sentence, idfs):
         (float): tfidf value of `word` in `split_sentence`.
     """
     tf = split_sentence.count(word.lower())
-    return tf * idfs[word]
+    if word in idfs.keys():
+        return tf * idfs[word]
+    return 0
 
 def get_tfidf_vector(split_sentence, idfs):
     """
@@ -82,20 +84,6 @@ def get_score(split_sentence, idfs):
         score += tfidf
     return score
 
-def strip_symbols(s):
-    """
-    Args:
-        s (str): Some string.
-
-    Returns:
-        (str): `s` without leading or trailing symbols.
-    """
-    if not s[0].isalnum():
-        s = s[1:]
-    if len(s) > 1 and not s[-1].isalnum():
-        s = s[:-1]
-    return s
-
 
 def compress(sentence_details):
     """
@@ -108,10 +96,10 @@ def compress(sentence_details):
     """
     compressed_sentence_details = []
     for i, sentence_detail in enumerate(sentence_details):
-        split_sentence1 = delete_stopwords(sentence_detail.text.split())
+        split_sentence1 = delete_stopwords(strip_symbols(sentence_detail.text.lower().split()))
         redundant = False
         for j in reversed(range(i)):
-            split_sentence2 = delete_stopwords(sentence_details[j].text.split())
+            split_sentence2 = delete_stopwords(strip_symbols(sentence_details[j].text.lower().split()))
             distance = WORD2VEC_MODEL.wmdistance(split_sentence1, split_sentence2)
             if distance < WMD_THRESHOLD:
                 redundant = True
@@ -154,7 +142,11 @@ def compress(sentence_details):
                                                                relevancy_score=relevancy_score1,
                                                                og_article=article1))
 
-    return compressed_sentence_details
+    return [sentence_detail for sentence_detail in compressed_sentence_details if sentence_detail.text != 'NA']
+
+
+def get_compressed_summary_path(topic):
+    return os.path.join(DATA_PATH, 'step3_compressed_summary', topic + '_compressed_summary.txt')
 
 
 def output(topic, compressed_sentence_details):
@@ -163,19 +155,12 @@ def output(topic, compressed_sentence_details):
         topic (str): Topic of `compressed_sentence_details`.
         compressed_sentence_details (list of SentenceDetails): Compressed summary.
     """
-    with open(COMPRESSED_SUMMARY_PATH, 'w') as compressed_summary_f:
-        with open(COMPRESSED_DATES_PATH, 'w') as compressed_dates_f:
-            for i in range(len(compressed_summary)):
-                if compressed_summary[i] == "" and compressed_dates[i] == "":
-                    continue
-                compressed_summary_f.write(compressed_summary[i] + '\n')
-                compressed_dates_f.write(compressed_dates[i] + '\n')
+    with open(get_compressed_summary_path(topic), 'w') as f:
+        for sentence_detail in compressed_sentence_details:
+            f.write(f'{str(sentence_detail.date)}\t{str(sentence_detail.text.strip())}\n')
 
 
 compressed_all_sentence_details = {}
 for topic, sentence_details in relevancy_sorted_all_sentence_details.items():
     compressed_all_sentence_details[topic] = compress(sentence_details)
     output(topic, compressed_all_sentence_details[topic])
-
-    # delete empty inner lists
-    topic_specific_compressed_og_articles = [article for article in topic_specific_compressed_og_articles if article]

@@ -282,12 +282,7 @@ def output(sorted_all_sentence_details):
     """
     for topic, sentence_details in sorted_all_sentence_details.items():
         with open(get_summary_path(topic), 'w') as f:
-            summary_length = DEFAULT_SUMMARY_LENGTH
-            if len(sentence_details) < summary_length:
-                summary_length = len(sentence_details)
-
-            for i in range(summary_length):
-                sentence_detail = sentence_details[i]
+            for sentence_detail in sentence_details:
                 f.write(f'{str(sentence_detail.date)}\t{str(sentence_detail.text.strip())}\n')
 
 
@@ -295,4 +290,12 @@ topic_to_phrase = get_topic_to_phrase()
 word_to_vector = get_word_to_vector()
 all_sentence_details = extract(topic_to_phrase, preprocessed_data)
 relevancy_sorted_all_sentence_details = sort_by_relevancy_score(all_sentence_details)
+
+for topic, sentence_details in relevancy_sorted_all_sentence_details.items():
+    summary_length = DEFAULT_SUMMARY_LENGTH
+    if len(sentence_details) < summary_length:
+        summary_length = len(sentence_details)
+        continue
+    relevancy_sorted_all_sentence_details[topic] = sentence_details[:summary_length]
+
 output(relevancy_sorted_all_sentence_details)
