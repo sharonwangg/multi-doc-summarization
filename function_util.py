@@ -43,3 +43,6 @@ def delete_stopwords(string_list):
     """
     return [s for s in string_list if s not in STOPWORDS]
 
+
+
+

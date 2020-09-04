@@ -9,11 +9,13 @@ Attributes:
     TOPICS_LINES (list of str): Lines of the topics file.
     VECTORS_LINES (list of str): Lines of the Jose vectors file.
 """
-import os
-from path_util import DATA_PATH, JOSE_VECTORS_PATH
+from path_util import JOSE_VECTORS_PATH
+from initial_extract.extract_path_util import TOPICS_PATH
 
 TOPIC_TYPE = 'topics'
-TOPICS_PATH = os.path.join(DATA_PATH, 'cate_topics', 'res_' + TOPIC_TYPE + '.txt')
+
+THRESHOLD = 0.3
+DEFAULT_SUMMARY_LENGTH = 200
 
 
 def get_general_words():

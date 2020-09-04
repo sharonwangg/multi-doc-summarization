@@ -6,83 +6,13 @@ Attributes:
         similar and 1 of them must be removed from the summary.
     TOPICS (list of str): List of topics that are summarized.
 """
-import math
-import os
 from data_util import WORD2VEC_MODEL
 from function_util import delete_stopwords, strip_symbols
-from path_util import DATA_PATH
 from sentence_details import SentenceDetails
 from initial_extract.extract import relevancy_sorted_all_sentence_details
-
-WMD_THRESHOLD = 1.51
-TOPICS = relevancy_sorted_all_sentence_details.keys()
-TOPIC = 'symptom'
-
-def get_tfidf(word, split_sentence, idfs):
-    """
-    Args:
-        word (str): Some string representing a word.
-        split_sentence (list of str): Sentence. List of words.
-        idfs (dict from str to float): Dict mapping `word` to its idf value.
-
-    Returns:
-        (float): tfidf value of `word` in `split_sentence`.
-    """
-    tf = split_sentence.count(word.lower())
-    if word in idfs.keys():
-        return tf * idfs[word]
-    return 0
-
-def get_tfidf_vector(split_sentence, idfs):
-    """
-    Args:
-        sentence (str): Some string representing a sentence.
-        idfs (dict from str to float): Dict mapping words to their idf values.
-
-    Returns:
-        (dict from str to float): Dict mapping words to their tfidf values.
-    """
-    vector = {}
-
-    for i in range(len(split_sentence)):
-        word = split_sentence[i]
-        vector[word] = get_tfidf(word, split_sentence[i], idfs)
-    return vector
-
-def get_idfs(split_sentences):
-    """
-    Args:
-        split_sentences (list of list of str): List of list of words where each
-            inner list is a sentence.
-
-    Returns:
-        (dict from str to float): Dict mapping words to their idf values.
-    """
-    document_counts = {}
-    for sentence in split_sentences:
-        for word in sentence:
-            document_counts[word] = document_counts.get(word, 0) + 1
-
-    idfs = {}
-    for word, count in document_counts.items():
-        idfs[word] = math.log(len(split_sentences) / count)
-
-    return idfs
-
-
-def get_score(split_sentence, idfs):
-    """
-    Args:
-        sentence (str): Some string representing a sentence.
-        idfs (dict from str to float): Dict mapping words to their idf values.
-
-    Returns:
-        (float): Summation of tfidf scores of `sentence`.
-    """
-    score = 0
-    for tfidf in get_tfidf_vector(split_sentence, idfs).values():
-        score += tfidf
-    return score
+from compress.compress_path_util import get_compressed_summary_path
+from compress.compress_data_util import WMD_THRESHOLD, TOPIC
+from compress.tfidf_function_util import get_score, get_idfs
 
 
 def compress(sentence_details):
@@ -143,10 +73,6 @@ def compress(sentence_details):
                                                                og_article=article1))
 
     return [sentence_detail for sentence_detail in compressed_sentence_details if sentence_detail.text != 'NA']
-
-
-def get_compressed_summary_path(topic):
-    return os.path.join(DATA_PATH, 'step3_compressed_summary', topic + '_compressed_summary.txt')
 
 
 def output(topic, compressed_sentence_details):

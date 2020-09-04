@@ -1,200 +1,40 @@
-2020-03-23 00:00:00	Ontario: 503 confirmed cases, including six deaths.
-2020-01-23 00:00:00	Total reported cases: 27 Deaths: 0
-2020-04-24 00:00:00	Hawthorne Place, nine deaths, 47 cases.
-2020-04-04 00:00:00	Canada's death toll now 274.
-2020-03-24 00:00:00	Alberta: 358 cases, including two deaths.
-2020-02-11 00:00:00	As the death toll —
-2020-04-06 00:00:00	North zone: 89 cases, 4 deaths.
-2020-04-05 00:00:00	Calgary zone: 774 cases, 14 deaths.
-2020-04-04 00:00:00	Calgary zone: 734 cases, 13 deaths.
-2020-04-05 00:00:00	North zone: 77 cases, 4 deaths.
-2020-04-05 00:00:00	North zone: 77 cases, 4 deaths.
-2020-04-03 00:00:00	North zone: 57 cases, 3 deaths.
-2020-03-23 00:00:00	Quebec: 628 confirmed cases, including four deaths.
-2020-03-24 00:00:00	617 cases, including 13 deaths and 173 resolved.
-2020-04-10 00:00:00	The latest:   Worldwide COVID-19 death toll tops 100,000.
-2020-04-04 00:00:00	North zone: 68 cases, 3 deaths.
-2020-04-04 00:00:00	North zone: 68 cases, 3 deaths.
-2020-01-23 00:00:00	Total reported cases: 1,287 Deaths: 41  Jan. 26
-2020-03-23 00:00:00	Alberta: 301 confirmed cases, including one death.
-2020-03-18 00:00:00	Ontario reports 1st COVID-19-related death
-2020-04-25 00:00:00	The city's death toll sits at 50.
-2020-04-14 00:00:00	Death toll in Ontario reaches 411
-2020-03-29 00:00:00	Syria reported its first death.
-2020-03-19 00:00:00	Alberta: 146 confirmed cases, including one death.
-2020-04-24 00:00:00	Eatonville Care Centre, 37 deaths, 143 cases.
-2020-02-03 00:00:00	Hong Kong reports its first coronavirus death.
-2020-02-25 00:00:00	Iran reports 95 coronavirus cases and 15 deaths, disputes Qom lawmaker from Qom's claim of higher death toll.
-2020-03-13 00:00:00	Global death toll surpasses 5,000.
-2020-04-19 00:00:00	86 cases, 5 deaths in Guelph
-2020-04-11 00:00:00	Worldwide COVID-19 death toll tops 100,000.
-2020-04-26 00:00:00	Eatonville Care Centre, 38 deaths, 143 cases.
-2020-03-24 00:00:00	Ontario: 588 cases, including eight deaths and eight resolved.
-2020-01-23 00:00:00	Total reported cases: About 650 Deaths: 18  Jan. 24
-2020-04-05 00:00:00	Central zone: 67 cases, 1 death.
-2020-04-05 00:00:00	Central zone: 67 cases, 1 death.
-2020-04-27 00:00:00	Two new deaths were reported.
-2020-03-23 00:00:00	Nine deaths have been reported.
-2020-04-10 00:00:00	Modelling shows possible death toll
-2020-04-24 00:00:00	The country now has 5,603 cases, including 95 deaths.
-2020-04-03 00:00:00	Calgary zone: 671 cases, 11 deaths.
-2020-03-23 00:00:00	Ontario: 504 confirmed cases, including eight resolved and six deaths.
-2020-02-12 00:00:00	The latest death toll included over 100 clinically diagnosed cases.
-2020-04-22 00:00:00	Government disputes analysis of total deaths
-2020-02-26 00:00:00	— reported its second death.
-2020-02-20 00:00:00	South Korea has 156 confirmed cases, including 1 death.
-2020-01-21 00:00:00	China has reported four deaths.
-2020-04-16 00:00:00	Toronto records 2,881 cases of COVID-19, 147 deaths
-2020-02-10 00:00:00	" Coronavirus death toll surpasses 900
-2020-04-05 00:00:00	nursing home reports another virus-related death.
-2020-03-19 00:00:00	Ontario: 258 confirmed cases, including five recovered and two deaths.
-2020-03-20 00:00:00	Ontario: 258 confirmed cases, including five recovered and two deaths.
-2020-04-30 00:00:00	No new deaths were reported.
-2020-04-06 00:00:00	Central zone: 66 cases, 1 death.
-2020-03-22 00:00:00	Ontario: 424 confirmed cases, including six recovered and three deaths.
-2020-03-05 00:00:00	The death toll rose by 30.
-2020-03-31 00:00:00	New cases, cumulative cases, death counts, testing rates.
-2020-04-06 00:00:00	Calgary zone: 817 cases, 15 deaths.
-2020-05-01 00:00:00	The death toll in Ottawa is 76.
-2020-02-14 00:00:00	The latest:  Death toll in mainland China reaches 1,523 with 143 new deaths reported.
-2020-04-03 00:00:00	The death toll from the virus stands at 35.
-2020-04-03 00:00:00	The province's case tally puts the COVID-19 death toll at 67.
-2020-04-08 00:00:00	North zone: 95 cases, four deaths Central zone: 72 cases, one death South zone: 26 cases Unknown: 2 cases
-2020-04-26 00:00:00	Provincial death toll tops 900
-2020-03-09 00:00:00	France has reported 1,191 cases with 21 deaths.
-2020-03-24 00:00:00	Alberta: 358 confirmed cases, including three resolved and two deaths.
-2020-04-18 00:00:00	The death count remains at five.
-2020-02-03 00:00:00	The latest:  424 deaths, further 3,235 cases detected across China.
 2020-05-02 00:00:00	The province also reported two new deaths.
-2020-03-24 00:00:00	No additional deaths were reported.
-2020-04-06 00:00:00	Kenya has reported 158 coronavirus cases and six deaths.
-2020-02-07 00:00:00	The latest figures report 636 deaths and 31,161 confirmed cases on mainland China.
-2020-04-26 00:00:00	The official death toll now sits at 835.
-2020-05-02 00:00:00	The death toll in Ottawa is 78.
-2020-04-10 00:00:00	The world-wide death toll surpasses 100,000.
-2020-04-23 00:00:00	The Haldimand-Norfolk Health Unit reports 28 deaths in the two counties.
-2020-04-30 00:00:00	The tiny island of the Maldives reported its first death.
-2020-04-03 00:00:00	The new total includes the cases reported previously.
-2020-03-29 00:00:00	Indian health officials have confirmed 867 cases of the coronavirus, including 25 deaths.
-2020-04-28 00:00:00	Across Ontario the death toll now sits at 951.
-2020-03-20 00:00:00	Ontario: 318 confirmed cases, including five recovered and two deaths.
-2020-02-23 00:00:00	The daily death toll fell slightly to 97.
-2020-05-01 00:00:00	The latest death was reported at Northwood, McNeil said.
-2020-04-02 00:00:00	sees two more COVID-19 deaths, 117 new cases
-2020-05-01 00:00:00	The city's death toll from coronavirus remains at 76.
-2020-04-29 00:00:00	There are now 630 COVID-19 cases in Sri Lanka, including seven deaths.
-2020-04-14 00:00:00	Windsor's April 14 COVID-19 update: 349 cases, 13 deaths in Windsor-Essex
-2020-03-29 00:00:00	That total includes all confirmed cases, eight resolved cases and 21 deaths.
-2020-04-05 00:00:00	The regional breakdown of cases is:  Calgary zone: 774 cases, 14 deaths.
-2020-04-04 00:00:00	The regional breakdown of cases is:  Calgary zone: 734 cases, 13 deaths.
-2020-04-08 00:00:00	Manitoba records 3rd COVID-19 death
-2020-01-25 00:00:00	China reports 15 new coronavirus fatalities, total death toll now
-2020-04-08 00:00:00	The total number of deaths remains three.
-2020-04-23 00:00:00	The death toll from long-term care surpasses 400.
-2020-04-22 00:00:00	Another Ontario long-term care home is reporting COVID-19-related deaths.
-2020-02-05 00:00:00	China reports 490 deaths and 24,324 confirmed coronavirus cases on the mainland.
-2020-03-23 00:00:00	Alberta: 301 confirmed cases, including three resolved and one death.
-2020-04-23 00:00:00	Canada's first death from COVID-19 is reported.
-2020-03-26 00:00:00	2 more deaths, 170 new cases of COVID-19 in Ontario.
-2020-03-15 00:00:00	Iran reported another 113 deaths, bringing the country's total death toll to 724, with nearly 14,000 confirmed cases.
-2020-01-25 00:00:00	Coronavirus death toll climbs to 41, more cases reported in China
-2020-04-27 00:00:00	Alberta reported two new deaths and 216 new cases.
-2020-03-14 00:00:00	ET China confirmed 20 new cases on March 14 and 10 deaths, versus 11 new cases and 13 deaths the day before.
-2020-02-13 00:00:00	Death toll reaches 1,367, up 254 from the previous day.
-2020-04-24 00:00:00	Holland Christian Homes' Grace Manor, two deaths, 49 resident cases, 21 staff cases.
-2020-03-06 00:00:00	" Death toll rises in Italy
-2020-03-22 00:00:00	Ontario: 425 confirmed cases, including six recovered and five deaths.
-2020-04-24 00:00:00	Orchard Villa, 40 deaths, 104 resident cases, 59 staff cases.
-2020-03-23 00:00:00	Poland has so far reported 684 cases of coronavirus, including eight deaths.
-2020-04-26 00:00:00	Active cases are the total cases minus recovered cases and deaths.
-2020-03-20 00:00:00	That total includes three cases
-2020-03-20 00:00:00	Alberta: 195 confirmed cases, including three recovered and one death.
-2020-01-15 00:00:00	More than 40 cases of the infection — including one death
-2020-02-21 00:00:00	Iran confirms 13 more cases of COVID-19 and 2 more deaths, for a total of 18 cases and 4 deaths.
-2020-04-20 00:00:00	twsrc%5Etfw\">#COVID19</a> cases and death in Ontario long-term care homes.
-2020-05-02 00:00:00	The following homes have reported at least 30 deaths each:   Orchard Villa Retirement Residence, 54 deaths.
-2020-04-26 00:00:00	The official death toll in Ontario now sits at 835.
-2020-03-29 00:00:00	The U.S. death count crossed 2,300.
-2020-03-02 00:00:00	U.S. death toll rises to 6.
-2020-04-30 00:00:00	Alberta reported three more deaths and 190 new cases of COVID-19.
-2020-03-31 00:00:00	Ontario nearing 2,000 confirmed COVID-19 cases Ontario currently has 1,966 confirmed cases of COVID-19, including 33 deaths.
-2020-03-19 00:00:00	Ontario: 257 cases, including five recovered and two deaths*. British Columbia: 231 confirmed cases, including five recovered and seven deaths.
-2020-03-10 00:00:00	Britain has so far reported three deaths and 278 cases of the coronavirus.
-2020-04-12 00:00:00	The U.S. has the most confirmed cases and deaths of any nation
-2020-01-21 00:00:00	The death toll from the outbreak has risen to nine.
-2020-03-18 00:00:00	Ontario: 190 confirmed cases, including one death and five cases listed as resolved.
-2020-03-28 00:00:00	The country has reported 102 deaths and 1,155 infections.
-2020-03-22 00:00:00	British Columbia: 424 confirmed cases, including six recovered and 10 deaths.
-2020-03-25 00:00:00	Canada has 1,959 cases and 27 deaths.
-2020-04-28 00:00:00	So far, 21 deaths have been reported at Northwood.
-2020-04-18 00:00:00	The U.S. leads the world in number of deaths and cases.
-2020-03-03 00:00:00	The state is now reporting 27 confirmed cases.
-2020-03-17 00:00:00	189 confirmed cases, including one death and five cases listed as resolved.
-2020-04-15 00:00:00	No deaths were reported in the last 24 hours.
-2020-03-15 00:00:00	British Columbia: 73 confirmed, including one death (six cases resolved).
-2020-01-28 00:00:00	Coronavirus deaths in China rise to 132 with confirmed cases nearing
-2020-03-29 00:00:00	Yesterday, public health officials reported the first COVID-19 related death in the region.
-2020-04-25 00:00:00	Turkey's health ministry has documented 106 new deaths, bringing the death toll to 2,706.
-2020-03-27 00:00:00	| Bartley Kives reports on the province's first COVID-19 death
-2020-01-27 00:00:00	China reports 25 more coronavirus deaths as Germany reports its 1st case"
-2020-01-31 00:00:00	That's up nearly 2,000 cases and 43 deaths from the previous day.
-2020-03-22 00:00:00	Alberta: 259 confirmed cases, including three recovered and one death.
-2020-03-22 00:00:00	Alberta: 259 confirmed cases, including three recovered and one death.
-2020-03-23 00:00:00	Quebec: 628 confirmed cases, including one resolved and four deaths.
-2020-03-20 00:00:00	British Columbia: 348 confirmed cases, including five recovered and eight deaths.
-2020-04-13 00:00:00	The death toll at the home in Shawinigan, Que., now stands at 27.
-2020-03-17 00:00:00	The death in Ontario brings Canada's COVID-19 death toll to five; four COVID-19-related deaths have happened in
-2020-04-21 00:00:00	Hawthorne Place Care Centre in Toronto reported three additional deaths of residents.
-2020-03-26 00:00:00	B.C. now has 725 confirmed cases of COVID-19 and 14 deaths.
-2020-04-16 00:00:00	COVID-19 pummels Anson Place, with 19 deaths and 73 confirmed cases
-2020-03-22 00:00:00	Quebec: 181 confirmed cases, including one recovered and five deaths.
-2020-03-23 00:00:00	Here's a look at the number of cases — including deaths and recoveries — by province:  British Columbia: 472 confirmed cases, including 13 deaths.
-2020-04-19 00:00:00	Sarnia-Lambton Lambton Public Health reported there are 132 cases of COVID-19 in their region with 13 deaths.
-2020-04-15 00:00:00	The home has reported at least 30 deaths so far.
-2020-02-27 00:00:00	Iran's death toll is highest outside of China, where the outbreak began.
-2020-03-25 00:00:00	In that daily briefing, Quebec health officials reported six deaths.
-2020-02-10 00:00:00	The latest:  Death toll in China passes 1,000 — 42,708 cases confirmed, authorities report.
-2020-01-19 00:00:00	The statement gave no further details of the latest death toll.
-2020-03-23 00:00:00	Austria has reported nearly 4,000 cases with 21 deaths so far.
-2020-04-21 00:00:00	1 new death reported for a total of 87.
-2020-04-07 00:00:00	The city has documented 5,043 cases and 118 deaths.
-2020-02-28 00:00:00	Italy, the worst-affected European country, has reported 821 cases and 21 deaths — the vast majority in the country's north.
-2020-04-25 00:00:00	The death toll in Ottawa has now risen to 50.
-2020-03-23 00:00:00	Egypt has reported around 330 cases and 16 deaths.
-2020-05-02 00:00:00	The health unit is reporting 299 confirmed cases of COVID-19.
-2020-04-05 00:00:00	The B.C. death toll from the virus stands at 38.
-2020-04-29 00:00:00	The latest:   Number of COVID-19 deaths in Canada surpasses 3,000.
-2020-03-19 00:00:00	Ontario: 258 cases, including five listed by the province as resolved and two deaths.
-2020-02-25 00:00:00	Italy reports total of 260 cases, including first case south of Rome and three more deaths in northern Italy.
-2020-04-29 00:00:00	Hastings Prince Edward Public Health reporting its third death today.
-2020-04-27 00:00:00	Some 671 of those deaths were residents at long-term care facilities, including 57 new deaths reported today.
-2020-04-14 00:00:00	Long-term care deaths expected to rise as growth of total cases slows:
-2020-04-25 00:00:00	that's 75 per cent of the province's death toll.
-2020-04-13 00:00:00	In Britain, the death toll passed 10,600.
-2020-03-22 00:00:00	Yukon reports first 2 confirmed cases.
-2020-04-18 00:00:00	The total cases by age:
-2020-03-26 00:00:00	That total includes 15 deaths and eight cases that are resolved.
-2020-03-18 00:00:00	Ottawa reports 14th confirmed case,
-2020-04-23 00:00:00	The number of deaths worldwide from COVID-19 surpasses 2,400.
-2020-04-03 00:00:00	B.C. had confirmed 1,121 cases of COVID-19, with 31 deaths.
-2020-04-24 00:00:00	Reported coronavirus-related deaths in United States surpass 50,000.
-2020-03-22 00:00:00	Australia has confirmed more than 1,000 coronavirus cases, including seven deaths.
-2020-04-13 00:00:00	Lambton Public Health confirmed 118 cases of COVID-19 as of 8 p.m. on April 12, logging 10 deaths in total.
-2020-03-23 00:00:00	British Columbia: 472  confirmed cases, including 100 resolved and 13 deaths.
-2020-03-24 00:00:00	British Columbia: 472 confirmed cases, including 100 resolved and 13 deaths.
-2020-03-31 00:00:00	Peel Region reports 1st death from virus Peel Public Health is reporting its first death from the virus.
-2020-04-17 00:00:00	Wuhan health officials raise death toll linked to COVID-19 by 50%.
-2020-02-20 00:00:00	The latest:  Health commission in China reports 75,465 confirmed cases on mainland, with 2,236 deaths.
-2020-04-15 00:00:00	Two more COVID-19 deaths in Alberta, 138 new cases reported"
-2020-03-19 00:00:00	The country's death toll has topped 3,400 people.
-2020-03-29 00:00:00	Ontario now has 1,715 confirmed cases as of the latest provincial update, with 35 deaths and 431 cases considered
-2020-03-17 00:00:00	Overall, the death rate is around four per cent — of reported cases.
-2020-04-01 00:00:00	Russia has registered 2,777 coronavirus cases and 24 deaths.
-2020-02-21 00:00:00	The 118 newly reported deaths raised the total to 2,236.
-2020-04-17 00:00:00	Two more deaths, 162 new cases of COVID-19 in Alberta
-2020-03-19 00:00:00	In Canada, public health officials have reported 773 confirmed or presumptive cases, including 10 deaths.
-2020-01-24 00:00:00	Coronavirus death toll climbs to 41, more cases reported in ChinaCBC ExplainsDo
-2020-04-23 00:00:00	With nine deaths reported at Pinecrest, Ford tells the daily news briefing:
-2020-04-10 00:00:00	One death was reported by public health at the facility.
-2020-04-15 00:00:00	Three homes in Ontario have reported more than 20 deaths each:   Pinecrest Nursing Home in Bobcaygeon: 29 deaths.
-2020-03-19 00:00:00	Quebec: 121 confirmed cases, including one recovered and one death.
+2020-05-01 00:00:00	Hancock also announced the British death toll had risen by 739 to 27,510 deaths
+2020-05-02 00:00:00	The country has reported a total of 82,875 confirmed cases and 4,633 deaths.
+2020-04-30 00:00:00	The country surged past 100,000 confirmed COVID-19 cases, with approximately 1,000 reported deaths.
+2020-05-02 00:00:00	That brings the death toll in the province to 31.
+2020-05-01 00:00:00	The province has recorded 29 deaths related to COVID-19.
+2020-05-02 00:00:00	A CBC News tally of COVID-19-related deaths based on provincial data, regional health information and CBC's reporting lists 3,656 deaths in Canada and two known coronavirus-related deaths of Canadians abroad.
+2020-05-01 00:00:00	A CBC News tally of COVID-19-related deaths based on provincial data, regional health information and CBC's reporting lists 3,507 deaths in Canada and two known coronavirus-related deaths of Canadians abroad.
+2020-04-30 00:00:00	Total reported coronavirus cases in Brazil soared to 78,162, with 449 deaths in the last 24 hours.
+2020-05-02 00:00:00	Turkey's health minister has announced 78 new deaths in the past 24 hours, bringing the death toll from COVID-19 to 3,336.
+2020-05-02 00:00:00	WATCH | Bolsonaro downplays COVID-19 threat as Brazil's death toll rises
+2020-05-02 00:00:00	Brazil has the most cases and deaths in Latin America, with more than 92,000 infections and over 6,400 deaths.
+2020-04-29 00:00:00	So far, there have been no cases of the virus — and no deaths.
+2020-04-30 00:00:00	Indonesia's confirmed COVID-19 cases have surpassed 10,000.
+2020-04-30 00:00:00	The national tally stood at 10,765, while the death toll rose by one to 247.
+2020-05-02 00:00:00	Spain's death toll for the virus reached 25,100 after 276 more people died in the last 24 hours.
+2020-05-02 00:00:00	The total confirmed infections reached 216,582, with another 1,147 reported cases in the last day.
+2020-05-02 00:00:00	The province also reported four news cases, bringing the total number of positive cases to 963.
+2020-05-02 00:00:00	Two more people have died of COVID-19, bringing the total number of deaths in the province to 114.
+2020-05-01 00:00:00	The country registered another daily high in coronavirus cases, with nearly 2,000 recorded in the past 24 hours.
+2020-04-30 00:00:00	Japan still had more than 200 new cases overnight, bringing a national total to some 14,000 cases, with 415 deaths.
+2020-04-30 00:00:00	2:01 Health officials have identified 12 new cases of COVID-19 in Nova Scotia, bringing the province's total to 947, while the number of deaths remains at 28.
+2020-04-30 00:00:00	Of the 98 new deaths recorded in the past 24 hours in the province, 92 have been of seniors in care.
+2020-04-30 00:00:00	South Korea reported no new domestic cases.
+2020-05-02 00:00:00	\"We are doubling the number of cases every 10 days, and the number of deaths is doubling in eight days.\"  Unlike other developing nations
+2020-05-01 00:00:00	Brazil reported a record 7,218 cases in the last 24 hours and 435 additional fatalities.
+2020-04-30 00:00:00	The true numbers of deaths and infections is likely much higher because of limited testing, differences in counting the dead and concealment by some governments.
+2020-05-02 00:00:00	Britain's Department of Health says a total of 28,131 people have died in hospitals, care homes and the wider community after testing positive for COVID-19 in the United Kingdom, an increase of 621 from the previous tally.
+2020-05-02 00:00:00	According to a news release issued by the provincial government, the number of total cases in the province remains at 259.
+2020-05-02 00:00:00	According to a tally by Johns Hopkins University, Russia has more than 124,000 cases and 1,222 deaths.
+2020-04-30 00:00:00	1:02 New Brunswick  reported no new cases for the 12th day in a row.
+2020-04-30 00:00:00	Nunavut reports 1st case of COVID-19; Alberta premier to outline how province plans to reopen its economy.
+2020-04-30 00:00:00	Boris Johnson returns to 10 Downing Street and urges Britain to stay the course with lockdownU.K. appears to be on track for one of Europe's worst COVID-19 death tolls
+2020-05-02 00:00:00	Cuomo pointed to the roughly 900 new coronavirus cases hospitals in New York are still reporting daily, and the fact that officials do not know where those infections are coming from, as reason enough to keep the Empire State shutdown.
+2020-05-02 00:00:00	More than two-thirds of municipalities in the country of 210 million haven't reported cases of the virus, Vieira-Meyer said, but that could simply be due to a lack of testing.
+2020-05-02 00:00:00	More than half of the new cases were reported in Moscow, where concern is growing about whether hospitals could become overwhelmed.
+2020-05-01 00:00:00	Most Germans support the lockdown enforced by the country's 16 states and backed by Chancellor Angela Merkel, despite its heavy toll on the economy, which is expected to contract by a record of more than six per cent this year.
+2020-05-01 00:00:00	The number of cases is likely to be much higher as not everyone gets tested, and tests in Russia were reported to be only 70 to 80 per cent accurate.   'This situation is very scary':
+2020-05-02 00:00:00	While the number of deaths has trended lower in recent days, New Jersey's toll, second only to New York's, stood at 7,742, which Murphy cited as a key reason for maintaining his stay-at-home order.
+2020-05-01 00:00:00	Dr. Theresa Tam, Canada's chief public health officer, has urged people to behave as though there is coronavirus in their community, even if there haven't been any recorded cases.

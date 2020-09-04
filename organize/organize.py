@@ -19,10 +19,11 @@ from word2number import w2n
 from calendar import monthrange, IllegalMonthError
 from dateutil.parser import parse
 from path_util import DATA_PATH
-from compress.compress import compressed_topic_specific_sentence_details
+from function_util import strip_symbols
+from compress.compress import compressed_topic_specific_sentence_details, TOPIC
 from sentence_details import SentenceDetails
 
-TOPIC = 'symptom'
+
 ORGANIZED_SUMMARY_PATH = os.path.join(DATA_PATH, 'step4_organized_summary', TOPIC + '_organized_summary.txt')
 NLP = spacy.load('en_core_web_sm')
 MONTHS = [[1, 'january'],
@@ -64,36 +65,6 @@ WEEKDAYS = [[1, 'monday'],
             [7, 'sun']]
 ORDINAL_INDICATORS = ['st', 'nd', 'rd', 'th']
 
-def get_dates():
-    """
-    Returns:
-        (list of datetimes): List of dates in dates file.
-    """
-    with open(COMPRESSED_DATES_PATH, 'r') as f:
-        return [datetime.datetime(int(x[0:4]), int(x[5:7]), int(x[8:10]))
-            for x in f.read().splitlines()]
-
-def get_sentences():
-    """
-    Returns:
-        (list of str): Returns list of sentences.
-    """
-    with open(COMPRESSED_SUMMARY_PATH, 'r') as f:
-        return f.read().splitlines()
-
-def strip_symbols(s):
-    """
-    Args:
-        s (str): Some string.
-
-    Returns:
-        (str): `s` without leading or trailing symbols.
-    """
-    if not s[0].isalnum():
-        s = s[1:]
-    if len(s) > 1 and not s[-1].isalnum():
-        s = s[:-1]
-    return s
 
 def has_month(s):
     """
@@ -836,15 +807,14 @@ def order(final_summary):
     return final_summary
 
 
-def output(final_summary):
+def output(organized_summary):
     """
     Args:
-        (dict from str to list): Keys are countries. Values are a list of lists
-            where each inner list contains a sentence and its corresponding date.
+        organized_summary (dict from str to list): Keys are countries. Values are a list of SentenceDetails.
     """
     with open(ORGANIZED_SUMMARY_PATH, 'w') as f:
-        for country in sorted(final_summary, key=lambda country: len(final_summary[country]), reverse=True):
-            mini_summary = final_summary[country]
+        for country in sorted(organized_summary, key=lambda country: len(organized_summary[country]), reverse=True):
+            mini_summary = organized_summary[country]
             f.write(country.upper() + ':' + '\n')
             for sentence_detail in mini_summary:
                 f.write(f'{sentence_detail.date}\t{sentence_detail.text}\n')
