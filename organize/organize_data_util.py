@@ -1,3 +1,15 @@
+"""
+Utility module for loading data for extract.py.
+
+Attributes:
+    MONTHS (list of list of int and str):
+        Months and their corresponding numbers.
+    WEEKDAYS (list of list of int and str):
+        Weekdays and their corresponding numbers.
+    ORDINAL_INDICATORS (list of str): -st, -nd, -rd, and -th
+"""
+
+
 def get_months():
     return [[1, 'january'],
               [1, 'jan'],
