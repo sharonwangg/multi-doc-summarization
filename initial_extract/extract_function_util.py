@@ -124,6 +124,12 @@ def has_improper_pronoun(sentence):
     return False
 
 
+def contains_theme(topic, words, phrase):
+    normalized_topic = normalize(topic)
+    return ((normalized_topic in words and has_x_ngrams(normalized_topic, phrase, words, desired_count=1))
+            or has_x_ngrams(normalized_topic, phrase, words, desired_count=2))
+
+
 def is_quality_sentence(topic, phrase, words, sent, summary):
     """
     Args:

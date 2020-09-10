@@ -1,10 +1,24 @@
+import os
+
 from data_util import NLP
 from sentence_details import SentenceDetails
 
 from organize_timeloc.organize import organized_summary
 from initial_extract.extract import topic_to_phrase
 from compress.compress import TOPIC
-from organize_timeloc.location_util import valid_index
+from initial_extract.extract_function_util import contains_theme, get_str_article, get_words
+from path_util import DATA_PATH
+
+
+FINAL_SUMMARY_PATH = os.path.join(DATA_PATH, 'step5_final_summary', TOPIC + '_final_summary.txt')
+
+
+def get_list_str_article(article):
+    list_str_article = []
+    for sentence in article:
+        list_str_article.append(str(sentence))
+    return list_str_article
+
 
 def extend(organized_summary, phrases):
     """
@@ -14,33 +28,45 @@ def extend(organized_summary, phrases):
 
     Returns:
     """
-    #print(organized_summary.keys())
+    extended_summary = dict.fromkeys(organized_summary)
+    for country in extended_summary.keys():
+        extended_summary[country] = []
     for country, sentence_details in organized_summary.items():
-        for sentence_detail in sentence_details:
+        for j, sentence_detail in enumerate(sentence_details):
             sentence = list(NLP(sentence_detail.text).sents)[0]
-            print(sentence)
-            print(sentence_detail.og_article[9])
-            print(str(sentence)[0])
-            print(str(sentence_detail.og_article[9])[0])
-            print(sentence == sentence_detail.og_article[9])
-            #for i, s in enumerate(sentence_detail.og_article):
-                #print(str(i) + '\n')
-                #print(str(s) + '\n' + '\n')
-            if sentence in sentence_detail.og_article:
-                center_idx = sentence_detail.og_article.index(sentence)
-                print('center_idx: ' + str(center_idx))
-                max_radius = max(center_idx, len(sentence_detail.og_article) - 1)
-                for i in range(1, max_radius):
-                    previous_idx = center_idx - i
-                    if valid_index(previous_idx, sentence_detail.og_article):
-                        print('previous_idx: ' + str(previous_idx))
-                    future_idx = center_idx + i
-                    if valid_index(future_idx, sentence_detail.og_article):
-                        print('future_idx: ' + str(future_idx))
+            str_og_article = get_list_str_article(sentence_detail.og_article)
 
-        return ""
+            if str(sentence) in str_og_article:
+                center_idx = str_og_article.index(str(sentence))
+                indices_to_add = [center_idx]
+                for i in range(center_idx - 1, 0, -1):
+                    if contains_theme(TOPIC, get_words(str_og_article[i]), topic_to_phrase[TOPIC]):
+                        indices_to_add.append(i)
+                        
+                for i in range(center_idx + 1, len(str_og_article) - 1):
+                    if contains_theme(TOPIC, get_words(str_og_article[i]), topic_to_phrase[TOPIC]):
+                        indices_to_add.append(i)
 
-                
+                new_chunk = [str_og_article[i] for i in indices_to_add]
+                print(country)
+                extended_summary[country].append(SentenceDetails(get_str_article(new_chunk),
+                                                               sentence_detail.date,
+                                                               sentence_detail.relevancy_score,
+                                                               sentence_detail.og_article))
+                print(new_chunk)
+
+    return extended_summary
+
+
+def output(summary):
+    with open(FINAL_SUMMARY_PATH, 'w') as f:
+        for country in sorted(summary, key=lambda country: len(summary[country]), reverse=True):
+            mini_summary = summary[country]
+            f.write(country.upper() + ':' + '\n')
+            for sentence_detail in mini_summary:
+                f.write(f'{sentence_detail.date}\t{sentence_detail.text}\n')
+            f.write('\n')
 
 
 final_summary = extend(organized_summary, topic_to_phrase[TOPIC])
+output(final_summary)
