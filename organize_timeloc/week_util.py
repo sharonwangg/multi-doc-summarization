@@ -1,7 +1,7 @@
 import datetime
 from word2number import w2n
 
-from organize.organize_data_util import WEEKDAYS
+from organize_timeloc.organize_data_util import WEEKDAYS
 from function_util import strip_symbols
 
 

@@ -4,13 +4,17 @@ Orders summary sentences by real time and organizes summary by location.
 Attributes:
     NLP (NLP object): NLP object.
 """
+import os
 from data_util import NLP
+from path_util import DATA_PATH
 
 from compress.compress import compressed_topic_specific_sentence_details
+from compress.compress_data_util import TOPIC
 from sentence_details import SentenceDetails
-from organize.organize_path_util import ORGANIZED_SUMMARY_PATH
-from organize.location_util import get_country_from_sentence, add_sentence, get_country_from_article
-from organize.time_util import handle_relative_time_phrases, handle_specific_time_phrases
+from organize_timeloc.location_util import get_country_from_sentence, add_sentence, get_country_from_article
+from organize_timeloc.time_util import handle_relative_time_phrases, handle_specific_time_phrases
+
+ORGANIZED_SUMMARY_PATH = os.path.join(DATA_PATH, 'step4_organized_summary', TOPIC + '_organized_summary.txt')
 
 
 def organize(sentence_details):
@@ -45,6 +49,8 @@ def organize(sentence_details):
                 loc_organized_sentences = add_sentence(loc_organized_sentences, country_from_article, sentence_detail)
                 print(0, str_sentence)
                 print(1, country_from_article)
+            else:
+                loc_organized_sentences = add_sentence(loc_organized_sentences, 'Other', sentence_detail)
 
     return loc_organized_sentences
 

@@ -1,8 +1,5 @@
 import os
 from path_util import DATA_PATH
-from initial_extract.extract_data_util import TOPIC_TYPE
-
-TOPICS_PATH = os.path.join(DATA_PATH, 'cate_topics', 'res_' + TOPIC_TYPE + '.txt')
 
 
 def get_summary_path(topic):

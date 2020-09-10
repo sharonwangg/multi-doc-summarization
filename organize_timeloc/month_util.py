@@ -1,4 +1,4 @@
-from organize.organize_data_util import MONTHS
+from organize_timeloc.organize_data_util import MONTHS
 from function_util import strip_symbols
 
 def has_month(s):

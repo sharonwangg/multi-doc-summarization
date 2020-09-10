@@ -1,10 +1,10 @@
 from calendar import monthrange, IllegalMonthError
 from dateutil.parser import parse
 
-from organize.day_util import handle_day
-from organize.week_util import handle_weekday, handle_week
-from organize.month_util import handle_month
-from organize.year_util import handle_year
+from organize_timeloc.day_util import handle_day
+from organize_timeloc.week_util import handle_weekday, handle_week
+from organize_timeloc.month_util import handle_month
+from organize_timeloc.year_util import handle_year
 
 
 def handle_relative_time_phrases(ent, date):
