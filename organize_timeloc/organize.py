@@ -43,7 +43,7 @@ def organize(sentence_details):
             print(0, str_sentence)
             print(1, country_from_sentence)
         else:
-            country_from_article = get_country_from_article(str_sentence, doc, og_article)
+            country_from_article = get_country_from_article(doc, og_article)
             if country_from_article:
                 print('country from article')
                 loc_organized_sentences = add_sentence(loc_organized_sentences, country_from_article, sentence_detail)
@@ -111,6 +111,7 @@ def output(organized_summary):
             f.write('\n')
 
 
+print('hello?')
 loc_organized_summary = organize(compressed_topic_specific_sentence_details)
 organized_summary = order(loc_organized_summary)
 output(organized_summary)

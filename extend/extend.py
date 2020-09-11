@@ -8,16 +8,10 @@ from initial_extract.extract import topic_to_phrase
 from compress.compress import TOPIC
 from initial_extract.extract_function_util import contains_theme, get_str_article, get_words
 from path_util import DATA_PATH
+from function_util import get_list_str_article
 
 
 FINAL_SUMMARY_PATH = os.path.join(DATA_PATH, 'step5_final_summary', TOPIC + '_final_summary.txt')
-
-
-def get_list_str_article(article):
-    list_str_article = []
-    for sentence in article:
-        list_str_article.append(str(sentence))
-    return list_str_article
 
 
 def extend(organized_summary, phrases):

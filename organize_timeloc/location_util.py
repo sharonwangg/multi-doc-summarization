@@ -1,5 +1,7 @@
 import pycountry
 
+from function_util import get_list_str_article
+
 
 def is_valid_location(location, possible_countries):
     """
@@ -37,19 +39,7 @@ def add_sentence(loc_stamped_sentences, country, sentence_detail):
     return loc_stamped_sentences
 
 
-def valid_index(index, list):
-    """
-    Args:
-        index (int): Index.
-        list (list of anything): List.
-
-    Returns:
-        (bool): True if `index` is valid for `list`.
-    """
-    return index >= 0 and index < len(list)
-
-
-def get_country_from_article(str_doc, doc, og_article):
+def get_country_from_article(doc, og_article):
     """
     Args:
         doc (NLP object): Sentence that we are trying to find the associated country of.
@@ -59,38 +49,21 @@ def get_country_from_article(str_doc, doc, og_article):
         (str): Country that `doc` is associated with (found in `og_article`).
             Empty string if a country couldn't be found.
     """
-    sentence = list(doc.sents)
-    if len(sentence) != 1:
-        return ""
-
-    str_og_article = ""
-    for sent in og_article:
-        str_og_article += (' ' + str(sent) + ' ')
-
-    sentence = sentence[0]
-
+    return ""
+    sentence = list(doc.sents)[0]
+    str_og_article = get_list_str_article(og_article)
     print(sentence)
-    if sentence in og_article:
-        print('HERE')
-        center_idx = og_article.index(sentence)
-        print('center_idx: ' + str(center_idx))
-        print('center_sentence: ' + str(og_article[center_idx]))
-        max_radius = max(center_idx, len(og_article) - center_idx)
-        for i in range(1, max_radius):
-            previous_idx = center_idx - i
-            if valid_index(previous_idx, og_article):
-                print('previous_idx: ' + str(previous_idx))
-                print('previous sentence: ' + str(og_article[previous_idx]))
-                country = get_country_from_sentence(og_article[previous_idx])
-                if country:
-                    return country
-            future_idx = center_idx + i
-            if valid_index(future_idx, og_article):
-                print('future_idx: ' + str(future_idx))
-                print('future sentence: ' + str(og_article[previous_idx]))
-                country = get_country_from_sentence(og_article[future_idx])
-                if country:
-                    return country
+    if str(sentence) in str_og_article:
+        center_idx = str_og_article.index(str(sentence))
+        for i in range(center_idx + 1, len(str_og_article) - 1):
+            country = get_country_from_sentence(og_article[i])
+            if country:
+                return country
+
+        for i in range(center_idx - 1, 0, -1):
+            country = get_country_from_sentence(og_article[i])
+            if country:
+                return country
     else:
         return ""
 

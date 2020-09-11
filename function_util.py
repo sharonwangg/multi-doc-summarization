@@ -44,5 +44,9 @@ def delete_stopwords(string_list):
     return [s for s in string_list if s not in STOPWORDS]
 
 
-
+def get_list_str_article(article):
+    list_str_article = []
+    for sentence in article:
+        list_str_article.append(str(sentence))
+    return list_str_article
 
