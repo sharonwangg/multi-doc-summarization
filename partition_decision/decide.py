@@ -3,6 +3,7 @@ Performs k-means clustering on extended summary.
 """
 import os
 import numpy as np
+from nltk.corpus import stopwords
 
 #from extend.extend import extended_summary
 from sentence_details import SentenceDetails
@@ -24,14 +25,14 @@ def cluster(summary):
     #documents = [sentence.text for sentence in summary]
     documents = summary
     vectorizer = TfidfVectorizer(stop_words='english')
-    X = vectorizer.fit_transform(documents)
+    print(documents)
+    X = vectorizer.fit_transform(documents, documents)
 
-    true_k = 2
+    true_k = 5
     model = KMeans(n_clusters=true_k, init='k-means++', max_iter=100, n_init=1)
     model.fit(X)
 
     clusters = {i: np.where(model.labels_ == i)[0] for i in range(model.n_clusters)}
-    print(clusters)
     return clusters
     # for cluster_id, sentence_indices in clusters.items():
     #     print("cluster id", cluster_id)
@@ -59,18 +60,34 @@ def cluster(summary):
     # print(prediction)
 
 
+STOPWORDS = stopwords.words('english')
+
+
+def delete_stopwords(string_list):
+    """
+    Args:
+        s (list of str): Some list of strings.
+
+    Returns:
+        (str): `s` without stopwords.
+    """
+    return [s for s in string_list if s not in STOPWORDS]
+
+
 def getExtendedSummary(extended_path):
     extended_summary = []
+    simplified_extended_summary = []
     with open(extended_path, 'r') as f:
         for sentence in f.read().splitlines():
             extended_summary.append(sentence)
-    return extended_summary
+            simplified_sentence = " ".join(delete_stopwords(sentence.split()))
+            simplified_extended_summary.append(simplified_sentence)
+    return extended_summary[:25], simplified_extended_summary[:25]
 
 
 def outputClusteredSummary(clustered_summary, documents, clustered_path):
     with open(clustered_path, 'w') as f:
         for cluster_id, sentence_indices in clustered_summary.items():
-            print("cluster id", cluster_id)
             f.write(f'{str("cluster id")}\t{str(cluster_id)}\n')
             for sentence_index in sentence_indices:
                 f.write(f'{str(documents[sentence_index])}\n')
@@ -81,7 +98,7 @@ def outputClusteredSummary(clustered_summary, documents, clustered_path):
                     #"The council rejects the \"two quarters\" rule and instead defines a recession as a \"pronounced, persistent and pervasive decline in aggregate economic activity\" based largely on GDP and the job market. There are no hard and fast rules for declaring a recession, although one rule of thumb used by economists is that an economy is probably in one if it has shrunk for two three-month periods in a row. The council, which monitors recessions and recoveries in Canada, said the economy peaked in February, just before drastic measures to slow the spread of the coronavirus were implemented across the country."]
 
 EXTENDED_PATH = os.path.join(DATA_PATH, 'step5_extended_summary', 'economy_extended_summary.txt')
-extended_summary = getExtendedSummary(EXTENDED_PATH)
-clustered_summary = cluster(extended_summary)
+extended_summary, simplified_extended_summary = getExtendedSummary(EXTENDED_PATH)
+clustered_summary = cluster(simplified_extended_summary)
 CLUSTERED_PATH = os.path.join(DATA_PATH, 'economy_clustered_summary.txt')
 outputClusteredSummary(clustered_summary, extended_summary, CLUSTERED_PATH)
