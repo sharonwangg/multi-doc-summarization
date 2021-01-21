@@ -16,7 +16,6 @@ DATA_PATH = os.path.join('/',
                          'Desktop',
                          'MyStuff',
                          'UIUC',
-                         'Summer20',
                          'Research',
                          'multi_doc_summ_proj',
                          'covid19dataset')

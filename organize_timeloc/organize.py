@@ -111,7 +111,6 @@ def output(organized_summary):
             f.write('\n')
 
 
-print('hello?')
 loc_organized_summary = organize(compressed_topic_specific_sentence_details)
 organized_summary = order(loc_organized_summary)
 output(organized_summary)

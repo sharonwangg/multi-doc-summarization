@@ -50,6 +50,7 @@ def get_country_from_article(doc, og_article):
             Empty string if a country couldn't be found.
     """
     return ""
+    '''
     sentence = list(doc.sents)[0]
     str_og_article = get_list_str_article(og_article)
     print(sentence)
@@ -66,6 +67,7 @@ def get_country_from_article(doc, og_article):
                 return country
     else:
         return ""
+    '''
 
 
 def get_country_from_sentence(doc):

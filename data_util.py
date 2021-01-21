@@ -1,3 +1,10 @@
+"""
+Utility module for storing data.
+
+Attributes:
+
+"""
+
 import gensim.downloader as api
 import spacy
 from nltk.corpus import stopwords

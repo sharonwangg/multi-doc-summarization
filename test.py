@@ -1,1 +1,0 @@
-from initial_extract.data_util import get_general_words

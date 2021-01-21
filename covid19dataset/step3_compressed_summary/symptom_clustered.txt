@@ -1,0 +1,67 @@
+Cluster NO 0: 
+2020-01-28 00:00:00	Have respiratory symptoms like fever and cough.
+2020-04-03 00:00:00	Those symptoms are fever, cough or shortness of breath.
+2020-02-12 00:00:00	The virus causes respiratory symptoms, such as cough and fever.
+2020-03-11 00:00:00	Symptoms of coronavirus can include fever or cough.
+
+Cluster NO 1: 
+ 2020-04-10 00:00:00	Fever  or chills                                      New onset or worsening fatigue
+2020-04-08 00:00:00	Although COVID-19 has many symptoms, a cough and fever are still the main symptoms health-care workers are looking for.
+2020-04-29 00:00:00	The additional symptoms are:  a new onset of fatigue.
+2020-02-07 00:00:00	\"That includes mild symptoms like a cough, fatigue, fever,\" said Shahab.
+2020-02-27 00:00:00	Health officials say his only symptoms are a mild cough and fever.
+2020-03-16 00:00:00	Referrals will be based on symptoms (cough or fever), travel history or other known exposure.
+2020-03-01 00:00:00	The couple from Gatineau, Que., tested positive in mid-February and was transported to a Japanese military hospital with symptoms including coughing and fever.
+2020-03-19 00:00:00	More than half of the children (1,091) had mild symptoms of acute upper respiratory tract infections, such as fatigue, fever, cough, congestion, and in some cases digestive symptoms, such as nausea, vomiting and diarrhea.
+2020-01-29 00:00:00	Coronavirus symptoms include fever, cough, tightness in the chest or shortness of breath, Shahab said.
+2020-03-25 00:00:00	The \"validity\" of a test is at its highest when someone is showing symptoms such as fever and cough.
+2020-03-24 00:00:00	For most people, the virus causes only mild or moderate symptoms, such as fever and cough.
+2020-04-28 00:00:00	\"Fever is not usually the first symptom of COVID-19 and in some cases a fever never develops, so implementing measures based solely on fever detection is not recommended,\" a spokesperson said in a statement to CBC News.
+2020-03-31 00:00:00	Quebec: absence of acute symptoms for 24 hours, fever for 48 hours and at least 14 days since the onset of the acute illness.
+
+Cluster NO 2: 
+2020-03-17 00:00:00	Symptoms for COVID-19 are a cough, difficulty breathing and fever.
+2020-03-10 00:00:00	Watch for symptoms including fever, cough and respiratory difficulty.
+2020-02-29 00:00:00	Symptoms include fever, cough and difficulty breathing.
+2020-03-25 00:00:00	Their symptoms include sore throat, fever and cough.
+2020-04-11 00:00:00	The hospital in Sudbury says that anyone having difficulty breathing or experiencing other severe symptoms should call 911 immediately, and advise of their symptoms and travel history.
+2020-01-20 00:00:00	Symptoms include fever and difficulty in breathing, which are similar to many other respiratory diseases and pose complications for identifying cases.
+
+Cluster NO 3: 
+2020-04-30 00:00:00	Cough and fever clinics can be accessed by calling 811 or getting a referral from a family doctor.
+2020-03-30 00:00:00	The cough and fever clinics in Summerside and in Charlottetown are being held at the same location as the cities' COVID-19 testing facilities, both of which offer drive-thru testing.
+
+Cluster NO 4: 
+2020-04-08 00:00:00	Her main symptom is not being able to take a deep breath.
+2020-05-01 00:00:00	Still, one symptom stands out in his mind: COVID-19 took away both Levesque's and his wife's sense of smell and taste.
+2020-04-02 00:00:00	People with severe symptoms such as chest pain or shortness of breath should still go to the emergency room.
+
+Cluster NO 5: 
+2020-05-01 00:00:00	Sore throat (33 per cent)
+2020-03-12 00:00:00	Some patients also experience aches and pains, nasal congestion, runny nose, sore throat or diarrhea.
+2020-04-29 00:00:00	Anyone with two or more symptoms of COVID-19, including fever, a new or worsening cough, sore throat, runny nose or headache, should visit 811's website for a self-assessment questionnaire to determine if 811 should be called for further assessment.
+2020-01-31 00:00:00	Symptoms can include runny nose, headache, cough, sore throat and fever.
+2020-04-10 00:00:00	These updated symptoms are in addition to difficulty breathing, fever, cough, muscle aches, fatigue, headache, sore throat and runny nose.
+2020-04-30 00:00:00	Symptoms include fever, a new or worsening cough, breathlessness, sore throat, headache and runny nose.
+2020-03-28 00:00:00	\"We know people can hide symptoms by, for example, taking a Tylenol to mask a fever,\
+2020-04-13 00:00:00	Russell said testing would be recommended for people exhibiting at least two of the following five symptoms: fever above 38 C, a new cough or worsening chronic cough, sore throat, runny nose, or headache.
+2020-04-11 00:00:00	New onset or worsening fatigue   Loss of taste or smell
+2020-04-24 00:00:00	The list of symptoms that will trigger a test is now expanded to include fever, chills, cough, difficulty breathing, a sore throat, headache, runny nose or nasal congestion, unexplained vomiting or diarrhea, fatigue or muscle aches, and the loss of smell or taste.
+2020-04-28 00:00:00	Premier Brian Pallister says even people with mild symptoms, such as a runny nose or cough, can be tested.
+2020-04-16 00:00:00	\"any new or worsening symptom\" such as cough or shortness of breath, sore throat, runny nose, sneezing, or nasal congestion, hoarse voice, difficulty swallowing, new smell or taste disorders, nausea, vomiting, diahrrea, or abdominal pain.
+2020-04-14 00:00:00	'The virus is not always a cough and a fever'
+2020-04-06 00:00:00	Sokolowska called her family doctor and described her symptoms, which included a cough, sore throat, headache and dizziness.
+2020-04-23 00:00:00	Any person with a new onset of cough, fever, sore throat, runny nose or marked fatigue, regardless of travel history.
+
+Cluster NO 6: 
+2020-03-24 00:00:00	While medical masks protect against droplets from someone coughing or sneezing, N95 masks also protect against aerosols, which can be produced during medical procedures like inserting a breathing tube.
+
+Cluster NO 7: 
+2020-01-17 00:00:00	Health officials also asked Thai AirAsia and China Southern Airlines, which run direct daily flights from Wuhan, to halt boarding by those suffering from high fever and respiratory symptoms, and reschedule their flights.
+
+Cluster NO 8: 
+2020-01-24 00:00:00	The symptoms can include:  Fever.
+2020-04-20 00:00:00	Symptoms to look for The province's list of symptoms being screened for COVID-19 are:  Fever.
+2020-04-28 00:00:00	COVID-19 symptoms People with two or more of the following symptoms are asked to visit the 811 online assessment:  Fever.
+2020-03-17 00:00:00	The symptoms for adults include:  Fever.
+2020-05-01 00:00:00	The following is a list of symptoms for COVID-19:  Fever.
